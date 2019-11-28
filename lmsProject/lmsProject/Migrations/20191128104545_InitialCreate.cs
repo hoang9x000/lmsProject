@@ -100,13 +100,13 @@ namespace lmsProject.Migrations
                         column: x => x.Masach,
                         principalTable: "Sach",
                         principalColumn: "Masach",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Dattruoc_User",
                         column: x => x.Mathe,
                         principalTable: "User",
                         principalColumn: "Mathe",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -129,13 +129,13 @@ namespace lmsProject.Migrations
                         column: x => x.Masach,
                         principalTable: "Sach",
                         principalColumn: "Masach",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Luotmuon_User",
                         column: x => x.Mathe,
                         principalTable: "User",
                         principalColumn: "Mathe",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -157,13 +157,13 @@ namespace lmsProject.Migrations
                         column: x => x.Masach,
                         principalTable: "Sach",
                         principalColumn: "Masach",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Phieumuon_User",
                         column: x => x.Mathe,
                         principalTable: "User",
                         principalColumn: "Mathe",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(

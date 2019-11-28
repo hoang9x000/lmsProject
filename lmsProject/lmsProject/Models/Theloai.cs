@@ -21,6 +21,6 @@ namespace lmsProject.Models
         public int Songaymuontoida { get; set; }
 
         [InverseProperty("MatheloaiNavigation")]
-        public ICollection<Nhomsach> Nhomsach { get; set; }
+        public virtual ICollection<Nhomsach> Nhomsach { get; set; }
     }
 }

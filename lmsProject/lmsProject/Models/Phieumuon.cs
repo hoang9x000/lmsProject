@@ -20,9 +20,9 @@ namespace lmsProject.Models
 
         [ForeignKey("Masach")]
         [InverseProperty("Phieumuon")]
-        public Sach MasachNavigation { get; set; }
+        public virtual Sach MasachNavigation { get; set; }
         [ForeignKey("Mathe")]
         [InverseProperty("Phieumuon")]
-        public User MatheNavigation { get; set; }
+        public virtual User MatheNavigation { get; set; }
     }
 }

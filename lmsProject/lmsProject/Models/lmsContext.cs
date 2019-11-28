@@ -34,6 +34,8 @@ namespace lmsProject.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.HasAnnotation("ProductVersion", "2.2.6-servicing-10079");
+
             modelBuilder.Entity<Dattruoc>(entity =>
             {
                 entity.HasKey(e => new { e.Mathe, e.Masach });
@@ -45,13 +47,11 @@ namespace lmsProject.Models
                 entity.HasOne(d => d.MasachNavigation)
                     .WithMany(p => p.Dattruoc)
                     .HasForeignKey(d => d.Masach)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Dattruoc_Sach");
 
                 entity.HasOne(d => d.MatheNavigation)
                     .WithMany(p => p.Dattruoc)
                     .HasForeignKey(d => d.Mathe)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Dattruoc_User");
             });
 
@@ -66,13 +66,11 @@ namespace lmsProject.Models
                 entity.HasOne(d => d.MasachNavigation)
                     .WithMany(p => p.Luotmuon)
                     .HasForeignKey(d => d.Masach)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Luotmuon_Sach");
 
                 entity.HasOne(d => d.MatheNavigation)
                     .WithMany(p => p.Luotmuon)
                     .HasForeignKey(d => d.Mathe)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Luotmuon_User");
             });
 
@@ -101,13 +99,11 @@ namespace lmsProject.Models
                 entity.HasOne(d => d.MasachNavigation)
                     .WithMany(p => p.Phieumuon)
                     .HasForeignKey(d => d.Masach)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Phieumuon_Sach");
 
                 entity.HasOne(d => d.MatheNavigation)
                     .WithMany(p => p.Phieumuon)
                     .HasForeignKey(d => d.Mathe)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Phieumuon_User");
             });
 

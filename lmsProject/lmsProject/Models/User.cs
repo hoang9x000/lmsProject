@@ -36,10 +36,10 @@ namespace lmsProject.Models
         public bool IsAdmin { get; set; }
 
         [InverseProperty("MatheNavigation")]
-        public ICollection<Dattruoc> Dattruoc { get; set; }
+        public virtual ICollection<Dattruoc> Dattruoc { get; set; }
         [InverseProperty("MatheNavigation")]
-        public ICollection<Luotmuon> Luotmuon { get; set; }
+        public virtual ICollection<Luotmuon> Luotmuon { get; set; }
         [InverseProperty("MatheNavigation")]
-        public ICollection<Phieumuon> Phieumuon { get; set; }
+        public virtual ICollection<Phieumuon> Phieumuon { get; set; }
     }
 }

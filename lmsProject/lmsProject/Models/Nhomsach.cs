@@ -29,8 +29,8 @@ namespace lmsProject.Models
 
         [ForeignKey("Matheloai")]
         [InverseProperty("Nhomsach")]
-        public Theloai MatheloaiNavigation { get; set; }
+        public virtual Theloai MatheloaiNavigation { get; set; }
         [InverseProperty("ManhomsachNavigation")]
-        public ICollection<Sach> Sach { get; set; }
+        public virtual ICollection<Sach> Sach { get; set; }
     }
 }

@@ -17,9 +17,9 @@ namespace lmsProject.Models
 
         [ForeignKey("Masach")]
         [InverseProperty("Dattruoc")]
-        public Sach MasachNavigation { get; set; }
+        public virtual Sach MasachNavigation { get; set; }
         [ForeignKey("Mathe")]
         [InverseProperty("Dattruoc")]
-        public User MatheNavigation { get; set; }
+        public virtual User MatheNavigation { get; set; }
     }
 }

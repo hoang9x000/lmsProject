@@ -22,20 +22,15 @@ namespace lmsProject.Controllers
 
         // GET: api/Theloai
         [HttpGet]
-        public IEnumerable<Theloai> GetTheloai()
+        public async Task<ActionResult<IEnumerable<Theloai>>> GetTheloai()
         {
-            return _context.Theloai;
+            return await _context.Theloai.ToListAsync();
         }
 
         // GET: api/Theloai/5
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetTheloai([FromRoute] string id)
+        public async Task<ActionResult<Theloai>> GetTheloai(string id)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
             var theloai = await _context.Theloai.FindAsync(id);
 
             if (theloai == null)
@@ -43,18 +38,13 @@ namespace lmsProject.Controllers
                 return NotFound();
             }
 
-            return Ok(theloai);
+            return theloai;
         }
 
         // PUT: api/Theloai/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutTheloai([FromRoute] string id, [FromBody] Theloai theloai)
+        public async Task<IActionResult> PutTheloai(string id, Theloai theloai)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
             if (id != theloai.Matheloai)
             {
                 return BadRequest();
@@ -83,13 +73,8 @@ namespace lmsProject.Controllers
 
         // POST: api/Theloai
         [HttpPost]
-        public async Task<IActionResult> PostTheloai([FromBody] Theloai theloai)
+        public async Task<ActionResult<Theloai>> PostTheloai(Theloai theloai)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
             _context.Theloai.Add(theloai);
             try
             {
@@ -99,7 +84,7 @@ namespace lmsProject.Controllers
             {
                 if (TheloaiExists(theloai.Matheloai))
                 {
-                    return new StatusCodeResult(StatusCodes.Status409Conflict);
+                    return Conflict();
                 }
                 else
                 {
@@ -112,13 +97,8 @@ namespace lmsProject.Controllers
 
         // DELETE: api/Theloai/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteTheloai([FromRoute] string id)
+        public async Task<ActionResult<Theloai>> DeleteTheloai(string id)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
             var theloai = await _context.Theloai.FindAsync(id);
             if (theloai == null)
             {
@@ -128,7 +108,7 @@ namespace lmsProject.Controllers
             _context.Theloai.Remove(theloai);
             await _context.SaveChangesAsync();
 
-            return Ok(theloai);
+            return theloai;
         }
 
         private bool TheloaiExists(string id)

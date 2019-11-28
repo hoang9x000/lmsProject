@@ -10,14 +10,14 @@ using lmsProject.Models;
 namespace lmsProject.Migrations
 {
     [DbContext(typeof(lmsContext))]
-    [Migration("20191127173713_InitialCreate")]
+    [Migration("20191128104545_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.1.14-servicing-32113")
+                .HasAnnotation("ProductVersion", "2.2.6-servicing-10079")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -217,12 +217,14 @@ namespace lmsProject.Migrations
                     b.HasOne("lmsProject.Models.Sach", "MasachNavigation")
                         .WithMany("Dattruoc")
                         .HasForeignKey("Masach")
-                        .HasConstraintName("FK_Dattruoc_Sach");
+                        .HasConstraintName("FK_Dattruoc_Sach")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("lmsProject.Models.User", "MatheNavigation")
                         .WithMany("Dattruoc")
                         .HasForeignKey("Mathe")
-                        .HasConstraintName("FK_Dattruoc_User");
+                        .HasConstraintName("FK_Dattruoc_User")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("lmsProject.Models.Luotmuon", b =>
@@ -230,12 +232,14 @@ namespace lmsProject.Migrations
                     b.HasOne("lmsProject.Models.Sach", "MasachNavigation")
                         .WithMany("Luotmuon")
                         .HasForeignKey("Masach")
-                        .HasConstraintName("FK_Luotmuon_Sach");
+                        .HasConstraintName("FK_Luotmuon_Sach")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("lmsProject.Models.User", "MatheNavigation")
                         .WithMany("Luotmuon")
                         .HasForeignKey("Mathe")
-                        .HasConstraintName("FK_Luotmuon_User");
+                        .HasConstraintName("FK_Luotmuon_User")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("lmsProject.Models.Nhomsach", b =>
@@ -252,12 +256,14 @@ namespace lmsProject.Migrations
                     b.HasOne("lmsProject.Models.Sach", "MasachNavigation")
                         .WithMany("Phieumuon")
                         .HasForeignKey("Masach")
-                        .HasConstraintName("FK_Phieumuon_Sach");
+                        .HasConstraintName("FK_Phieumuon_Sach")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("lmsProject.Models.User", "MatheNavigation")
                         .WithMany("Phieumuon")
                         .HasForeignKey("Mathe")
-                        .HasConstraintName("FK_Phieumuon_User");
+                        .HasConstraintName("FK_Phieumuon_User")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("lmsProject.Models.Sach", b =>

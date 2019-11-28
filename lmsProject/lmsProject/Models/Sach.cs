@@ -28,12 +28,12 @@ namespace lmsProject.Models
 
         [ForeignKey("Manhomsach")]
         [InverseProperty("Sach")]
-        public Nhomsach ManhomsachNavigation { get; set; }
+        public virtual Nhomsach ManhomsachNavigation { get; set; }
         [InverseProperty("MasachNavigation")]
-        public ICollection<Dattruoc> Dattruoc { get; set; }
+        public virtual ICollection<Dattruoc> Dattruoc { get; set; }
         [InverseProperty("MasachNavigation")]
-        public ICollection<Luotmuon> Luotmuon { get; set; }
+        public virtual ICollection<Luotmuon> Luotmuon { get; set; }
         [InverseProperty("MasachNavigation")]
-        public ICollection<Phieumuon> Phieumuon { get; set; }
+        public virtual ICollection<Phieumuon> Phieumuon { get; set; }
     }
 }
