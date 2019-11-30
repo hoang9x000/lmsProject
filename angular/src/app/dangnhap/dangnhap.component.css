@@ -9,6 +9,7 @@ body{
 }
 
 .container{
+    position: relative;
     opacity: 0.9;
     height: 100%;
     align-content: center;
