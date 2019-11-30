@@ -1,12 +1,15 @@
 body{
+    display: block;
     margin: 0;
     padding: 0;
-    height: 100vmin;
+    height: 80vmin;
+    background-image: url('http://localhost:4200/assets/anh/anh1.jpg');
     background-size: cover;
-    background-color: rgb(90, 91, 105);
+    background-color: rgb(134, 152, 159);
 }
 
 .container{
+    opacity: 0.9;
     height: 100%;
     align-content: center;
 }
@@ -36,10 +39,12 @@ body{
 }
 
 input{
+    cursor: text;
     border-radius: 10px;
 }
 
 button{
+    cursor: pointer;
     text-align: center;
     width: 100px;
     color: rgb(255, 255, 255);
