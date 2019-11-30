@@ -1,0 +1,50 @@
+body{
+    margin: 0;
+    padding: 0;
+    height: 100vmin;
+    background-size: cover;
+    background-color: rgb(90, 91, 105);
+}
+
+.container{
+    height: 100%;
+    align-content: center;
+}
+
+.card{
+    /* height: 60%; */
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 300px;
+}
+
+.card-header{
+    height: 20%;
+    text-align: center;
+    color: rgb(50, 50, 245);
+    background-color: rgb(132, 172, 245);
+}
+.card-body{
+    height: 60%;
+    background-color: #eff9ff;
+}
+
+.card-footer{
+    height: 20%;
+    text-align: center;
+    background-color: rgb(132, 172, 245);
+}
+
+input{
+    border-radius: 10px;
+}
+
+button{
+    text-align: center;
+    width: 100px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(132, 172, 245);
+    border-color: rgb(132, 172, 245);
+    border-radius: 10px;
+
+}
