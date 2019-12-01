@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -24,6 +25,7 @@ namespace lmsProject.Models
         [StringLength(10)]
         public string Magiasach { get; set; }
         public bool Damuon { get; set; }
+        [DefaultValue(true)] //false = mat sach
         public bool Tinhtrangsach { get; set; }
 
         [ForeignKey("Manhomsach")]
