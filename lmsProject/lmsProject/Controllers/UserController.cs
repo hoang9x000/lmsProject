@@ -17,7 +17,7 @@ namespace lmsProject.Controllers
 {
     [Authorize]
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class UserController : ControllerBase
     {
         private IUserService _userService;
@@ -47,7 +47,8 @@ namespace lmsProject.Controllers
             {
                 Subject = new ClaimsIdentity(new Claim[]
                 {
-                    new Claim(ClaimTypes.Name, user.Mathe.ToString())
+                    new Claim(ClaimTypes.Name, user.Mathe),
+                    new Claim(ClaimTypes.Role, user.Role)
                 }),
                 Expires = DateTime.UtcNow.AddDays(7),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
@@ -63,7 +64,8 @@ namespace lmsProject.Controllers
                 Diachi = user.Diachi,
                 Ngaydangki = user.Ngaydangki,
                 Ngayhethan = user.Ngayhethan,
-                IsAdmin = user.IsAdmin,
+                //IsAdmin = user.IsAdmin,
+                Role = user.Role,
                 Token = tokenString
             });
         }
@@ -85,6 +87,7 @@ namespace lmsProject.Controllers
                 return BadRequest(new { message = ex.Message });
             }
         }
+        [Authorize(Roles = Role.Admin)]
         [HttpGet]
         public IActionResult GetAll()
         {
@@ -97,20 +100,34 @@ namespace lmsProject.Controllers
         public IActionResult GetById(string id)
         {
             var user = _userService.GetById(id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+            //chi co admin moi co the xem ho so cua nguoi khac
+            //id = mathe
+            var currentUserID = User.Identity.Name;
+            if (id != currentUserID && !User.IsInRole(Role.Admin))
+                return Forbid();
             var userDto = _mapper.Map<UserDto>(user);
             return Ok(userDto);
         }
-
         [HttpPut("{id}")]
         public IActionResult Update(string id, [FromBody]UserDto userDto)
         {
             //map dto to entity and set id
             var user = _mapper.Map<User>(userDto);
             user.Mathe = id;
+            //
+            var currentUserID = User.Identity.Name;
+            if (id != currentUserID && !User.IsInRole(Role.Admin))
+                return Forbid();
 
             try
             {
                 //save
+                if (!User.IsInRole(Role.Admin))
+                    user.Role = Role.User;
                 _userService.Update(user, userDto.Password);
                 return Ok();
             }
@@ -120,6 +137,7 @@ namespace lmsProject.Controllers
             }
         }
 
+        [Authorize(Roles = Role.Admin)]
         [HttpDelete("{id}")]
         public IActionResult Delete(string id)
         {

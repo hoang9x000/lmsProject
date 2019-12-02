@@ -32,8 +32,8 @@ namespace lmsProject.Models
         public DateTime Ngaydangki { get; set; }
         [Column(TypeName = "date")]
         public DateTime Ngayhethan { get; set; }
-        [Column("isAdmin")]
-        public bool IsAdmin { get; set; }
+        [Required]
+        public string Role { get; set; }
 
         [InverseProperty("MatheNavigation")]
         public virtual ICollection<Dattruoc> Dattruoc { get; set; }
