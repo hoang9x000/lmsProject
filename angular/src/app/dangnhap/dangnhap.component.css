@@ -2,8 +2,8 @@ body{
     display: block;
     margin: 0;
     padding: 0;
-    height: 80vmin;
-    background-image: url('http://localhost:4200/assets/anh/anh1.jpg');
+    height: 100vmin;
+   
     background-size: cover;
     background-color: rgb(134, 152, 159);
 }

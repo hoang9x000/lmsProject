@@ -7,6 +7,7 @@ import { QuydinhComponent } from './Homepage/quydinh/quydinh.component';
 import { GioithieuComponent } from './Homepage/gioithieu/gioithieu.component';
 import { DangnhapComponent } from './dangnhap/dangnhap.component';
 import { TailieuComponent } from './Homepage/tailieu/tailieu.component';
+import { ChangepassComponent } from './changepass/changepass.component';
 
 
 const routes: Routes = [
@@ -17,7 +18,7 @@ const routes: Routes = [
   {path: 'gioithieu' , component:GioithieuComponent},
   {path: 'dangnhap' , component: DangnhapComponent},
   {path: 'tailieu' , component: TailieuComponent},
-
+  {path: 'changepass' , component: ChangepassComponent},
 ];
 
 @NgModule({
