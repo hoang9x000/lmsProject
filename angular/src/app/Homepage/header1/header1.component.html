@@ -19,10 +19,10 @@
                 <!-- Links -->
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="">Trang Chủ</a>
+                        <a class="nav-link" [routerLink]="['/']">Trang Chủ</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">Tài Liệu</a>
+                        <a class="nav-link" [routerLink]="['/tailieu']">Tài Liệu</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link " href="thongtin" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
@@ -30,12 +30,12 @@
                             Thông Tin
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="quydinh">Quy Định</a>
-                            <a class="dropdown-item" href="gioithieu">Giới Thiệu</a>
+                            <a class="dropdown-item" [routerLink]="['/quydinh']">Quy Định</a>
+                            <a class="dropdown-item" [routerLink]="['/gioithieu']">Giới Thiệu</a>
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Đăng Nhập</a>
+                        <a class="nav-link" [routerLink]="['/dangnhap']">Đăng Nhập</a>
                     </li>
                 </ul>
             </nav>

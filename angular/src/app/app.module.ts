@@ -20,6 +20,7 @@ import { DetailbookComponent } from './Userpage/detailbook/detailbook.component'
 import { GiahanComponent } from './Userpage/giahan/giahan.component';
 import { DattruocComponent } from './Userpage/dattruoc/dattruoc.component';
 import { ProductComponent } from './Components/product/product.component';
+import { ShowproductsComponent } from './Homepage/showproducts/showproducts.component';
 
 
 @NgModule({
@@ -41,6 +42,7 @@ import { ProductComponent } from './Components/product/product.component';
     GiahanComponent,
     DattruocComponent,
     ProductComponent,
+    ShowproductsComponent,
   ],
   imports: [
     BrowserModule,
