@@ -137,7 +137,7 @@ namespace lmsProject.Models
                     .IsUnicode(false)
                     .ValueGeneratedNever();
 
-                entity.Property(e => e.Matkhau).IsUnicode(false);
+                //entity.Property(e => e.Matkhau).IsUnicode(false);
             });
         }
     }

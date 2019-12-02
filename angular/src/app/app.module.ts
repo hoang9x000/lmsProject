@@ -13,6 +13,12 @@ import { GioithieuComponent } from './Homepage/gioithieu/gioithieu.component';
 import { DangnhapComponent } from './dangnhap/dangnhap.component';
 import { TailieuComponent } from './Homepage/tailieu/tailieu.component';
 import { ChangepassComponent } from './changepass/changepass.component';
+import { Header2Component } from './Userpage/header2/header2.component';
+import { UsersComponent } from './Userpage/users/users.component';
+import { ProfileComponent } from './Userpage/profile/profile.component';
+import { DetailbookComponent } from './Userpage/detailbook/detailbook.component';
+import { GiahanComponent } from './Userpage/giahan/giahan.component';
+import { DattruocComponent } from './Userpage/dattruoc/dattruoc.component';
 
 
 @NgModule({
@@ -27,6 +33,12 @@ import { ChangepassComponent } from './changepass/changepass.component';
     DangnhapComponent,
     TailieuComponent,
     ChangepassComponent,
+    Header2Component,
+    UsersComponent,
+    ProfileComponent,
+    DetailbookComponent,
+    GiahanComponent,
+    DattruocComponent,
   ],
   imports: [
     BrowserModule,
