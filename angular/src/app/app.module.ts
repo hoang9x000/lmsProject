@@ -19,6 +19,7 @@ import { ProfileComponent } from './Userpage/profile/profile.component';
 import { DetailbookComponent } from './Userpage/detailbook/detailbook.component';
 import { GiahanComponent } from './Userpage/giahan/giahan.component';
 import { DattruocComponent } from './Userpage/dattruoc/dattruoc.component';
+import { ProductComponent } from './Components/product/product.component';
 
 
 @NgModule({
@@ -39,6 +40,7 @@ import { DattruocComponent } from './Userpage/dattruoc/dattruoc.component';
     DetailbookComponent,
     GiahanComponent,
     DattruocComponent,
+    ProductComponent,
   ],
   imports: [
     BrowserModule,
