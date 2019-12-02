@@ -21,6 +21,12 @@ import { GiahanComponent } from './Userpage/giahan/giahan.component';
 import { DattruocComponent } from './Userpage/dattruoc/dattruoc.component';
 import { ProductComponent } from './Components/product/product.component';
 import { ShowproductsComponent } from './Homepage/showproducts/showproducts.component';
+import { AdminComponent } from './Adminpage/admin/admin.component';
+import { SachComponent } from './Adminpage/sach/sach.component';
+import { ThemsachComponent } from './Adminpage/sach/themsach/themsach.component';
+import { MuontraComponent } from './Adminpage/muontra/muontra.component';
+import { ChomuonComponent } from './Adminpage/muontra/chomuon/chomuon.component';
+import { AdduserComponent } from './Adminpage/users/adduser/adduser.component';
 
 
 @NgModule({
@@ -43,6 +49,12 @@ import { ShowproductsComponent } from './Homepage/showproducts/showproducts.comp
     DattruocComponent,
     ProductComponent,
     ShowproductsComponent,
+    AdminComponent,
+    SachComponent,
+    ThemsachComponent,
+    MuontraComponent,
+    ChomuonComponent,
+    AdduserComponent,
   ],
   imports: [
     BrowserModule,
