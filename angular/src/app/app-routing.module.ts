@@ -12,6 +12,7 @@ import { ProfileComponent } from './Userpage/profile/profile.component';
 import { DetailbookComponent } from './Userpage/detailbook/detailbook.component';
 import { DattruocComponent } from './Userpage/dattruoc/dattruoc.component';
 import { GiahanComponent } from './Userpage/giahan/giahan.component';
+import { ChangepassComponent } from './changepass/changepass.component';
 
 
 const routes: Routes = [
@@ -26,7 +27,9 @@ const routes: Routes = [
   {path: 'profile', component: ProfileComponent},
   {path: 'detailbook' , component: DetailbookComponent},
   {path: 'dattruoc' , component: DattruocComponent},
-  {path: 'giahan' , component: GiahanComponent}
+  {path: 'giahan' , component: GiahanComponent},
+  {path: 'changepass' , component: ChangepassComponent}
+
 
 ];
 
