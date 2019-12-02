@@ -113,7 +113,7 @@ namespace lmsProject.Models
                     .IsUnicode(false)
                     .ValueGeneratedNever();
 
-                entity.Property(e => e.Magiasach).IsUnicode(false);
+                //entity.Property(e => e.Magiasach).IsUnicode(false);
 
                 entity.Property(e => e.Manhomsach).IsUnicode(false);
 

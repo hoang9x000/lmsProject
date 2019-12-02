@@ -6,9 +6,11 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using lmsProject.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace lmsProject.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class NhomsachController : ControllerBase
@@ -21,6 +23,7 @@ namespace lmsProject.Controllers
         }
 
         // GET: api/Nhomsach
+        [AllowAnonymous]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Nhomsach>>> GetNhomsach()
         {
@@ -28,6 +31,7 @@ namespace lmsProject.Controllers
         }
 
         // GET: api/Nhomsach/5
+        [AllowAnonymous]
         [HttpGet("{id}")]
         public async Task<ActionResult<Nhomsach>> GetNhomsach(string id)
         {
@@ -42,6 +46,7 @@ namespace lmsProject.Controllers
         }
 
         // PUT: api/Nhomsach/5
+        [Authorize(Roles = Role.Admin)]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutNhomsach(string id, Nhomsach nhomsach)
         {
@@ -49,6 +54,8 @@ namespace lmsProject.Controllers
             {
                 return BadRequest();
             }
+            if (nhomsach.Soluong < nhomsach.Soluongcon)
+                return BadRequest();
 
             _context.Entry(nhomsach).State = EntityState.Modified;
 
@@ -72,9 +79,11 @@ namespace lmsProject.Controllers
         }
 
         // POST: api/Nhomsach
+        [Authorize(Roles = Role.Admin)]
         [HttpPost]
         public async Task<ActionResult<Nhomsach>> PostNhomsach(Nhomsach nhomsach)
         {
+            nhomsach.Soluongcon = nhomsach.Soluong;
             _context.Nhomsach.Add(nhomsach);
             try
             {
@@ -91,11 +100,21 @@ namespace lmsProject.Controllers
                     throw;
                 }
             }
+            for(int i=0; i < nhomsach.Soluong; i++)
+            {
+                Sach _sach = new Sach();
+                _sach.Masach = (string)nhomsach.Manhomsach + i;
+                _sach.Manhomsach = nhomsach.Manhomsach;
+                _context.Sach.Add(_sach);
+
+            }
+            await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetNhomsach", new { id = nhomsach.Manhomsach }, nhomsach);
         }
 
         // DELETE: api/Nhomsach/5
+        [Authorize(Roles = Role.Admin)]
         [HttpDelete("{id}")]
         public async Task<ActionResult<Nhomsach>> DeleteNhomsach(string id)
         {
