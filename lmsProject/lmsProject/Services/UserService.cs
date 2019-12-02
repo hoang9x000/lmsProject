@@ -50,6 +50,8 @@ namespace lmsProject.Services
             user.PasswordHash = passwordHash;
             user.PasswordSalt = passwordSalt;
             //
+            if (user.Role == null) user.Role = Role.User;
+            //
             if(user.Ngayhethan < user.Ngaydangki)
                 throw new AppException("Lỗi: Ngày đăng kí trước ngày hết hạn");
 
@@ -104,7 +106,9 @@ namespace lmsProject.Services
                 user.Ngaysinh = userParam.Ngaysinh;
                 user.Ngaydangki = userParam.Ngaydangki;
                 user.Ngayhethan = userParam.Ngayhethan;
-                user.IsAdmin = userParam.IsAdmin;
+                //user.IsAdmin = userParam.IsAdmin;
+                //test thu 
+                user.Role = userParam.Role;
             }
             else
             {

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using lmsProject.Models;
 
 namespace lmsProject.Migrations
 {
     [DbContext(typeof(lmsContext))]
-    partial class lmsContextModelSnapshot : ModelSnapshot
+    [Migration("20191202092924_AddRole")]
+    partial class AddRole
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -201,8 +203,7 @@ namespace lmsProject.Migrations
 
                     b.Property<byte[]>("PasswordSalt");
 
-                    b.Property<string>("Role")
-                        .IsRequired();
+                    b.Property<string>("Role");
 
                     b.HasKey("Mathe");
 

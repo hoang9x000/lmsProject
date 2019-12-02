@@ -15,6 +15,6 @@ namespace lmsProject.DTO
         public string Diachi { get; set; }
         public DateTime Ngaydangki { get; set; }
         public DateTime Ngayhethan { get; set; }
-        public bool IsAdmin { get; set; }
+        public string Role { get; set; }
     }
 }
