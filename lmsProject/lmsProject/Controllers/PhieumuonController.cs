@@ -6,9 +6,11 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using lmsProject.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace lmsProject.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class PhieumuonController : ControllerBase
@@ -21,6 +23,7 @@ namespace lmsProject.Controllers
         }
 
         // GET: api/Phieumuon
+        [Authorize(Roles = Role.Admin)]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Phieumuon>>> GetPhieumuon()
         {
@@ -31,6 +34,9 @@ namespace lmsProject.Controllers
         [HttpGet("{mathe}/{masach}")]
         public async Task<ActionResult<Phieumuon>> GetPhieumuon(string mathe,string masach)
         {
+            var currentUserID = User.Identity.Name;
+            if (mathe != currentUserID && !User.IsInRole(Role.Admin))
+                return Forbid();
             var phieumuon = await _context.Phieumuon.FindAsync(mathe,masach);
 
             if (phieumuon == null)
@@ -42,6 +48,7 @@ namespace lmsProject.Controllers
         }
 
         // PUT: api/Phieumuon/5
+        [Authorize(Roles = Role.Admin)]
         [HttpPut("{mathe}/{masach}")]
         public async Task<IActionResult> PutPhieumuon(string mathe,string masach, Phieumuon phieumuon)
         {
@@ -105,6 +112,7 @@ namespace lmsProject.Controllers
         }
 
         // POST: api/Phieumuon
+        [Authorize(Roles = Role.Admin)]
         [HttpPost]
         public async Task<ActionResult<Phieumuon>> PostPhieumuon(Phieumuon phieumuon)
         {
@@ -146,6 +154,7 @@ namespace lmsProject.Controllers
         }
 
         // DELETE: api/Phieumuon/5
+        [Authorize(Roles = Role.Admin)]
         [HttpDelete("{mathe}/{masach}")]
         public async Task<ActionResult<Phieumuon>> DeletePhieumuon(string mathe, string masach)
         {

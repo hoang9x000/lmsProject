@@ -6,9 +6,11 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using lmsProject.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace lmsProject.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class DattruocController : ControllerBase
@@ -21,6 +23,7 @@ namespace lmsProject.Controllers
         }
 
         // GET: api/Dattruoc
+        [Authorize(Roles =Role.Admin)]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Dattruoc>>> GetDattruoc()
         {
@@ -37,11 +40,15 @@ namespace lmsProject.Controllers
             {
                 return NotFound();
             }
+            var currentUserID = User.Identity.Name;
+            if (mathe != currentUserID && !User.IsInRole(Role.Admin))
+                return Forbid();
 
             return dattruoc;
         }
 
         // PUT: api/Dattruoc/5
+        [Authorize(Roles = Role.Admin)]
         [HttpPut("{mathe}/{masach}")]
         public async Task<IActionResult> PutDattruoc(string mathe, string masach, Dattruoc dattruoc)
         {
@@ -61,6 +68,7 @@ namespace lmsProject.Controllers
                 var _sach = await _context.Sach.FindAsync(dattruoc.Masach);
                 var _nhomsach = await _context.Nhomsach.FindAsync(_sach.Manhomsach);
                 var _theloai = await _context.Theloai.FindAsync(_nhomsach.Matheloai);
+                _sach.Damuon = true;
                 Phieumuon _phieumuon = new Phieumuon();
                 _phieumuon.Mathe = dattruoc.Mathe;
                 _phieumuon.Masach = dattruoc.Masach;
@@ -96,6 +104,9 @@ namespace lmsProject.Controllers
         [HttpPost]
         public async Task<ActionResult<Dattruoc>> PostDattruoc(Dattruoc dattruoc)
         {
+            var currentUserID = User.Identity.Name;
+            if (dattruoc.Mathe != currentUserID && !User.IsInRole(Role.Admin))
+                return Forbid();
             dattruoc.Ngaydattruoc = DateTime.Now;
      
             var _sach = await _context.Sach.FindAsync(dattruoc.Masach);
@@ -122,6 +133,7 @@ namespace lmsProject.Controllers
         }
 
         // DELETE: api/Dattruoc/5
+        [Authorize(Roles =Role.Admin)]
         [HttpDelete("{mathe}/{masach}")]
         public async Task<ActionResult<Dattruoc>> DeleteDattruoc(string mathe, string masach)
         {
