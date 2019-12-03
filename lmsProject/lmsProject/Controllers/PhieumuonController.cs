@@ -61,6 +61,7 @@ namespace lmsProject.Controllers
                 return BadRequest();
             }
             var _phieumuonCu = await _context.Phieumuon.FindAsync(mathe,masach);
+            phieumuon.Ngayhethan = _phieumuonCu.Ngayhethan;
             phieumuon.Ngaymuon = _phieumuonCu.Ngaymuon;
             //neu gia han = true => tang ngay het han len
             if(_phieumuonCu.Giahan == false)
