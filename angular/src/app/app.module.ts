@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -27,6 +27,7 @@ import { ThemsachComponent } from './Adminpage/sach/themsach/themsach.component'
 import { MuontraComponent } from './Adminpage/muontra/muontra.component';
 import { ChomuonComponent } from './Adminpage/muontra/chomuon/chomuon.component';
 import { AdduserComponent } from './Adminpage/users/adduser/adduser.component';
+import { SearchProductComponent } from './Components/search-product/search-product.component';
 
 
 @NgModule({
@@ -55,10 +56,13 @@ import { AdduserComponent } from './Adminpage/users/adduser/adduser.component';
     MuontraComponent,
     ChomuonComponent,
     AdduserComponent,
+    SearchProductComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    // import HttpClientModule after BrowserModule.
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
