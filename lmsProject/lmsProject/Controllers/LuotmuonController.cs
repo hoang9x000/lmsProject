@@ -91,6 +91,7 @@ namespace lmsProject.Controllers
             //tien phat = songayquahan*5000 hoac tienphat= giatien*3;
             if (luotmuon.Tinhtrangsachluctra == false)
             {
+                _sach.Tinhtrangsach = false;
                 if (luotmuon.Ngaytra > luotmuon.Ngayhethan)
                 {
                     TimeSpan _time = luotmuon.Ngaytra - luotmuon.Ngayhethan;

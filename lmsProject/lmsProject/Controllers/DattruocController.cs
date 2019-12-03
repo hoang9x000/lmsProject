@@ -53,12 +53,24 @@ namespace lmsProject.Controllers
             {
                 return BadRequest();
             }
-            // neu da nhan thi tao ra phieu muon
-            //if(dattruoc.Danhan == true)
-            //{
-            //    //tao phieu muon?
-            //}
-
+            var _dattruocCu = await _context.Dattruoc.FindAsync(mathe, masach);
+            dattruoc.Ngaydattruoc = _dattruocCu.Ngaydattruoc;
+            //neu da nhan thi tao ra phieu muon
+            if (dattruoc.Danhan == true)
+            {
+                var _sach = await _context.Sach.FindAsync(dattruoc.Masach);
+                var _nhomsach = await _context.Nhomsach.FindAsync(_sach.Manhomsach);
+                var _theloai = await _context.Theloai.FindAsync(_nhomsach.Matheloai);
+                Phieumuon _phieumuon = new Phieumuon();
+                _phieumuon.Mathe = dattruoc.Mathe;
+                _phieumuon.Masach = dattruoc.Masach;
+                _phieumuon.Ngaymuon = dattruoc.Ngaydattruoc;
+                _phieumuon.Ngayhethan = _phieumuon.Ngaymuon.AddDays(_theloai.Songaymuontoida);
+                _phieumuon.Giahan = false;
+                _phieumuon.Datra = false;
+                _context.Phieumuon.Add(_phieumuon);
+            }
+            _context.Entry(_dattruocCu).State = EntityState.Detached;
             _context.Entry(dattruoc).State = EntityState.Modified;
 
             try

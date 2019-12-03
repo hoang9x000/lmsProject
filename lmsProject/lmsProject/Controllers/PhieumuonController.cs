@@ -56,13 +56,21 @@ namespace lmsProject.Controllers
             var _phieumuonCu = await _context.Phieumuon.FindAsync(mathe,masach);
             phieumuon.Ngaymuon = _phieumuonCu.Ngaymuon;
             //neu gia han = true => tang ngay het han len
-            if(phieumuon.Giahan == true)
+            if(_phieumuonCu.Giahan == false)
             {
-                var _sach = await _context.Sach.FindAsync(phieumuon.Masach);
-                var _nhomsach = await _context.Nhomsach.FindAsync(_sach.Manhomsach);
-                var _theloai = await _context.Theloai.FindAsync(_nhomsach.Matheloai);
-                phieumuon.Ngayhethan = _phieumuonCu.Ngayhethan.AddDays(_theloai.Songaymuontoida);
+                if (phieumuon.Giahan == true)
+                {
+                    var _sach = await _context.Sach.FindAsync(phieumuon.Masach);
+                    var _nhomsach = await _context.Nhomsach.FindAsync(_sach.Manhomsach);
+                    var _theloai = await _context.Theloai.FindAsync(_nhomsach.Matheloai);
+                    phieumuon.Ngayhethan = _phieumuonCu.Ngayhethan.AddDays(_theloai.Songaymuontoida);
+                }
+                else
+                {
+                    phieumuon.Ngayhethan = _phieumuonCu.Ngayhethan;
+                }
             }
+           
             //neu tra sach = true thi damuon=true, soluongcon++ va sinh ra phieu muon(hoa don) va xoa di phieu muon
             if (phieumuon.Datra == true)
             {
@@ -109,7 +117,7 @@ namespace lmsProject.Controllers
             phieumuon.Giahan = false;
             phieumuon.Datra = false;
             //
-            if(_sach.Damuon == true)
+            if(_sach.Damuon == true || _sach.Tinhtrangsach == false)
             {
                 return BadRequest();
             }
