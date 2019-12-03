@@ -6,9 +6,11 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using lmsProject.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace lmsProject.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class LuotmuonController : ControllerBase
@@ -21,6 +23,7 @@ namespace lmsProject.Controllers
         }
 
         // GET: api/Luotmuon
+        [Authorize(Roles =Role.Admin)]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Luotmuon>>> GetLuotmuon()
         {
@@ -31,6 +34,10 @@ namespace lmsProject.Controllers
         [HttpGet("{mathe}/{masach}")]
         public async Task<ActionResult<Luotmuon>> GetLuotmuon(string mathe, string masach)
         {
+            var currentUserID = User.Identity.Name;
+            if (mathe != currentUserID && !User.IsInRole(Role.Admin))
+                return Forbid();
+
             var luotmuon = await _context.Luotmuon.FindAsync(mathe, masach);
 
             if (luotmuon == null)
@@ -42,6 +49,7 @@ namespace lmsProject.Controllers
         }
 
         // PUT: api/Luotmuon/5
+        [Authorize(Roles =Role.Admin)]
         [HttpPut("{mathe}/{masach}")]
         public async Task<IActionResult> PutLuotmuon(string mathe, string masach, Luotmuon luotmuon)
         {
@@ -77,6 +85,7 @@ namespace lmsProject.Controllers
         }
 
         // POST: api/Luotmuon
+        [Authorize(Roles = Role.Admin)]
         [HttpPost]
         public async Task<ActionResult<Luotmuon>> PostLuotmuon(Luotmuon luotmuon)
         {
@@ -91,6 +100,7 @@ namespace lmsProject.Controllers
             //tien phat = songayquahan*5000 hoac tienphat= giatien*3;
             if (luotmuon.Tinhtrangsachluctra == false)
             {
+                _sach.Tinhtrangsach = false;
                 if (luotmuon.Ngaytra > luotmuon.Ngayhethan)
                 {
                     TimeSpan _time = luotmuon.Ngaytra - luotmuon.Ngayhethan;
@@ -135,6 +145,7 @@ namespace lmsProject.Controllers
         }
 
         // DELETE: api/Luotmuon/5
+        [Authorize(Roles = Role.Admin)]
         [HttpDelete("{mathe}/{masach}")]
         public async Task<ActionResult<Luotmuon>> DeleteLuotmuon(string mathe, string masach)
         {

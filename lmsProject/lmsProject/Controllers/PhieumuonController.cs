@@ -6,9 +6,11 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using lmsProject.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace lmsProject.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class PhieumuonController : ControllerBase
@@ -21,6 +23,7 @@ namespace lmsProject.Controllers
         }
 
         // GET: api/Phieumuon
+        [Authorize(Roles = Role.Admin)]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Phieumuon>>> GetPhieumuon()
         {
@@ -31,6 +34,9 @@ namespace lmsProject.Controllers
         [HttpGet("{mathe}/{masach}")]
         public async Task<ActionResult<Phieumuon>> GetPhieumuon(string mathe,string masach)
         {
+            var currentUserID = User.Identity.Name;
+            if (mathe != currentUserID && !User.IsInRole(Role.Admin))
+                return Forbid();
             var phieumuon = await _context.Phieumuon.FindAsync(mathe,masach);
 
             if (phieumuon == null)
@@ -42,6 +48,7 @@ namespace lmsProject.Controllers
         }
 
         // PUT: api/Phieumuon/5
+        [Authorize(Roles = Role.Admin)]
         [HttpPut("{mathe}/{masach}")]
         public async Task<IActionResult> PutPhieumuon(string mathe,string masach, Phieumuon phieumuon)
         {
@@ -56,13 +63,21 @@ namespace lmsProject.Controllers
             var _phieumuonCu = await _context.Phieumuon.FindAsync(mathe,masach);
             phieumuon.Ngaymuon = _phieumuonCu.Ngaymuon;
             //neu gia han = true => tang ngay het han len
-            if(phieumuon.Giahan == true)
+            if(_phieumuonCu.Giahan == false)
             {
-                var _sach = await _context.Sach.FindAsync(phieumuon.Masach);
-                var _nhomsach = await _context.Nhomsach.FindAsync(_sach.Manhomsach);
-                var _theloai = await _context.Theloai.FindAsync(_nhomsach.Matheloai);
-                phieumuon.Ngayhethan = _phieumuonCu.Ngayhethan.AddDays(_theloai.Songaymuontoida);
+                if (phieumuon.Giahan == true)
+                {
+                    var _sach = await _context.Sach.FindAsync(phieumuon.Masach);
+                    var _nhomsach = await _context.Nhomsach.FindAsync(_sach.Manhomsach);
+                    var _theloai = await _context.Theloai.FindAsync(_nhomsach.Matheloai);
+                    phieumuon.Ngayhethan = _phieumuonCu.Ngayhethan.AddDays(_theloai.Songaymuontoida);
+                }
+                else
+                {
+                    phieumuon.Ngayhethan = _phieumuonCu.Ngayhethan;
+                }
             }
+           
             //neu tra sach = true thi damuon=true, soluongcon++ va sinh ra phieu muon(hoa don) va xoa di phieu muon
             if (phieumuon.Datra == true)
             {
@@ -97,6 +112,7 @@ namespace lmsProject.Controllers
         }
 
         // POST: api/Phieumuon
+        [Authorize(Roles = Role.Admin)]
         [HttpPost]
         public async Task<ActionResult<Phieumuon>> PostPhieumuon(Phieumuon phieumuon)
         {
@@ -109,7 +125,7 @@ namespace lmsProject.Controllers
             phieumuon.Giahan = false;
             phieumuon.Datra = false;
             //
-            if(_sach.Damuon == true)
+            if(_sach.Damuon == true || _sach.Tinhtrangsach == false)
             {
                 return BadRequest();
             }
@@ -138,6 +154,7 @@ namespace lmsProject.Controllers
         }
 
         // DELETE: api/Phieumuon/5
+        [Authorize(Roles = Role.Admin)]
         [HttpDelete("{mathe}/{masach}")]
         public async Task<ActionResult<Phieumuon>> DeletePhieumuon(string mathe, string masach)
         {

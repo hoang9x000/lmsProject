@@ -105,6 +105,7 @@ namespace lmsProject.Controllers
                 Sach _sach = new Sach();
                 _sach.Masach = (string)nhomsach.Manhomsach + i;
                 _sach.Manhomsach = nhomsach.Manhomsach;
+                _sach.Tinhtrangsach = true;
                 _context.Sach.Add(_sach);
 
             }
