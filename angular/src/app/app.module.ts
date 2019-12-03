@@ -27,6 +27,7 @@ import { ThemsachComponent } from './Adminpage/sach/themsach/themsach.component'
 import { MuontraComponent } from './Adminpage/muontra/muontra.component';
 import { ChomuonComponent } from './Adminpage/muontra/chomuon/chomuon.component';
 import { AdduserComponent } from './Adminpage/users/adduser/adduser.component';
+import { SearchProductComponent } from './Components/search-product/search-product.component';
 
 
 @NgModule({
@@ -55,6 +56,7 @@ import { AdduserComponent } from './Adminpage/users/adduser/adduser.component';
     MuontraComponent,
     ChomuonComponent,
     AdduserComponent,
+    SearchProductComponent,
   ],
   imports: [
     BrowserModule,
