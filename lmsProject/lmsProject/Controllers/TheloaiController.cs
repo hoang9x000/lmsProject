@@ -6,9 +6,11 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using lmsProject.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace lmsProject.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class TheloaiController : ControllerBase
@@ -21,6 +23,7 @@ namespace lmsProject.Controllers
         }
 
         // GET: api/Theloai
+        [AllowAnonymous]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Theloai>>> GetTheloai()
         {
@@ -28,6 +31,7 @@ namespace lmsProject.Controllers
         }
 
         // GET: api/Theloai/5
+        [AllowAnonymous]
         [HttpGet("{id}")]
         public async Task<ActionResult<Theloai>> GetTheloai(string id)
         {
@@ -42,6 +46,7 @@ namespace lmsProject.Controllers
         }
 
         // PUT: api/Theloai/5
+        [Authorize(Roles =Role.Admin)]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutTheloai(string id, Theloai theloai)
         {
@@ -72,6 +77,7 @@ namespace lmsProject.Controllers
         }
 
         // POST: api/Theloai
+        [Authorize(Roles = Role.Admin)]
         [HttpPost]
         public async Task<ActionResult<Theloai>> PostTheloai(Theloai theloai)
         {
@@ -96,6 +102,7 @@ namespace lmsProject.Controllers
         }
 
         // DELETE: api/Theloai/5
+        [Authorize(Roles = Role.Admin)]
         [HttpDelete("{id}")]
         public async Task<ActionResult<Theloai>> DeleteTheloai(string id)
         {

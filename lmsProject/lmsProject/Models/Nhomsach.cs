@@ -18,6 +18,9 @@ namespace lmsProject.Models
         [Required]
         [StringLength(10)]
         public string Matheloai { get; set; }
+        [Required]
+        [StringLength(10)]
+        public string Magiasach { get; set; }
         public int Soluong { get; set; }
         public int Soluongcon { get; set; }
         [Required]

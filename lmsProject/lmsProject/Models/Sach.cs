@@ -21,9 +21,6 @@ namespace lmsProject.Models
         [Required]
         [StringLength(10)]
         public string Manhomsach { get; set; }
-        [Required]
-        [StringLength(10)]
-        public string Magiasach { get; set; }
         public bool Damuon { get; set; }
         [DefaultValue(true)] //false = mat sach
         public bool Tinhtrangsach { get; set; }

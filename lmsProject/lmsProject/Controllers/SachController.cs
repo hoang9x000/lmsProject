@@ -6,9 +6,11 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using lmsProject.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace lmsProject.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class SachController : ControllerBase
@@ -21,6 +23,7 @@ namespace lmsProject.Controllers
         }
 
         // GET: api/Sach
+        [AllowAnonymous]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Sach>>> GetSach()
         {
@@ -28,6 +31,7 @@ namespace lmsProject.Controllers
         }
 
         // GET: api/Sach/5
+        [AllowAnonymous]
         [HttpGet("{id}")]
         public async Task<ActionResult<Sach>> GetSach(string id)
         {
@@ -42,6 +46,7 @@ namespace lmsProject.Controllers
         }
 
         // PUT: api/Sach/5
+        [Authorize(Roles =Role.Admin)]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutSach(string id, Sach sach)
         {
@@ -72,9 +77,11 @@ namespace lmsProject.Controllers
         }
 
         // POST: api/Sach
+        [Authorize(Roles = Role.Admin)]
         [HttpPost]
         public async Task<ActionResult<Sach>> PostSach(Sach sach)
         {
+            sach.Tinhtrangsach = true;
             _context.Sach.Add(sach);
             try
             {
@@ -96,6 +103,7 @@ namespace lmsProject.Controllers
         }
 
         // DELETE: api/Sach/5
+        [Authorize(Roles = Role.Admin)]
         [HttpDelete("{id}")]
         public async Task<ActionResult<Sach>> DeleteSach(string id)
         {
