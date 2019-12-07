@@ -125,7 +125,9 @@ namespace lmsProject.Controllers
                 var _sach = await _context.Sach.FindAsync(dattruoc.Masach);
                 var _nhomsach = await _context.Nhomsach.FindAsync(_sach.Manhomsach);
                 var _theloai = await _context.Theloai.FindAsync(_nhomsach.Matheloai);
+
                 _sach.Damuon = true;
+
                 Phieumuon _phieumuon = new Phieumuon();
                 _phieumuon.Mathe = dattruoc.Mathe;
                 _phieumuon.Masach = dattruoc.Masach;
@@ -165,9 +167,17 @@ namespace lmsProject.Controllers
             if (dattruoc.Mathe != currentUserID && !User.IsInRole(Role.Admin))
                 return Forbid();
             dattruoc.Ngaydattruoc = DateTime.Now;
-     
+
+            var _user = await _context.User.FindAsync(dattruoc.Mathe);
             var _sach = await _context.Sach.FindAsync(dattruoc.Masach);
             var _nhomsach = await _context.Nhomsach.FindAsync(_sach.Manhomsach);
+
+            if (_sach.Damuon == true || _sach.Tinhtrangsach == false || _user.Sosachdamuon > 6)
+            {
+                return BadRequest();
+            }
+
+            _user.Sosachdamuon++;
             _sach.Damuon = true;
             _nhomsach.Soluongcon--;
             _context.Dattruoc.Add(dattruoc);
@@ -187,7 +197,8 @@ namespace lmsProject.Controllers
                 }
             }
 
-            return CreatedAtAction("GetDattruoc", new { id = dattruoc.Mathe }, dattruoc);
+            //return CreatedAtAction("GetDattruoc", new { id = dattruoc.Mathe }, dattruoc);
+            return Ok();
         }
 
         // DELETE: api/Dattruoc/5

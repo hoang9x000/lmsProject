@@ -204,7 +204,8 @@ namespace lmsProject.Controllers
                 }
             }
 
-            return CreatedAtAction("GetLuotmuon", new { id = luotmuon.Mathe }, luotmuon);
+            //return CreatedAtAction("GetLuotmuon", new { id = luotmuon.Mathe }, luotmuon);
+            return Ok();
         }
 
         // DELETE: api/Luotmuon/5

@@ -45,12 +45,12 @@ namespace lmsProject.Controllers
 
         // GET: api/Phieumuon/102160243/1
         [HttpGet("{mathe}/{masach}")]
-        public async Task<ActionResult<Phieumuon>> GetPhieumuon(string mathe,string masach)
+        public async Task<ActionResult<Phieumuon>> GetPhieumuon(string mathe, string masach)
         {
             var currentUserID = User.Identity.Name;
             if (mathe != currentUserID && !User.IsInRole(Role.Admin))
                 return Forbid();
-            var phieumuon = await _context.Phieumuon.FindAsync(mathe,masach);
+            var phieumuon = await _context.Phieumuon.FindAsync(mathe, masach);
 
             if (phieumuon == null)
             {
@@ -112,7 +112,7 @@ namespace lmsProject.Controllers
         // PUT: api/Phieumuon/5
         [Authorize(Roles = Role.Admin)]
         [HttpPut("{mathe}/{masach}")]
-        public async Task<IActionResult> PutPhieumuon(string mathe,string masach, Phieumuon phieumuon)
+        public async Task<IActionResult> PutPhieumuon(string mathe, string masach, Phieumuon phieumuon)
         {
             if (mathe != phieumuon.Mathe)
             {
@@ -122,11 +122,11 @@ namespace lmsProject.Controllers
             {
                 return BadRequest();
             }
-            var _phieumuonCu = await _context.Phieumuon.FindAsync(mathe,masach);
+            var _phieumuonCu = await _context.Phieumuon.FindAsync(mathe, masach);
             phieumuon.Ngayhethan = _phieumuonCu.Ngayhethan;
             phieumuon.Ngaymuon = _phieumuonCu.Ngaymuon;
             //neu gia han = true => tang ngay het han len
-            if(_phieumuonCu.Giahan == false)
+            if (_phieumuonCu.Giahan == false)
             {
                 if (phieumuon.Giahan == true)
                 {
@@ -140,18 +140,20 @@ namespace lmsProject.Controllers
                     phieumuon.Ngayhethan = _phieumuonCu.Ngayhethan;
                 }
             }
-           
+
             //neu tra sach = true thi damuon=true, soluongcon++ va sinh ra phieu muon(hoa don) va xoa di phieu muon
-            if(_phieumuonCu.Datra == false)
+            if (_phieumuonCu.Datra == false)
             {
                 if (phieumuon.Datra == true)
                 {
+                    var _user = await _context.User.FindAsync(phieumuon.Mathe);
                     var _sach = await _context.Sach.FindAsync(phieumuon.Masach);
                     var _nhomsach = await _context.Nhomsach.FindAsync(_sach.Manhomsach);
                     var _theloai = await _context.Theloai.FindAsync(_nhomsach.Matheloai);
                     //
                     _nhomsach.Soluongcon++;
                     _sach.Damuon = false;
+                    _user.Sosachdamuon--;
                     //nen remove di ko?
                 }
             }
@@ -184,6 +186,7 @@ namespace lmsProject.Controllers
         {
             //
             phieumuon.Ngaymuon = DateTime.UtcNow;
+            var _user = await _context.User.FindAsync(phieumuon.Mathe);
             var _sach = await _context.Sach.FindAsync(phieumuon.Masach);
             var _nhomsach = await _context.Nhomsach.FindAsync(_sach.Manhomsach);
             var _theloai = await _context.Theloai.FindAsync(_nhomsach.Matheloai);
@@ -191,13 +194,14 @@ namespace lmsProject.Controllers
             phieumuon.Giahan = false;
             phieumuon.Datra = false;
             //
-            if(_sach.Damuon == true || _sach.Tinhtrangsach == false)
+            if (_sach.Damuon == true || _sach.Tinhtrangsach == false || _user.Sosachdamuon > 6)
             {
                 return BadRequest();
             }
             //chuyen sach.Damuon = true  va tru so luong con cua nhomsach -1 
             _sach.Damuon = true;
             _nhomsach.Soluongcon--;
+            _user.Sosachdamuon++;
 
             _context.Phieumuon.Add(phieumuon);
             try
@@ -216,7 +220,8 @@ namespace lmsProject.Controllers
                 }
             }
 
-            return CreatedAtAction("GetPhieumuon", new { id = phieumuon.Mathe }, phieumuon);
+            //return CreatedAtAction("GetPhieumuon", new { id = phieumuon.Mathe }, phieumuon);
+            return Ok();
         }
 
         // DELETE: api/Phieumuon/5

@@ -16,5 +16,6 @@ namespace lmsProject.DTO
         public DateTime Ngaydangki { get; set; }
         public DateTime Ngayhethan { get; set; }
         public string Role { get; set; }
+        public int Sosachdamuon { get; set; }
     }
 }
