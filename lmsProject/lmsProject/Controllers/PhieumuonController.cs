@@ -27,7 +27,20 @@ namespace lmsProject.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Phieumuon>>> GetPhieumuon()
         {
-            return await _context.Phieumuon.ToListAsync();
+            var result = _context.Phieumuon.Select(p => new
+            {
+                p.Mathe,
+                p.Masach,
+                p.Ngaymuon,
+                p.Ngayhethan,
+                p.Giahan,
+                p.Datra,
+                p.MatheNavigation.Hoten,
+                p.MasachNavigation.ManhomsachNavigation.Tensach
+            });
+            return Ok(result);
+
+            //return await _context.Phieumuon.ToListAsync();
         }
 
         // GET: api/Phieumuon/102160243/1
@@ -43,8 +56,57 @@ namespace lmsProject.Controllers
             {
                 return NotFound();
             }
+            var result = _context.Phieumuon.Select(p => new
+            {
+                p.Mathe,
+                p.Masach,
+                p.Ngaymuon,
+                p.Ngayhethan,
+                p.Giahan,
+                p.Datra,
+                p.MatheNavigation.Hoten,
+                p.MasachNavigation.ManhomsachNavigation.Tensach
+            })
+                .Where(w => w.Mathe == phieumuon.Mathe && w.Masach == phieumuon.Masach);
+            return Ok(result);
 
-            return phieumuon;
+            //return phieumuon;
+        }
+
+        // GET: api/Phieumuon/102160243
+        [HttpGet("{mathe}")]
+        public async Task<ActionResult<Phieumuon>> GetPhieumuon(string mathe)
+        {
+            var currentUserID = User.Identity.Name;
+            if (mathe != currentUserID && !User.IsInRole(Role.Admin))
+                return Forbid();
+            var user = await _context.User.FindAsync(mathe);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+            var result = _context.User.Select(u => new
+            {
+                u.Mathe,
+                u.Hoten,
+                Phieumuon = from p in _context.Phieumuon
+                            where p.Mathe == u.Mathe
+                            select new
+                            {
+                                p.Mathe,
+                                p.Masach,
+                                p.Ngaymuon,
+                                p.Ngayhethan,
+                                p.Giahan,
+                                p.Datra,
+                                p.MasachNavigation.ManhomsachNavigation.Tensach
+                            }
+            })
+                .Where(w => w.Mathe == mathe);
+            return Ok(result);
+
+            //return phieumuon;
         }
 
         // PUT: api/Phieumuon/5

@@ -27,7 +27,19 @@ namespace lmsProject.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Sach>>> GetSach()
         {
-            return await _context.Sach.ToListAsync();
+            var result = _context.Sach.Select(s => new
+            {
+                s.Masach,
+                s.Manhomsach,
+                s.Damuon,
+                s.Tinhtrangsach,
+                s.ManhomsachNavigation.Tensach,
+                s.ManhomsachNavigation.Tacgia,
+                s.ManhomsachNavigation.MatheloaiNavigation.Tentheloai
+            });
+            return Ok(result);
+
+            //return await _context.Sach.ToListAsync();
         }
 
         // GET: api/Sach/5
@@ -41,8 +53,20 @@ namespace lmsProject.Controllers
             {
                 return NotFound();
             }
+            var result = _context.Sach.Select(s => new
+            {
+                s.Masach,
+                s.Manhomsach,
+                s.Damuon,
+                s.Tinhtrangsach,
+                s.ManhomsachNavigation.Tensach,
+                s.ManhomsachNavigation.Tacgia,
+                s.ManhomsachNavigation.MatheloaiNavigation.Tentheloai
+            })
+                .Where(w => w.Masach == sach.Masach);
+            return Ok(result);
 
-            return sach;
+            //return sach;
         }
 
         // PUT: api/Sach/5

@@ -27,10 +27,20 @@ namespace lmsProject.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Dattruoc>>> GetDattruoc()
         {
-            return await _context.Dattruoc.ToListAsync();
+            var result = _context.Dattruoc.Select(d => new
+            {
+                d.Mathe,
+                d.Masach,
+                d.Ngaydattruoc,
+                d.Danhan,
+                d.MatheNavigation.Hoten,
+                d.MasachNavigation.ManhomsachNavigation.Tensach
+            });
+            return Ok(result);
+            //return await _context.Dattruoc.ToListAsync();
         }
 
-        // GET: api/Dattruoc/5
+        // GET: api/Dattruoc/102160243/10
         [HttpGet("{mathe}/{masach}")]
         public async Task<ActionResult<Dattruoc>> GetDattruoc(string mathe, string masach)
         {
@@ -44,7 +54,54 @@ namespace lmsProject.Controllers
             if (mathe != currentUserID && !User.IsInRole(Role.Admin))
                 return Forbid();
 
-            return dattruoc;
+            var result = _context.Dattruoc.Select(d => new
+            {
+                d.Mathe,
+                d.Masach,
+                d.Ngaydattruoc,
+                d.Danhan,
+                d.MatheNavigation.Hoten,
+                d.MasachNavigation.ManhomsachNavigation.Tensach
+            })
+                .Where(w => w.Mathe == dattruoc.Mathe && w.Masach == dattruoc.Masach);
+            return Ok(result);
+
+            //return dattruoc;
+        }
+
+        // GET: api/Dattruoc/102160243
+        [HttpGet("{mathe}")]
+        public async Task<ActionResult<Dattruoc>> GetDattruoc(string mathe)
+        {
+            var user = await _context.User.FindAsync(mathe);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+            var currentUserID = User.Identity.Name;
+            if (mathe != currentUserID && !User.IsInRole(Role.Admin))
+                return Forbid();
+
+            var result = _context.User.Select(u => new
+            {
+                u.Mathe,
+                u.Hoten,
+                Dattruoc = from d in _context.Dattruoc
+                           where u.Mathe == d.Mathe
+                           select new
+                           {
+                               d.Mathe,
+                               d.Masach,
+                               d.Ngaydattruoc,
+                               d.Danhan,
+                               d.MasachNavigation.ManhomsachNavigation.Tensach
+                           }
+            })
+                .Where(w => w.Mathe == mathe);
+            return Ok(result);
+
+            //return dattruoc;
         }
 
         // PUT: api/Dattruoc/5
@@ -111,6 +168,7 @@ namespace lmsProject.Controllers
      
             var _sach = await _context.Sach.FindAsync(dattruoc.Masach);
             var _nhomsach = await _context.Nhomsach.FindAsync(_sach.Manhomsach);
+            _sach.Damuon = true;
             _nhomsach.Soluongcon--;
             _context.Dattruoc.Add(dattruoc);
             try
