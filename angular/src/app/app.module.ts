@@ -20,7 +20,7 @@ import { DetailbookComponent } from './Userpage/detailbook/detailbook.component'
 import { GiahanComponent } from './Userpage/giahan/giahan.component';
 import { DattruocComponent } from './Userpage/dattruoc/dattruoc.component';
 import { ProductComponent } from './Components/product/product.component';
-import { ShowproductsComponent } from './Homepage/showproducts/showproducts.component';
+import { ShowproductsComponent } from './Homepage/tailieu/showproducts/showproducts.component';
 import { AdminComponent } from './Adminpage/admin/admin.component';
 import { SachComponent } from './Adminpage/sach/sach.component';
 import { ThemsachComponent } from './Adminpage/sach/themsach/themsach.component';
@@ -28,6 +28,10 @@ import { MuontraComponent } from './Adminpage/muontra/muontra.component';
 import { ChomuonComponent } from './Adminpage/muontra/chomuon/chomuon.component';
 import { AdduserComponent } from './Adminpage/users/adduser/adduser.component';
 import { SearchProductComponent } from './Components/search-product/search-product.component';
+
+import{ProductsService} from './services/products.service';
+import { Showproducts1Component } from './Homepage/tailieu/showproducts1/showproducts1.component';
+import { Showproducts2Component } from './Homepage/tailieu/showproducts2/showproducts2.component'
 
 
 @NgModule({
@@ -57,14 +61,20 @@ import { SearchProductComponent } from './Components/search-product/search-produ
     ChomuonComponent,
     AdduserComponent,
     SearchProductComponent,
+    Showproducts1Component,
+    Showproducts2Component,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+
     // import HttpClientModule after BrowserModule.
     HttpClientModule,
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    ProductsService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
