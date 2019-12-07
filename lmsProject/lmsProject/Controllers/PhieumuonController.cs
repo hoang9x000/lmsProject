@@ -80,15 +80,18 @@ namespace lmsProject.Controllers
             }
            
             //neu tra sach = true thi damuon=true, soluongcon++ va sinh ra phieu muon(hoa don) va xoa di phieu muon
-            if (phieumuon.Datra == true)
+            if(_phieumuonCu.Datra == false)
             {
-                var _sach = await _context.Sach.FindAsync(phieumuon.Masach);
-                var _nhomsach = await _context.Nhomsach.FindAsync(_sach.Manhomsach);
-                var _theloai = await _context.Theloai.FindAsync(_nhomsach.Matheloai);
-                //
-                _nhomsach.Soluongcon++;
-                _sach.Damuon = false;
-                //nen remove di ko?
+                if (phieumuon.Datra == true)
+                {
+                    var _sach = await _context.Sach.FindAsync(phieumuon.Masach);
+                    var _nhomsach = await _context.Nhomsach.FindAsync(_sach.Manhomsach);
+                    var _theloai = await _context.Theloai.FindAsync(_nhomsach.Matheloai);
+                    //
+                    _nhomsach.Soluongcon++;
+                    _sach.Damuon = false;
+                    //nen remove di ko?
+                }
             }
             _context.Entry(_phieumuonCu).State = EntityState.Detached;
             _context.Entry(phieumuon).State = EntityState.Modified;

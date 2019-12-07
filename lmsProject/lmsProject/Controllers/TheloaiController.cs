@@ -27,7 +27,45 @@ namespace lmsProject.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Theloai>>> GetTheloai()
         {
-            return await _context.Theloai.ToListAsync();
+            //chac cach nay ok
+            //de nghi xem thu moi bang khi get can nhung gi
+            //var result = from _theloai in _context.Theloai
+            //             join _nhomsach in _context.Nhomsach on _theloai.Matheloai equals _nhomsach.Matheloai
+            //             select new
+            //             {
+            //                 _theloai.Matheloai,
+            //                 _theloai.Tentheloai,
+            //                 _theloai.Songaymuontoida,
+            //                 Nhomsach = new
+            //                 {
+            //                     _nhomsach.Manhomsach,
+            //                     _nhomsach.Magiasach,
+            //                     _nhomsach.Tensach,
+            //                     _nhomsach.Matheloai,
+            //                     _nhomsach.Soluong,
+            //                     _nhomsach.Soluongcon
+            //                 }
+            //             };
+            var result = _context.Theloai.Select(s => new
+            {
+                s.Matheloai,
+                s.Tentheloai,
+                s.Songaymuontoida,
+                Nhomsach = from n in _context.Nhomsach
+                           where n.Matheloai == s.Matheloai
+                           select new
+                           {
+                               n.Manhomsach,
+                               n.Matheloai,
+                               n.Tensach,
+                               n.Magiasach,
+                               n.Soluong,
+                               n.Soluongcon
+                           }
+            });
+            return Ok(result);
+            //
+            //return await _context.Theloai.ToListAsync();
         }
 
         // GET: api/Theloai/5
@@ -41,12 +79,53 @@ namespace lmsProject.Controllers
             {
                 return NotFound();
             }
+            //test thu
+            var result = _context.Theloai.Select(s => new
+            {
+                s.Matheloai,
+                s.Tentheloai,
+                s.Songaymuontoida,
+                Nhomsach = from n in _context.Nhomsach
+                           where (n.Matheloai == s.Matheloai) && (s.Matheloai == theloai.Matheloai)
+                           select new
+                           {
+                               n.Manhomsach,
+                               n.Matheloai,
+                               n.Tensach,
+                               n.Magiasach,
+                               n.Soluong,
+                               n.Soluongcon
+                           }
+            })
+                .Where(w => w.Matheloai == theloai.Matheloai);
+            return Ok(result);
 
-            return theloai;
+            //var result = from a in _context.Nhomsach
+            //             join b in _context.Theloai on a.Matheloai equals b.Matheloai
+            //             where b.Matheloai == theloai.Matheloai
+            //             select new
+            //             {
+            //                 b.Matheloai,
+            //                 b.Tentheloai,
+            //                 b.Songaymuontoida,
+            //                 Nhomsach = new
+            //                 {
+            //                     a.Manhomsach,
+            //                     a.Magiasach,
+            //                     a.Tensach,
+            //                     a.Matheloai,
+            //                     a.Soluong,
+            //                     a.Soluongcon
+            //                 }
+            //             };
+            //return Ok(result);
+            //
+
+            //return theloai;
         }
 
         // PUT: api/Theloai/5
-        [Authorize(Roles =Role.Admin)]
+        [Authorize(Roles = Role.Admin)]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutTheloai(string id, Theloai theloai)
         {
