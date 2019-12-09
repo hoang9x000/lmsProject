@@ -194,7 +194,7 @@ namespace lmsProject.Controllers
             phieumuon.Giahan = false;
             phieumuon.Datra = false;
             //
-            if (_sach.Damuon == true || _sach.Tinhtrangsach == false || _user.Sosachdamuon > 6 || _user.Ngayhethan < DateTime.Now)
+            if (_sach.Damuon == true || _sach.Tinhtrangsach == false || _user.Sosachdamuon > 6 || DateTime.Compare(_user.Ngayhethan,phieumuon.Ngaymuon) < 0)
             {
                 return BadRequest();
             }

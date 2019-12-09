@@ -105,10 +105,13 @@ namespace lmsProject.Controllers
         [HttpPost]
         public async Task<ActionResult<Sach>> PostSach(Sach sach)
         {
+            var _nhomsach = await _context.Nhomsach.FindAsync(sach.Manhomsach);
             sach.Tinhtrangsach = true;
             _context.Sach.Add(sach);
             try
             {
+                _nhomsach.Soluong++;
+                _nhomsach.Soluongcon++;
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateException)
@@ -123,7 +126,8 @@ namespace lmsProject.Controllers
                 }
             }
 
-            return CreatedAtAction("GetSach", new { id = sach.Masach }, sach);
+            //return CreatedAtAction("GetSach", new { id = sach.Masach }, sach);
+            return Ok();
         }
 
         // DELETE: api/Sach/5
@@ -140,7 +144,7 @@ namespace lmsProject.Controllers
             _context.Sach.Remove(sach);
             await _context.SaveChangesAsync();
 
-            return sach;
+            return Ok();
         }
 
         private bool SachExists(string id)

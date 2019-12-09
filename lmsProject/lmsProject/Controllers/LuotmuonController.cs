@@ -155,6 +155,7 @@ namespace lmsProject.Controllers
             //
             luotmuon.Ngaytra = DateTime.Now;
             var _phieumuon = await _context.Phieumuon.FindAsync(luotmuon.Mathe, luotmuon.Masach);
+            var _dattruoc = await _context.Dattruoc.FindAsync(luotmuon.Mathe, luotmuon.Masach);
             luotmuon.Ngaymuon = _phieumuon.Ngaymuon;
             luotmuon.Ngayhethan = _phieumuon.Ngayhethan;
             //
@@ -163,7 +164,10 @@ namespace lmsProject.Controllers
             //tien phat = songayquahan*5000 hoac tienphat= giatien*3;
             if (luotmuon.Tinhtrangsachluctra == false)
             {
+                //sach bi mat thi tru soluong di
                 _sach.Tinhtrangsach = false;
+                _nhomsach.Soluong--;
+                _nhomsach.Soluongcon--;
                 if (luotmuon.Ngaytra > luotmuon.Ngayhethan)
                 {
                     TimeSpan _time = luotmuon.Ngaytra - luotmuon.Ngayhethan;
@@ -188,6 +192,9 @@ namespace lmsProject.Controllers
             }
 
             _context.Luotmuon.Add(luotmuon);
+            //xoa phieu muon va dattruoc khi luot muon duoc tao ra.
+            _context.Phieumuon.Remove(_phieumuon);
+            _context.Dattruoc.Remove(_dattruoc);
             try
             {
                 await _context.SaveChangesAsync();
