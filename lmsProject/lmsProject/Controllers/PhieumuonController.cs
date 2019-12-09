@@ -185,7 +185,7 @@ namespace lmsProject.Controllers
         public async Task<ActionResult<Phieumuon>> PostPhieumuon(Phieumuon phieumuon)
         {
             //
-            phieumuon.Ngaymuon = DateTime.UtcNow;
+            phieumuon.Ngaymuon = DateTime.Now;
             var _user = await _context.User.FindAsync(phieumuon.Mathe);
             var _sach = await _context.Sach.FindAsync(phieumuon.Masach);
             var _nhomsach = await _context.Nhomsach.FindAsync(_sach.Manhomsach);
@@ -194,7 +194,7 @@ namespace lmsProject.Controllers
             phieumuon.Giahan = false;
             phieumuon.Datra = false;
             //
-            if (_sach.Damuon == true || _sach.Tinhtrangsach == false || _user.Sosachdamuon > 6)
+            if (_sach.Damuon == true || _sach.Tinhtrangsach == false || _user.Sosachdamuon > 6 || _user.Ngayhethan < DateTime.Now)
             {
                 return BadRequest();
             }

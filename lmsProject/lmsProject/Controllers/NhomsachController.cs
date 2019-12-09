@@ -161,7 +161,8 @@ namespace lmsProject.Controllers
             }
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetNhomsach", new { id = nhomsach.Manhomsach }, nhomsach);
+            return Ok();
+            //return CreatedAtAction("GetNhomsach", new { id = nhomsach.Manhomsach }, nhomsach);
         }
 
         // DELETE: api/Nhomsach/5

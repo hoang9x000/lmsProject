@@ -172,7 +172,7 @@ namespace lmsProject.Controllers
             var _sach = await _context.Sach.FindAsync(dattruoc.Masach);
             var _nhomsach = await _context.Nhomsach.FindAsync(_sach.Manhomsach);
 
-            if (_sach.Damuon == true || _sach.Tinhtrangsach == false || _user.Sosachdamuon > 6)
+            if (_sach.Damuon == true || _sach.Tinhtrangsach == false || _user.Sosachdamuon > 6 || _user.Ngayhethan < DateTime.Now)
             {
                 return BadRequest();
             }
