@@ -25,10 +25,10 @@ const routes: Routes = [
   {path: 'tailieu' , component: TailieuComponent},
   {path: 'users' ,component: UsersComponent},
   {path: 'profile', component: ProfileComponent},
-  {path: 'detailbook' , component: DetailbookComponent},
+  {path: 'detailbook/:id' , component: DetailbookComponent},
   {path: 'dattruoc' , component: DattruocComponent},
   {path: 'giahan' , component: GiahanComponent},
-  {path: 'changepass' , component: ChangepassComponent}
+  {path: 'changepass' , component: ChangepassComponent},
 
 
 ];

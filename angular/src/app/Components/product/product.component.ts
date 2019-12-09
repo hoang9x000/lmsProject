@@ -8,7 +8,7 @@ import { Products } from 'src/app/models/products.class';
   styleUrls: ['./product.component.css']
 })
 export class ProductComponent implements OnInit{
-
+  searchText;
   public producs :  Products[] =[];
   constructor(
     public productsService : ProductsService
