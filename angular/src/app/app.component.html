@@ -48,6 +48,15 @@
             <li>
                 <a class="nav-item nav-link" routerLink="/admin" *ngIf="isAdmin">Admin</a>
             </li>
+            <li>
+                <a class="nav-item nav-link" routerLink="/sach" *ngIf="isAdmin">Sách</a>
+            </li>
+            <li>
+                <a class="nav-item nav-link" routerLink="/users" *ngIf="isAdmin">Thành viên</a>
+            </li>
+            <li>
+                <a class="nav-item nav-link" routerLink="/muontra" *ngIf="isAdmin">Mượn trả</a>
+            </li>
             <li class="nav-item">
                 <a class="nav-link" *ngIf="!currentUser" [routerLink]="['/dangnhap']">Đăng Nhập</a>
             </li>
@@ -103,4 +112,6 @@
         </a>
     </div>
 </div>
-<router-outlet></router-outlet>
+<div class="container-fluid">
+    <router-outlet></router-outlet>
+</div>
