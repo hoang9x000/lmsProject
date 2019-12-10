@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import {ThongtinComponent} from './Homepage/thongtin/thongtin.component';
@@ -13,7 +14,9 @@ import { DetailbookComponent } from './Userpage/detailbook/detailbook.component'
 import { DattruocComponent } from './Userpage/dattruoc/dattruoc.component';
 import { GiahanComponent } from './Userpage/giahan/giahan.component';
 import { ChangepassComponent } from './changepass/changepass.component';
-
+import { AdminComponent } from './Adminpage/admin/admin.component'
+import { AuthGuard } from './_guards';
+import { Role } from './models/role';
 
 const routes: Routes = [
   {path: '', component: HomeComponent },
@@ -29,8 +32,8 @@ const routes: Routes = [
   {path: 'dattruoc' , component: DattruocComponent},
   {path: 'giahan' , component: GiahanComponent},
   {path: 'changepass' , component: ChangepassComponent},
-
-
+  {path: 'admin',component: AdminComponent,canActivate: [AuthGuard],data: { roles: [Role.Admin] },},
+  { path: '**', redirectTo: '' }
 ];
 
 @NgModule({

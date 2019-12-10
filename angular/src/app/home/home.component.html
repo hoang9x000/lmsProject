@@ -1,4 +1,80 @@
-<app-header1></app-header1>
+<style>
+  .row {
+    background-color: rgba(43, 74, 87, 0.568);
+    height: 60px;
+  }
+</style>
+<div class="container-fluid">
+  <div class="row">
+    <img src="assets/anh/logo.png" style="width:60px;height:60px">
+  </div>
+</div>
+<div class="container-fluid">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <!-- Brand/logo -->
+    <a class="navbar-brand" href="#">
+      <img src="assets/anh/logo.png" alt="logo" style="width:40px;">
+    </a>
+
+    <!-- Links -->
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/']">Trang Chủ</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" *ngIf="!isAdmin" [routerLink]="['/tailieu']" >Tài Liệu</a>
+      </li>
+      <li class="nav-item dropdown" *ngIf="currentUser && !isAdmin " >
+        <a class="nav-link " href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+          aria-expanded="false">
+          Dịch Vụ
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown" >
+          <a class="dropdown-item" [routerLink]="['/giahan']">Gia Hạn</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" [routerLink]="['/dattruoc']">Đặt Trước</a>
+        </div>
+      </li>
+      <li *ngIf="!isAdmin" class="nav-item dropdown">
+        <a class="nav-link " href="thongtin" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          Thông Tin
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" [routerLink]="['/quydinh']">Quy Định</a>
+          <a class="dropdown-item" [routerLink]="['/gioithieu']">Giới Thiệu</a>
+        </div>
+      </li>
+      <li>
+          <a class="nav-item nav-link" routerLink="/admin" *ngIf="isAdmin">Admin</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" *ngIf ="!currentUser" [routerLink]="['/dangnhap']">Đăng Nhập</a>
+      </li>
+    </ul>
+    <ul class="navbar-nav ml-auto " *ngIf ="currentUser">
+      <li class="nav-item dropdown">
+        <a class="nav-link " href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+          aria-expanded="false">
+          <i class="fa fa-user-circle-o" aria-hidden="true">{{currentUser.Hoten}}</i>
+
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="profile">
+            <i class="fa fa-id-card-o" aria-hidden="true"> profile </i>
+          </a>
+          <div class="dropdown-divider"></div>
+          <a *ngIf ="currentUser" (click)="logout()" class="dropdown-item" href="#">
+            <i class="fa fa-sign-out" aria-hidden="true" > Đăng Xuất</i>
+          </a>
+        </div>
+      </li>
+    </ul>
+  </nav>
+</div>
+
+
 <div class="container-fluid">
   <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">

@@ -1,7 +1,12 @@
 export class User {
-    Mathe : string;
+    Mathe: number;
     Hoten: string;
-    password: string;
-    role: string;
-    token?: string;
+    Password: string;
+    Gioitinh: string;
+    Ngaysinh: string;
+    Diachi:string;
+    Ngaydangki:Date;
+    Ngayhethan:Date;
+    Role: string;
+    Token?: string;
 }
