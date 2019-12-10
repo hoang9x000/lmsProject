@@ -1,4 +1,3 @@
-<app-header2></app-header2>
 <div class="container-fluid">
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
@@ -37,21 +36,21 @@
                 <div class="card-body">
                     <div class="row align-self-center">
                         <div class="col">
-                            <h4 class="card-title mb-2 name"> Lap trinh C </h4>
+                            <h4 class="card-title mb-2 name"> </h4>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="col-sm-12 col-md-8">
-            <div class="card border-info">
+            <div  *ngFor = "let item of product "   class="card border-info">
                 <div class="card-body">
                     <div class="row align-items-center">
                         <div class="col">
                             <h5>Mã Sách :</h5>
                         </div>
                         <div class="col">
-                            <a>101</a>
+                            <a>{{item.Manhomsach}}</a>
                         </div>
                     </div>
                     <div class="row align-items-center">
@@ -59,7 +58,7 @@
                             <h5>Mã Giá Sách :</h5>
                         </div>
                         <div class="col">
-                            <a>000101</a>
+                            <a>{{item.Magiasach}}</a>
                         </div>
                     </div>
                     <div class="row align-items-center">
@@ -67,7 +66,7 @@
                             <h5>Tên Sách :</h5>
                         </div>
                         <div class="col">
-                            <a>Lập Trình C</a>
+                            <a>{{item.Tensach}}</a>
                         </div>
                     </div>
                     <div class="row align-items-center">
@@ -75,7 +74,7 @@
                             <h5>Tác Giả :</h5>
                         </div>
                         <div class="col">
-                            <a>Nguyễn Văn A</a>
+                            <a>{{item.Tacgia}}</a>
                         </div>
                     </div>
                     <div class="row align-items-center">
@@ -99,7 +98,7 @@
                             <h5>Số Tiền :</h5>
                         </div>
                         <div class="col">
-                            <a>1000000đ</a>
+                            <a>{{item.Giatien}}</a>
                         </div>
                     </div>
                     <div class="row align-items-center">
@@ -107,7 +106,7 @@
                             <h5>Số Lượng :</h5>
                         </div>
                         <div class="col">
-                            <a>10</a>
+                            <a>{{item.Soluong}}</a>
                         </div>
                     </div>
                     <button type="button" class="btn btn-success">Đặt Trước</button>

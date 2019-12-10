@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { FormsModule,ReactiveFormsModule} from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -29,10 +31,12 @@ import { ChomuonComponent } from './Adminpage/muontra/chomuon/chomuon.component'
 import { AdduserComponent } from './Adminpage/users/adduser/adduser.component';
 import { SearchProductComponent } from './Components/search-product/search-product.component';
 
-import{ProductsService} from './services/products.service';
+import { ProductsService } from './services/products.service';
 import { Showproducts1Component } from './Homepage/tailieu/showproducts1/showproducts1.component';
-import { Showproducts2Component } from './Homepage/tailieu/showproducts2/showproducts2.component'
+import { Showproducts2Component } from './Homepage/tailieu/showproducts2/showproducts2.component';
 
+import { JwtInterceptor, ErrorInterceptor } from './_helpers';
+// import { fakeBackendProvider } from './_helpers';
 
 @NgModule({
   declarations: [
@@ -67,12 +71,17 @@ import { Showproducts2Component } from './Homepage/tailieu/showproducts2/showpro
   imports: [
     BrowserModule,
     AppRoutingModule,
+    Ng2SearchPipeModule,
+    FormsModule,
+    ReactiveFormsModule,
 
     // import HttpClientModule after BrowserModule.
     HttpClientModule,
-    HttpClientModule,
   ],
   providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    // fakeBackendProvider,
     ProductsService
   ],
   bootstrap: [AppComponent]
