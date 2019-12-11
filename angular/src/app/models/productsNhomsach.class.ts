@@ -1,3 +1,5 @@
+import { Sach } from './sach.class';
+
 export class Nhomsach {
     public Magiasach: string;
     public Manhomsach: string;
@@ -7,6 +9,7 @@ export class Nhomsach {
     public Giatien: string;
     public Anhbia: string;
     public Tacgia:string;
+    public Sach : Sach[]
     constructor(
         Manhomsach: string,
         Soluong: number,
