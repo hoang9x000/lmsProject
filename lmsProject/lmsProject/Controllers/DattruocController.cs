@@ -202,7 +202,7 @@ namespace lmsProject.Controllers
         }
 
         // DELETE: api/Dattruoc/5
-        [Authorize(Roles =Role.Admin)]
+        
         [HttpDelete("{mathe}/{masach}")]
         public async Task<ActionResult<Dattruoc>> DeleteDattruoc(string mathe, string masach)
         {
@@ -211,6 +211,18 @@ namespace lmsProject.Controllers
             {
                 return NotFound();
             }
+
+            var currentUserID = User.Identity.Name;
+            if (dattruoc.Mathe != currentUserID && !User.IsInRole(Role.Admin))
+                return Forbid();
+
+            var _user = await _context.User.FindAsync(dattruoc.Mathe);
+            var _sach = await _context.Sach.FindAsync(dattruoc.Masach);
+            var _nhomsach = await _context.Nhomsach.FindAsync(_sach.Manhomsach);
+
+            _user.Sosachdamuon--;
+            _sach.Damuon = false;
+            _nhomsach.Soluongcon++;
 
             _context.Dattruoc.Remove(dattruoc);
             await _context.SaveChangesAsync();
