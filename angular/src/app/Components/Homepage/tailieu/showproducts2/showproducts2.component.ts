@@ -24,7 +24,7 @@ export class Showproducts2Component implements OnInit {
     this.loadData();
   }
   loadData() {
-    this.productsTheloaiService.getAllTheloai1().subscribe(data => {
+    this.productsTheloaiService.getAllTheloai3().subscribe(data => {
       // console.log(data[0].Nhomsach[0]);
       this.username=data[0].Tentheloai;
       this.nhomsach = data[0].Nhomsach;

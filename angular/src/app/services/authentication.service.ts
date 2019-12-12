@@ -13,7 +13,7 @@ export class AuthenticationService {
 
     constructor(private http: HttpClient) {
         this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
-        console.log(this.currentUserSubject);
+        // console.log(this.currentUserSubject);
         this.currentUser = this.currentUserSubject.asObservable();
     }
 
@@ -22,7 +22,7 @@ export class AuthenticationService {
     }
 
     login(Mathe: string, Password: string) {
-        return this.http.post<any>(this.API + `/user/authenticate`, { Mathe, Password })
+                return this.http.post<any>(this.API + `/user/authenticate`, { Mathe, Password })
             .pipe(map(user => {
                 //login successful if there's a jwt token in the response
                 if ((user)) {
