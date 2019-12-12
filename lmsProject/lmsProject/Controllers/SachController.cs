@@ -27,7 +27,19 @@ namespace lmsProject.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Sach>>> GetSach()
         {
-            return await _context.Sach.ToListAsync();
+            var result = _context.Sach.Select(s => new
+            {
+                s.Masach,
+                s.Manhomsach,
+                s.Damuon,
+                s.Tinhtrangsach,
+                s.ManhomsachNavigation.Tensach,
+                s.ManhomsachNavigation.Tacgia,
+                s.ManhomsachNavigation.MatheloaiNavigation.Tentheloai
+            });
+            return Ok(result);
+
+            //return await _context.Sach.ToListAsync();
         }
 
         // GET: api/Sach/5
@@ -41,8 +53,20 @@ namespace lmsProject.Controllers
             {
                 return NotFound();
             }
+            var result = _context.Sach.Select(s => new
+            {
+                s.Masach,
+                s.Manhomsach,
+                s.Damuon,
+                s.Tinhtrangsach,
+                s.ManhomsachNavigation.Tensach,
+                s.ManhomsachNavigation.Tacgia,
+                s.ManhomsachNavigation.MatheloaiNavigation.Tentheloai
+            })
+                .Where(w => w.Masach == sach.Masach);
+            return Ok(result);
 
-            return sach;
+            //return sach;
         }
 
         // PUT: api/Sach/5
@@ -81,10 +105,13 @@ namespace lmsProject.Controllers
         [HttpPost]
         public async Task<ActionResult<Sach>> PostSach(Sach sach)
         {
+            var _nhomsach = await _context.Nhomsach.FindAsync(sach.Manhomsach);
             sach.Tinhtrangsach = true;
             _context.Sach.Add(sach);
             try
             {
+                _nhomsach.Soluong++;
+                _nhomsach.Soluongcon++;
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateException)
@@ -99,7 +126,8 @@ namespace lmsProject.Controllers
                 }
             }
 
-            return CreatedAtAction("GetSach", new { id = sach.Masach }, sach);
+            //return CreatedAtAction("GetSach", new { id = sach.Masach }, sach);
+            return Ok();
         }
 
         // DELETE: api/Sach/5
@@ -116,7 +144,7 @@ namespace lmsProject.Controllers
             _context.Sach.Remove(sach);
             await _context.SaveChangesAsync();
 
-            return sach;
+            return Ok();
         }
 
         private bool SachExists(string id)

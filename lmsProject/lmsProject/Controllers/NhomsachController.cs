@@ -27,7 +27,31 @@ namespace lmsProject.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Nhomsach>>> GetNhomsach()
         {
-            return await _context.Nhomsach.ToListAsync();
+            var result = _context.Nhomsach.Select(n => new
+            {
+                n.Manhomsach,
+                n.Matheloai,
+                n.Magiasach,
+                n.Tensach,
+                n.Tacgia,
+                n.Giatien,
+                n.Soluong,
+                n.Soluongcon,
+                n.Anhbia,
+                //co can theloainavigation ko???
+                Sach = from s in _context.Sach
+                       where s.Manhomsach == n.Manhomsach
+                       select new
+                       {
+                           s.Masach,
+                           s.Manhomsach,
+                           s.Damuon,
+                           s.Tinhtrangsach
+                       }
+            });
+            return Ok(result);
+
+            //return await _context.Nhomsach.ToListAsync();
         }
 
         // GET: api/Nhomsach/5
@@ -41,8 +65,34 @@ namespace lmsProject.Controllers
             {
                 return NotFound();
             }
+            //
+            var result = _context.Nhomsach.Select(n => new
+            {
+                n.Manhomsach,
+                n.Matheloai,
+                n.Magiasach,
+                n.Tensach,
+                n.Tacgia,
+                n.Giatien,
+                n.Soluong,
+                n.Soluongcon,
+                n.Anhbia,
+                //co can theloainavigation ko???
+                Sach = from s in _context.Sach
+                       where s.Manhomsach == n.Manhomsach
+                       select new
+                       {
+                           s.Masach,
+                           s.Manhomsach,
+                           s.Damuon,
+                           s.Tinhtrangsach
+                       }
+            }).Where(w => w.Manhomsach == nhomsach.Manhomsach);
 
-            return nhomsach;
+            return Ok(result);
+
+
+            //return nhomsach;
         }
 
         // PUT: api/Nhomsach/5
@@ -111,7 +161,8 @@ namespace lmsProject.Controllers
             }
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetNhomsach", new { id = nhomsach.Manhomsach }, nhomsach);
+            return Ok();
+            //return CreatedAtAction("GetNhomsach", new { id = nhomsach.Manhomsach }, nhomsach);
         }
 
         // DELETE: api/Nhomsach/5

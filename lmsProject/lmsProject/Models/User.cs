@@ -34,6 +34,8 @@ namespace lmsProject.Models
         public DateTime Ngayhethan { get; set; }
         [Required]
         public string Role { get; set; }
+        //so sach toi da duoc muon la 7
+        public int Sosachdamuon { get; set; }
 
         [InverseProperty("MatheNavigation")]
         public virtual ICollection<Dattruoc> Dattruoc { get; set; }

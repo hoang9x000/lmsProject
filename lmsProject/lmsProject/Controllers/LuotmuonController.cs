@@ -27,7 +27,20 @@ namespace lmsProject.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Luotmuon>>> GetLuotmuon()
         {
-            return await _context.Luotmuon.ToListAsync();
+            var result = _context.Luotmuon.Select(l => new
+            {
+                l.Mathe,
+                l.Masach,
+                l.Ngaytra,
+                l.Ngaymuon,
+                l.Ngayhethan,
+                l.Tinhtrangsachluctra,
+                l.Tienphat,
+                l.MatheNavigation.Hoten,
+                l.MasachNavigation.ManhomsachNavigation.Tensach
+            });
+            return Ok(result);
+            //return await _context.Luotmuon.ToListAsync();
         }
 
         // GET: api/Luotmuon/5
@@ -44,8 +57,58 @@ namespace lmsProject.Controllers
             {
                 return NotFound();
             }
+            var result = _context.Luotmuon.Select(l => new
+            {
+                l.Mathe,
+                l.Masach,
+                l.Ngaytra,
+                l.Ngaymuon,
+                l.Ngayhethan,
+                l.Tinhtrangsachluctra,
+                l.Tienphat,
+                l.MatheNavigation.Hoten,
+                l.MasachNavigation.ManhomsachNavigation.Tensach
+            })
+                .Where(w => w.Mathe == luotmuon.Mathe && w.Masach == luotmuon.Masach);
+            return Ok(result);
+            //return luotmuon;
+        }
 
-            return luotmuon;
+        // GET: api/Luotmuon/102160243
+        [HttpGet("{mathe}")]
+        public async Task<ActionResult<Luotmuon>> GetLuotmuon(string mathe)
+        {
+            var currentUserID = User.Identity.Name;
+            if (mathe != currentUserID && !User.IsInRole(Role.Admin))
+                return Forbid();
+
+            var user = await _context.User.FindAsync(mathe);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+            var result = _context.User.Select(u => new
+            {
+                u.Mathe,
+                u.Hoten,
+                Luotmuon = from l in _context.Luotmuon
+                           where u.Mathe == l.Mathe
+                           select new
+                           {
+                               l.Mathe,
+                               l.Masach,
+                               l.Ngaytra,
+                               l.Ngaymuon,
+                               l.Ngayhethan,
+                               l.Tinhtrangsachluctra,
+                               l.Tienphat,
+                               l.MasachNavigation.ManhomsachNavigation.Tensach
+                           }
+            })
+                .Where(w => w.Mathe == mathe);
+            return Ok(result);
+            //return luotmuon;
         }
 
         // PUT: api/Luotmuon/5
@@ -92,6 +155,7 @@ namespace lmsProject.Controllers
             //
             luotmuon.Ngaytra = DateTime.Now;
             var _phieumuon = await _context.Phieumuon.FindAsync(luotmuon.Mathe, luotmuon.Masach);
+            var _dattruoc = await _context.Dattruoc.FindAsync(luotmuon.Mathe, luotmuon.Masach);
             luotmuon.Ngaymuon = _phieumuon.Ngaymuon;
             luotmuon.Ngayhethan = _phieumuon.Ngayhethan;
             //
@@ -100,7 +164,10 @@ namespace lmsProject.Controllers
             //tien phat = songayquahan*5000 hoac tienphat= giatien*3;
             if (luotmuon.Tinhtrangsachluctra == false)
             {
+                //sach bi mat thi tru soluong di
                 _sach.Tinhtrangsach = false;
+                _nhomsach.Soluong--;
+                _nhomsach.Soluongcon--;
                 if (luotmuon.Ngaytra > luotmuon.Ngayhethan)
                 {
                     TimeSpan _time = luotmuon.Ngaytra - luotmuon.Ngayhethan;
@@ -125,6 +192,9 @@ namespace lmsProject.Controllers
             }
 
             _context.Luotmuon.Add(luotmuon);
+            //xoa phieu muon va dattruoc khi luot muon duoc tao ra.
+            _context.Phieumuon.Remove(_phieumuon);
+            _context.Dattruoc.Remove(_dattruoc);
             try
             {
                 await _context.SaveChangesAsync();
@@ -141,7 +211,8 @@ namespace lmsProject.Controllers
                 }
             }
 
-            return CreatedAtAction("GetLuotmuon", new { id = luotmuon.Mathe }, luotmuon);
+            //return CreatedAtAction("GetLuotmuon", new { id = luotmuon.Mathe }, luotmuon);
+            return Ok();
         }
 
         // DELETE: api/Luotmuon/5

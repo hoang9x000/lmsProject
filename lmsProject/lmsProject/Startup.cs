@@ -30,7 +30,12 @@ namespace lmsProject
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddCors();
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
+            services.AddMvc()
+                .AddJsonOptions(options =>
+                {
+                    options.SerializerSettings.DateFormatString = "yyyy-MM-dd";
+                })
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
                 .AddJsonOptions(opt =>
             {
                 opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;

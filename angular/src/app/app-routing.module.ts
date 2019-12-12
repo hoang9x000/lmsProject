@@ -1,19 +1,25 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import {ThongtinComponent} from './Homepage/thongtin/thongtin.component';
-import { QuydinhComponent } from './Homepage/quydinh/quydinh.component';
-import { GioithieuComponent } from './Homepage/gioithieu/gioithieu.component';
-import { DangnhapComponent } from './dangnhap/dangnhap.component';
-import { TailieuComponent } from './Homepage/tailieu/tailieu.component';
-import { UsersComponent } from './Userpage/users/users.component';
-import { ProfileComponent } from './Userpage/profile/profile.component';
-import { DetailbookComponent } from './Userpage/detailbook/detailbook.component';
-import { DattruocComponent } from './Userpage/dattruoc/dattruoc.component';
-import { GiahanComponent } from './Userpage/giahan/giahan.component';
-import { ChangepassComponent } from './changepass/changepass.component';
 
+import { AppComponent } from './app.component';
+import { HomeComponent } from './Components/Homepage/home/home.component';
+import {ThongtinComponent} from './Components/Homepage/thongtin/thongtin.component';
+import { QuydinhComponent } from './Components/Homepage/quydinh/quydinh.component';
+import { GioithieuComponent } from './Components/Homepage/gioithieu/gioithieu.component';
+import { DangnhapComponent } from './Components/dangnhap/dangnhap.component';
+import { TailieuComponent } from './Components/Homepage/tailieu/tailieu.component';
+import { ProfileComponent } from './Components/Userpage/profile/profile.component';
+import { DetailbookComponent } from './Components/Userpage/detailbook/detailbook.component';
+import { DattruocComponent } from './Components/Userpage/dattruoc/dattruoc.component';
+import { GiahanComponent } from './Components/Userpage/giahan/giahan.component';
+import { ChangepassComponent } from './Components/Userpage/profile/changepass/changepass.component';
+
+import { AdminComponent } from './Components/Adminpage/admin/admin.component';
+import { SachComponent } from './Components/Adminpage/sach/sach.component';
+import { UsersComponent } from './Components/Adminpage/users/users.component';
+import { MuontraComponent } from './Components/Adminpage/muontra/muontra.component'
+import { AuthGuard } from './_guards';
+import { Role } from './models/role';
 
 const routes: Routes = [
   {path: '', component: HomeComponent },
@@ -23,14 +29,16 @@ const routes: Routes = [
   {path: 'gioithieu' , component:GioithieuComponent},
   {path: 'dangnhap' , component: DangnhapComponent},
   {path: 'tailieu' , component: TailieuComponent},
-  {path: 'users' ,component: UsersComponent},
   {path: 'profile', component: ProfileComponent},
-  {path: 'detailbook' , component: DetailbookComponent},
+  {path: 'detailbook/:id' , component: DetailbookComponent},
   {path: 'dattruoc' , component: DattruocComponent},
   {path: 'giahan' , component: GiahanComponent},
-  {path: 'changepass' , component: ChangepassComponent}
-
-
+  {path: 'changepass' , component: ChangepassComponent},
+  {path: 'admin',component: AdminComponent,canActivate: [AuthGuard],data: { roles: [Role.Admin] },},
+  {path: 'sach' , component: SachComponent},
+  {path: 'users' , component: UsersComponent},
+  {path: 'muontra' , component: MuontraComponent},
+  { path: '**', redirectTo: '' }
 ];
 
 @NgModule({

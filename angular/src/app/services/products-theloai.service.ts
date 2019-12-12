@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient,HttpErrorResponse} from '@angular/common/http';
 import { Observable, throwError, from } from 'rxjs';
-import {Products} from './../models/products.class';
+import {Products} from './../models/productsTheloai.class';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +13,7 @@ export class ProductsTheloaiService {
     public http : HttpClient
   ) { }
   getAllTheloai1() : Observable<Products[]>{
-    return this.http.get<Products[]>(this.API +"/1");
+    return this.http.get<Products[]>(this.API);
   }
   getAllTheloai2() : Observable<Products[]>{
     return this.http.get<Products[]>(this.API +"/2");

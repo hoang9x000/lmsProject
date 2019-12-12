@@ -95,6 +95,8 @@ namespace lmsProject.Migrations
 
                     b.Property<int>("Soluongcon");
 
+                    b.Property<string>("Tacgia");
+
                     b.Property<string>("Tensach")
                         .IsRequired()
                         .HasMaxLength(100);
@@ -202,6 +204,8 @@ namespace lmsProject.Migrations
 
                     b.Property<string>("Role")
                         .IsRequired();
+
+                    b.Property<int>("Sosachdamuon");
 
                     b.HasKey("Mathe");
 
