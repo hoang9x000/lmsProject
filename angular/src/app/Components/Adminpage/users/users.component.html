@@ -1,1 +1,63 @@
-<p>users works!</p>
+
+<div class="container-fluid">
+    <div class="col-12 align-self-cente border-dark mt-3">
+        <h3 class="text-center">
+            <span class="badge badge-primary " style="width: 500px; height: 40px; border-radius: 50px;">
+                <p class="name mt-1 mb-1"> Thành Viên </p>
+            </span>
+        </h3>
+    </div>
+</div><div class="container-fluid">
+    <div class="row d-flex justify-content-between">
+        <a class="btn btn-outline-success mt-3 mb-3 ml-5" [routerLink]="['/users/adduser']"> Thêm Thành Viên </a>
+        <form class="form-inline align-self-center mb-3" id="searchAndFilterForm" method="Get">
+            <input type="text" name="page" value="" placeholder="mã thẻ" />
+            <div class="form-row align-items-center">
+                <label class="my-1 ml-2 ml-2 mr-2 d-inline" for="search_key"> Tìm Kiếm </label>
+                <input type="text" class="search_key" value placeholder="aaaaaa">
+            </div>
+            <div class="col-auto">
+                <button id="search" class="btn btn-primary mb-2">Tìm Kiếm</button>
+            </div>
+        </form>
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th> Mã Thẻ</th>
+                        <th> Họ Tên </th>
+                        <th> Giới Tính </th>
+                        <th> Ngày Sinh </th>
+                        <th> Địa Chỉ </th>
+                        <th> Ngày Đăng Ký </th>
+                        <th> Ngày Hết Hạn </th>
+                        <th> Loại Người Dùng </th>
+                        <th> Action </th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of users; let i = index ">
+                        <td>{{ i + 1}}</td>
+                        <td>{{item.Mathe}}</td>
+                        <td>{{item.Hoten}}</td>
+                        <td *ngIf="item.Gioitinh">Nam</td>
+                        <td *ngIf="!item.Gioitinh">Nữ</td>
+                        <td>{{item.Ngaysinh}}</td>
+                        <td>{{item.Diachi}}</td>
+                        <td>{{item.Ngaydangki}}</td>
+                        <td>{{item.Ngayhethan}}</td>
+                        <td>{{item.Role}}</td>
+                        <td>
+                            <button type="button" class="btn btn-info ml-2" [routerLink]="['/users/' , item.Mathe]" (click) = "edituser(item)"> Sua </button>
+                            <button type="button" class="btn btn-danger ml-2" (click) = "deleteuser(item.Mathe)"> Xoa </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+

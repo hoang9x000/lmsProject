@@ -34,6 +34,7 @@ import { Showproducts1Component } from './Components/Homepage/tailieu/showproduc
 import { Showproducts2Component } from './Components/Homepage/tailieu/showproducts2/showproducts2.component';
 
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
+import { EdituserComponent } from './Components/Adminpage/users/edituser/edituser.component';
 // import { fakeBackendProvider } from './_helpers';
 
 @NgModule({
@@ -63,6 +64,7 @@ import { JwtInterceptor, ErrorInterceptor } from './_helpers';
     SearchProductComponent,
     Showproducts1Component,
     Showproducts2Component,
+    EdituserComponent,
   ],
   imports: [
     BrowserModule,
