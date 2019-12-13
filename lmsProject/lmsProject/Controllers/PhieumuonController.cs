@@ -110,7 +110,7 @@ namespace lmsProject.Controllers
         }
 
         // PUT: api/Phieumuon/5
-        [Authorize(Roles = Role.Admin)]
+        
         [HttpPut("{mathe}/{masach}")]
         public async Task<IActionResult> PutPhieumuon(string mathe, string masach, Phieumuon phieumuon)
         {
@@ -122,6 +122,11 @@ namespace lmsProject.Controllers
             {
                 return BadRequest();
             }
+
+            var currentUserID = User.Identity.Name;
+            if (phieumuon.Mathe != currentUserID && !User.IsInRole(Role.Admin))
+                return Forbid();
+
             var _phieumuonCu = await _context.Phieumuon.FindAsync(mathe, masach);
             phieumuon.Ngayhethan = _phieumuonCu.Ngayhethan;
             phieumuon.Ngaymuon = _phieumuonCu.Ngaymuon;
@@ -140,22 +145,29 @@ namespace lmsProject.Controllers
                     phieumuon.Ngayhethan = _phieumuonCu.Ngayhethan;
                 }
             }
+            else
+            {
+                phieumuon.Giahan = true;
+            }
 
             //neu tra sach = true thi damuon=true, soluongcon++ va sinh ra phieu muon(hoa don) va xoa di phieu muon
-            if (_phieumuonCu.Datra == false)
+            if (User.IsInRole(Role.Admin))
             {
-                if (phieumuon.Datra == true)
+                if (_phieumuonCu.Datra == false)
                 {
-                    var _user = await _context.User.FindAsync(phieumuon.Mathe);
-                    var _sach = await _context.Sach.FindAsync(phieumuon.Masach);
-                    var _nhomsach = await _context.Nhomsach.FindAsync(_sach.Manhomsach);
-                    var _theloai = await _context.Theloai.FindAsync(_nhomsach.Matheloai);
-                    //
-                    _nhomsach.Soluongcon++;
-                    _sach.Damuon = false;
-                    _user.Sosachdamuon--;
-                    //nen remove di ko?
-                }
+                    if (phieumuon.Datra == true)
+                    {
+                        var _user = await _context.User.FindAsync(phieumuon.Mathe);
+                        var _sach = await _context.Sach.FindAsync(phieumuon.Masach);
+                        var _nhomsach = await _context.Nhomsach.FindAsync(_sach.Manhomsach);
+                        var _theloai = await _context.Theloai.FindAsync(_nhomsach.Matheloai);
+                        //
+                        _nhomsach.Soluongcon++;
+                        _sach.Damuon = false;
+                        _user.Sosachdamuon--;
+                        //nen remove di ko?
+                    }
+                } 
             }
             _context.Entry(_phieumuonCu).State = EntityState.Detached;
             _context.Entry(phieumuon).State = EntityState.Modified;
