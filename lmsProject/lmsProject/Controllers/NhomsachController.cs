@@ -108,7 +108,23 @@ namespace lmsProject.Controllers
             }
             if (nhomsach.Soluong < nhomsach.Soluongcon)
                 return BadRequest();
+            //tang so luong sach cua nhom sach (nhomsach.soluong)
+            var nhomsachCu = await _context.Nhomsach.FindAsync(nhomsach.Manhomsach);
+            if(nhomsach.Soluong > nhomsachCu.Soluong)
+            {
+                for (int i = nhomsachCu.Soluong; i < nhomsach.Soluong; i++)
+                {
+                    Sach _sach = new Sach();
+                    _sach.Masach = (string)nhomsach.Manhomsach + i;
+                    _sach.Manhomsach = nhomsach.Manhomsach;
+                    _sach.Tinhtrangsach = true;
+                    _context.Sach.Add(_sach);
 
+                }
+                nhomsach.Soluongcon = nhomsachCu.Soluongcon + (nhomsach.Soluong - nhomsachCu.Soluong);
+            }
+
+            _context.Entry(nhomsachCu).State = EntityState.Detached;
             _context.Entry(nhomsach).State = EntityState.Modified;
 
             try
