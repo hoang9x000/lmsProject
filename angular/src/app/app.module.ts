@@ -35,6 +35,7 @@ import { Showproducts2Component } from './Components/Homepage/tailieu/showproduc
 
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
 import { ChomuonService } from './services/chomuon.service';
+import { MuontraService } from './services/muontra.service';
 // import { fakeBackendProvider } from './_helpers';
 
 @NgModule({
@@ -81,6 +82,7 @@ import { ChomuonService } from './services/chomuon.service';
     // fakeBackendProvider,
     ProductsService,
     ChomuonService,
+    MuontraService,
   ],
   bootstrap: [AppComponent]
 })

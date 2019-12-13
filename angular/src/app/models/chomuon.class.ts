@@ -3,7 +3,7 @@ export class Chomuon {
     public Masach: string;
     public Ngaymuon: Date;
     public Ngayhethan: Date;
-    public Giahan: boolean;
+    public Giahan: boolean = false;
     public Datra: boolean;
     public Hoten: string;
     public Tensach: string;

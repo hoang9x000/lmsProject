@@ -12,14 +12,15 @@ h4{
     margin-top: 40px;
 }
 form{
+    padding: 80px 40px 40px 40px ;
     margin-top: 80px;
     width: 800px;
     margin-bottom: 80px;
 }
 .form-footer{
     margin-top: 40px;
-    margin-left: 200px;
+    margin-left: 140px;
 }
 .btn{
-    margin-left: 60px;
+    margin-left: 80px;
 }

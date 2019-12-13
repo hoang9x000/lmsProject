@@ -2,30 +2,30 @@
     <div class="container">
         <h4 class="card-title mt-3 text-center">Cho mượn</h4>
         <div class="d-flex justify-content-center h-100">
-            <form>
+            <form class="border border-primary ">
                 <div class="form-header"></div>
                 <div class="form-body">
                     <div class="form-group row">
                         <label class="col-sm-3 col-form-label">Mã sách</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" placeholder="Nhập mã sách">
+                            <input type="text" class="form-control" placeholder="Nhập mã sách" [(ngModel)]="masach " [ngModelOptions]="{standalone: true}">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-sm-3 col-form-label">Mã thẻ</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" placeholder="Nhập mã thẻ">
+                            <input type="text" class="form-control" placeholder="Nhập mã thẻ" [(ngModel)]="mathe" [ngModelOptions]="{standalone: true}">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-sm-3 col-form-label">Ngày mượn</label>
                         <div class="col-sm-8">
-                            <input type="datetime" class="form-control" placeholder="Nhập ngày mượn">
+                            <input type="datetime" class="form-control" placeholder="Nhập ngày mượn" [(ngModel)]="ngaymuon" [ngModelOptions]="{standalone: true}">
                         </div>
                     </div>
                 </div>
                 <div class="form-footer">
-                    <button class="col-sm-2 btn btn-success">Xác nhận</button>
+                    <button class="col-sm-2 btn btn-success" (click)="addMuontra()">Xác nhận</button>
                     <button class="col-sm-2 btn btn-danger">Hủy</button>
                 </div>
             </form>

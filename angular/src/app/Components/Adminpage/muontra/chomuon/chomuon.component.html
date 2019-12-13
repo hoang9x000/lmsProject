@@ -43,13 +43,14 @@
 					<table class="table table-hover table-striped" style="border-color: darkblue;" id="dev-table">
 						<thead class="thead-light">
 							<tr>
-								<th>ID Sách</th>
-								<th>ID Member</th>
+								<th>#</th>
+								<th>Mã sách</th>
+								<th>Mã thẻ</th>
 								<th>Tên sách</th>
-								<th>Ngày Mượn</th>
-								<th>Ngày Trả</th>
+								<th>Ngày mượn</th>
+								<th>Ngày hết hạn</th>
 								<th>Quá hạn</th>
-								<th>Phạt</th>
+								
 								<th>Trả
         							<span class=" clickable filter" data-toggle="tooltip" title="Toggle table filter" data-container="body">
         								<i class="glyphicon glyphicon-filter"></i>
@@ -58,7 +59,8 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
+							<!-- <tr>
+								<td>0</td>
 								<td>20191001001</td>
 								<td>102160245</td>
 								<td>Lập Trình Mạng</td>
@@ -68,20 +70,23 @@
 								<td>0</td>
 								<td>
 									<input class="btn btn-tra" type="button" value="Chưa trả" onclick="this.style.backgroundColor = 'green'; this.value='Đã trả'">								</td>
-							</tr>
+							</tr> -->
 							
-							<tr *ngFor="let item of chomuons">
+							<tr *ngFor=" let item of chomuons; let i = index">
+								<td>{{i + 1}}</td>
 								<td>{{item.Masach}}</td>
 								<td>{{item.Mathe}}</td>
 								<td>{{item.Tensach}}</td>
 								<td>{{item.Ngaymuon}}</td>
 								<td>{{item.Ngayhethan}}</td>
-								<td>{{qh}} Ngày</td>
-								<td>{{phat}} VND</td>
+								<td> Ngày</td>
+								
 								<td>
-									<input class="btn btn-tra" type="button" value="Chưa trả" onclick="this.style.backgroundColor = 'green'; this.value='Ðã trả'">								</td>
+									<input class="btn btn-tra" type="button" *ngIf="item.Datra" value="Đã trả" style="background-color:green ;" disabled>
+									<input class="btn btn-tra" type="button" *ngIf="!item.Datra"  value="Chưa trả" style="background-color : red" (click)="chanceDatra(item)">
+								</td>
 							</tr>
-						</tbody>
+						</tbody> 
 					</table>
 				</div>
 			</div>

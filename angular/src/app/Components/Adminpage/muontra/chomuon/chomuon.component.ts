@@ -11,12 +11,21 @@ import { Chomuon } from 'src/app/models/chomuon.class';
 })
 export class ChomuonComponent implements OnInit, OnDestroy {
 
-  //get dl
   public chomuons : Chomuon[] = [];
   public subscription : Subscription;
+  public chomuon : Chomuon = null;
+
+  public mathe : string;
+  public masach : string;
+  public ngaymuon : Date;
+  public ngayhethan : Date;
+  public giahan : boolean;
+  public datra : boolean = false;
+  public hoten : string;
+  public tensach : string;
+
 
   public qh : number = 0;
-  public phat : number = 0;
 
   constructor(
     public chomuonService : ChomuonService
@@ -26,23 +35,58 @@ export class ChomuonComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.loadData();
-    this.Quahan();
-    this.Phat();
+    // this.Quahan();
   }
 
   loadData() {
     this.subscription = this.chomuonService.getAllChomuon().subscribe(data => {
       this.chomuons = data;
-      console.log("OK");
+      // console.log(this.chomuons);
       
-      for (var i=0; i<this.chomuons.length ; i++){
-        console.log(i);        
-      }
     }, error => {
       // this.chomuonService.handleError(error);
       console.log(error);
     });
   }
+
+  // Quahan(){ 
+  //   this.qh = this.timeDistace();
+  // }
+
+  timeDistace(ngay :Date){  //tinh so ngay qua han;
+    let dt = new Date("2019-10-15")
+    this.chomuons[1].Masach;
+    let td = Date.now() - ngay.getTime();
+    td = Math.floor(td/(24*3600*1000));
+
+    if (td < 0) return 0;
+    else return td;
+  }
+
+  chanceDatra(item : Chomuon) {
+    // this.chomuon = item;
+    if(confirm("Xác nhận "+ item.Mathe +" đã trả "+ item.Tensach)){
+      this.subscription = this.chomuonService.chanceDatra(item).subscribe(data => {
+        item.Datra = true;
+      });
+      
+      console.log(item);
+    } else {
+      console.log("Chiến óc chó");
+    };
+    
+    
+  }
+
+  // public chanceColor() {
+  //   for (let i = 0; i<this.chomuons.length; i++){
+  //     if(this.chomuons[i].Datra){
+  //       document.getElementById("btn-tra").style.backgroundColor = "green";
+  //     } else {
+  //       document.getElementById("btn-tra").style.backgroundColor = "red";
+  //     }
+  //   }
+  // }
 
   ngOnDestroy(){
     if(this.subscription){
@@ -50,22 +94,6 @@ export class ChomuonComponent implements OnInit, OnDestroy {
     }
   }
 
-  Phat(){
-    return this.phat;
-  }
-
-  Quahan(){ 
-    this.qh = this.timeDistace();
-  }
-
-  timeDistace(){  //tinh so ngay qua han;
-    let dt = new Date("2019-10-15")
-    // console.log(this.nhh);
-    let td = Date.now() - dt.getTime();
-    td = Math.floor(td/(24*3600*1000));
-    if (td < 0) return 0;
-    else return td;
-  }
-
+  
 
 }
