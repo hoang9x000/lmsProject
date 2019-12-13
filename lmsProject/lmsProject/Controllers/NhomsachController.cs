@@ -32,12 +32,13 @@ namespace lmsProject.Controllers
                 n.Manhomsach,
                 n.Matheloai,
                 n.Magiasach,
+                n.MatheloaiNavigation.Tentheloai,
                 n.Tensach,
                 n.Tacgia,
                 n.Giatien,
                 n.Soluong,
                 n.Soluongcon,
-                n.Anhbia,
+                n.AnhPath,
                 //co can theloainavigation ko???
                 Sach = from s in _context.Sach
                        where s.Manhomsach == n.Manhomsach
@@ -71,12 +72,13 @@ namespace lmsProject.Controllers
                 n.Manhomsach,
                 n.Matheloai,
                 n.Magiasach,
+                n.MatheloaiNavigation.Tentheloai,
                 n.Tensach,
                 n.Tacgia,
                 n.Giatien,
                 n.Soluong,
                 n.Soluongcon,
-                n.Anhbia,
+                n.AnhPath,
                 //co can theloainavigation ko???
                 Sach = from s in _context.Sach
                        where s.Manhomsach == n.Manhomsach
