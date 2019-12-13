@@ -14,4 +14,7 @@ export class UserService {
   Showphieumuon(mathe: string): Observable<PhieumuonAll[]> {
     return this.http.get<PhieumuonAll[]>(this.API +`/phieumuon`+"/" +mathe);
   }
+  ShowProfile(mathe: string): Observable<User[]>{
+    return this.http.get<User[]>(this.API +`/user`+"/"+mathe);
+  }
 }

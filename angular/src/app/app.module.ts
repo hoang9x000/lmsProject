@@ -35,6 +35,7 @@ import { Showproducts2Component } from './Components/Homepage/tailieu/showproduc
 
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
 // import { fakeBackendProvider } from './_helpers';
+import { ModalModule } from './_modal';
 
 @NgModule({
   declarations: [
@@ -70,6 +71,7 @@ import { JwtInterceptor, ErrorInterceptor } from './_helpers';
     Ng2SearchPipeModule,
     FormsModule,
     ReactiveFormsModule,
+    ModalModule,
 
     // import HttpClientModule after BrowserModule.
     HttpClientModule,

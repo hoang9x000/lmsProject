@@ -6,10 +6,8 @@
     <div>
         <h3 style="text-align: center;">Sách đang mượn - Gia hạn sách</h3>
     </div>
-    <br><br>
+    <br>
     <div class="widget-content">
-
-
         <table id="customers">
             <tr>
                 <th style="text-align: center">Mã sách</th>
@@ -25,7 +23,7 @@
                 <td style="text-align: center">{{item.Ngaymuon}}</td>
                 <td style="text-align: center">{{item.Ngayhethan}}</td>
                 <td style="text-align: center"><span className="label label-success">{{item.Giahan}}</span></td>  
-                <td style="text-align: center"><button type="button" className="btn btn-danger">
+                <td style="text-align: center"><button type="button" className="btn btn-danger" (click)="onGiahan(item)" [routerLink]="['/giahan']">
                         <span className="fa fa-trash mr-5"></span> Gia hạn </button></td>
             </tr>
         </table>

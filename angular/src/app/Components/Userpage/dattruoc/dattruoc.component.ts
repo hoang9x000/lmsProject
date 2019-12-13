@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DattruocService } from '../../../services/dattruoc.service';
-import { Dattruoc} from 'src/app/models/dattruoc.class';
+import { Dattruoc } from 'src/app/models/dattruoc.class';
 import { BehaviorSubject, Observable, from } from 'rxjs';
 import { User } from '../../../models/user';
 @Component({
@@ -25,13 +25,20 @@ export class DattruocComponent implements OnInit {
     var _mathe = this.currentUserSubject.value.Mathe.toString();
     //console.log(_mathe);
     this.dattruocService.Showdattruoc(_mathe).subscribe(data => {
-    for(var i = 0;i< data.length;i++){
-      if(data[0].Dattruoc[i].Danhan== false){
-        this.dattruoc = data[0].Dattruoc;
-      }
+
+      this.dattruoc = data[0].Dattruoc;
+      // console.log(this.dattruoc);
+      //  this.dattruoc = data[0].Dattruoc;
+    }, error => {
+      console.log(error);
     }
-  //  this.dattruoc = data[0].Dattruoc;
-    console.log(this.dattruoc);
+    );
+  }
+  onDeleteDattruoc(item: Dattruoc) {
+    // console.log(item);
+    this.dattruocService.DeleteDattruoc(item).subscribe(data => {
+      // console.log(data)
+      this.loadData();
     }, error => {
       console.log(error);
     }

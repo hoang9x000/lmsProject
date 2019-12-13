@@ -1,21 +1,21 @@
-<div class="container-fluid">
-        <div class="col-12 align-self-cente border-dark mt-3">
-        <h3 class="text-center">
-            <span class="badge badge-primary" style="width: 500px; height: 50px;">Thông Tin</span>
-        </h3>
-    </div>
-</div>
-<br>
 <div class="container">
+    <div class="container-fluid">
+        <div class="col-12 align-self-cente border-dark mt-3">
+            <h3 class="text-center">
+                <span class="badge badge-primary" style="width: 500px; height: 50px;">Thông Tin</span>
+            </h3>
+        </div>
+    </div>
     <div class="card border-primary mb-3 mt-3">
         <form class="form m-4">
             <div class="form-group row">
-                <label for="mathe" class="col-sm-2 col-form-label"> Mã Thẻ: </label>
+                <label for="" class="col-sm-2 col-form-label"> Mã thẻ</label>
                 <div class="col-sm-10">
-                    <input type="text" readonly class="form-control bg-white" id="mathe" value="email@example.com" />
+                    <input type="text" readonly class="form-control bg-white" [(ngModel)]="user.Mathe"
+                        [ngModelOptions]="{standalone:true}">
                 </div>
             </div>
-            <hr/>
+            <hr />
             <div class="form-group row">
                 <label for="inputPassword" class="col-sm-2 col-form-label">Mật Khẩu</label>
                 <div class="col-sm-10">
@@ -23,62 +23,80 @@
                         <input type="password" class="form-control mr-2" id="exampleInputPassword1"
                             placeholder="Password" aria-label="Recipient's username" aria-describedby="button-addon2">
                         <div class="input-group-append">
-                            <button class="btn btn-block btn-light bg-info ml-2" type="button" id="button-addon2"> Đổi
-                                Mật Khẩu</button>
+                            <button (click)="openModal('custom-modal-1')" class="btn btn-block btn-light bg-info ml-2"
+                                type="button" id="button-addon2"> Đổi Mật Khẩu</button>
                         </div>
                     </div>
                 </div>
             </div>
             <hr />
             <div class="form-group row">
-                <label for="mathe" class="col-sm-2 col-form-label"> Mã Thẻ: </label>
+                <label for="" class="col-sm-2 col-form-label"> Họ Tên </label>
                 <div class="col-sm-10">
-                    <input type="text" readonly class="form-control bg-white" id="name" value="hoang cho" />
+                    <input type="text" readonly class="form-control bg-white" [(ngModel)]="user.Hoten"
+                        [ngModelOptions]="{standalone:true}" />
                 </div>
             </div>
             <hr />
             <div class="form-group row">
-                <label for="mathe" class="col-sm-2 col-form-label"> Giới Tính: </label>
-                <div class="radio">
-                    <label><input type="radio" name="optradio" class="check ml-3 mr-3"> Nữ </label>
+                <label for="" class="col-sm-2 col-form-label"> Giới Tính: </label>
+                <div *ngIf="user.Gioitinh">
+                    <div class="radio">
+                        <label><input type="radio" name="optradio" disabled class="check ml-3 mr-3"> Nữ </label>
+                    </div>
+                    <div class="radio">
+                        <label><input type="radio" name="optradio" disabled checked class="check ml-3 mr-3"> Nam
+                        </label>
+                    </div>
                 </div>
-                <div class="radio">
-                    <label><input type="radio" name="optradio" class="check ml-3 mr-3"> Nam </label>
+                <div *ngIf="!user.Gioitinh">
+                    <div class="radio">
+                        <label><input type="radio" name="optradio" disabled checked class="check ml-3 mr-3"> Nữ </label>
+                    </div>
+                    <div class="radio">
+                        <label><input type="radio" name="optradio" disabled class="check ml-3 mr-3"> Nam </label>
+                    </div>
                 </div>
+
             </div>
-            <hr/>
+            <hr />
             <div class="form-group row">
-                <label for="mathe" class="col-sm-2 col-form-label"> Ngày Sinh: </label>
+                <label for="" class="col-sm-2 col-form-label"> Ngày Sinh: </label>
                 <div class="col-sm-10">
-                    <input type="text" readonly class="form-control bg-white" id="mathe" value="12/12/1212" />
+                    <input type="text" readonly class="form-control bg-white" [(ngModel)]="user.Ngaysinh"
+                        [ngModelOptions]="{standalone:true}" />
                 </div>
             </div>
             <hr />
             <div class="form-group row">
-                <label for="mathe" class="col-sm-2 col-form-label"> Địa Chỉ: </label>
+                <label for="" class="col-sm-2 col-form-label"> Địa Chỉ: </label>
                 <div class="col-sm-10">
-                    <input type="text" readonly class="form-control bg-white" id="mathe" value="Nguyễn Lương Bằng" />
+                    <input type="text" readonly class="form-control bg-white" [(ngModel)]="user.Diachi"
+                        [ngModelOptions]="{standalone:true}" />
                 </div>
             </div>
             <hr />
             <div class="form-group row">
-                <label for="mathe" class="col-sm-2 col-form-label"> Ngày Đang Ký: </label>
+                <label for="" class="col-sm-2 col-form-label"> Ngày Đang Ký: </label>
                 <div class="col-sm-10">
-                    <input type="text" readonly class="form-control bg-white" id="mathe" value="19/12/2019" />
+                    <input type="text" readonly class="form-control bg-white" [(ngModel)]="user.Ngaydangki"
+                        [ngModelOptions]="{standalone:true}" />
                 </div>
             </div>
             <hr />
             <div class="form-group row">
-                <label for="mathe" class="col-sm-2 col-form-label"> Ngày Hết Hạn: </label>
+                <label for="" class="col-sm-2 col-form-label"> Ngày Hết Hạn: </label>
                 <div class="col-sm-10">
-                    <input type="text" readonly class="form-control bg-white" id="mathe" value="30/12/2019" />
+                    <input type="text" readonly class="form-control bg-white" [(ngModel)]="user.Ngayhethan"
+                        [ngModelOptions]="{standalone:true}" />
                 </div>
             </div>
             <hr />
             <div class="form-group row">
-                <label for="mathe" class="col-sm-2 col-form-label"> Loại Người Dùng: </label>
+                <label for="" class="col-sm-2 col-form-label"> Loại Người Dùng: </label>
                 <div class="col-sm-10">
-                    <input type="text" readonly class="form-control bg-white" id="mathe" value="user" />
+                    <input type="text" readonly class="form-control bg-white" [(ngModel)]="user.Role"
+                        [ngModelOptions]="{standalone:true}" />
                 </div>
             </div>
             <hr />
@@ -86,3 +104,28 @@
     </div>
 
 </div>
+<jw-modal id="custom-modal-1">
+    <li>
+        <label for="pass">Mật khẩu cũ (Old password ) <span class="required">*</span></label>
+        <br>
+        <input type="password" title="Password" id="pass"
+            class="input-text required-entry validate-password form-control" runat="server" required="required"
+            autofocus="autofocus" name="password">
+    </li>
+    <li>
+        <label for="passtek">Mật khẩu mới (New Password) <span class="required">*</span></label>
+        <br>
+        <input type="password" title="Şifre Tekrar" id="passtek"
+            class="input-text required-entry validate-password form-control" runat="server" required="required"
+            autofocus="autofocus" name="confirm_password">
+    </li>
+    <li>
+        <label for="passtek">Xác nhận mật khẩu(confirm password) <span class="required">*</span></label>
+        <br>
+        <input type="password" title="Şifre Tekrar" id="passtek"
+            class="input-text required-entry validate-password form-control" runat="server" required="required"
+            autofocus="autofocus" name="confirm_password">
+    </li>
+    <hr>
+    <button (click)="closeModal('custom-modal-1');onUpdatePass(user)">Save</button>
+</jw-modal>

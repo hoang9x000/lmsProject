@@ -5,6 +5,7 @@ import { ProductsTheloaiService } from '../../../services/product-detail-book.se
 import { DattruocAll } from '../../../models/dattruocAll.class';
 import { User } from '../../../models/user';
 import { DattruocService } from '../../../services/dattruoc.service';
+import { ModalService } from '../../../_modal';
 
 
 import { BehaviorSubject, Observable, from } from 'rxjs';
@@ -25,7 +26,8 @@ export class DetailbookComponent implements OnInit {
   constructor(
     public activatedRoute: ActivatedRoute,
     public productDetailBookService: ProductsTheloaiService,
-    public dattruocService :DattruocService
+    public dattruocService :DattruocService,
+    private modalService: ModalService
   ) {
 
   }
@@ -51,9 +53,17 @@ export class DetailbookComponent implements OnInit {
         // let _dattruoc = new DattruocAll(_mathe, product.Sach[i].Masach);
         this.dattruocService.Adddattruoc(_mathe,product.Sach[i].Masach).subscribe(data=>{
           // console.log(data);
+          this.ngOnInit();
         });  
         break; 
       };
     }
   }
+  openModal(id: string) {
+    this.modalService.open(id);
+}
+
+closeModal(id: string) {
+    this.modalService.close(id);
+}
 }

@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { BehaviorSubject, Observable, from } from 'rxjs';
 import { User } from '../../../models/user';
-import { UserService} from '../../../services/user.service';
-import { Phieumuon} from 'src/app/models/phieumuon/phieumuon.class';
+import { UserService } from '../../../services/user.service';
+import { Phieumuon } from 'src/app/models/phieumuon/phieumuon.class';
+import { DattruocService } from '../../../services/dattruoc.service';
 
 @Component({
   selector: 'app-giahan',
@@ -13,7 +14,10 @@ export class GiahanComponent implements OnInit {
   private currentUserSubject: BehaviorSubject<User>;
   public phieumuon: Phieumuon[] = [];
 
-  constructor(public userService: UserService) { }
+  constructor(
+    public userService: UserService,
+    public dattruocService: DattruocService
+  ) { }
 
   ngOnInit() {
     this.loadData();
@@ -23,11 +27,19 @@ export class GiahanComponent implements OnInit {
     var _mathe = this.currentUserSubject.value.Mathe.toString();
     //console.log(_mathe);
     this.userService.Showphieumuon(_mathe).subscribe(data => {
-    this.phieumuon = data[0].Phieumuon;
-    console.log(data[0].Phieumuon);
+      this.phieumuon = data[0].Phieumuon;
+      // console.log(data[0].Phieumuon);
     }, error => {
       console.log(error);
     }
     );
+  }
+  onGiahan(item:Phieumuon){
+    // console.log(item);
+    this.dattruocService.UpdatePhieumuon(item).subscribe(data=>{
+
+    }, error => {
+      console.log(error);
+    });
   }
 }
