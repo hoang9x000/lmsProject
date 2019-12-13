@@ -34,6 +34,7 @@ import { Showproducts1Component } from './Components/Homepage/tailieu/showproduc
 import { Showproducts2Component } from './Components/Homepage/tailieu/showproducts2/showproducts2.component';
 
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
+import { ChomuonService } from './services/chomuon.service';
 // import { fakeBackendProvider } from './_helpers';
 
 @NgModule({
@@ -78,7 +79,8 @@ import { JwtInterceptor, ErrorInterceptor } from './_helpers';
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     // fakeBackendProvider,
-    ProductsService
+    ProductsService,
+    ChomuonService,
   ],
   bootstrap: [AppComponent]
 })

@@ -1,0 +1,93 @@
+{
+    "Nhomsach":[
+    {
+        "Mathe": "102160205",
+        "Masach": "mg011",
+        "Ngaymuon": "2019-11-09",
+        "Ngayhethan": "2019-11-24",
+        "Giahan": false,
+        "Datra": false,
+        "Hoten": "NVC",
+        "Tensach": "Conan"
+    },
+    {
+        "Mathe": "102160207",
+        "Masach": "mg012",
+        "Ngaymuon": "2019-12-09",
+        "Ngayhethan": "2019-12-24",
+        "Giahan": false,
+        "Datra": false,
+        "Hoten": "NVT",
+        "Tensach": "Conan"
+    },
+    {
+        "Mathe": "102160245",
+        "Masach": "10",
+        "Ngaymuon": "2019-12-08",
+        "Ngayhethan": "2020-01-07",
+        "Giahan": false,
+        "Datra": true,
+        "Hoten": "NVa",
+        "Tensach": "Lap trinh c++"
+    },
+    {
+        "Mathe": "102160245",
+        "Masach": "11",
+        "Ngaymuon": "2019-12-08",
+        "Ngayhethan": "2020-01-07",
+        "Giahan": false,
+        "Datra": false,
+        "Hoten": "NVa",
+        "Tensach": "Lap trinh c++"
+    }],
+        "User":[
+            {
+                "Mathe": "102160205",
+                "Password": null,
+                "Hoten": "NVC",
+                "Gioitinh": null,
+                "Ngaysinh": null,
+                "Diachi": null,
+                "Ngaydangki": "2019-12-05",
+                "Ngayhethan": "2019-12-29",
+                "Role": "User",
+                "Sosachdamuon": 1
+            },
+            {
+                "Mathe": "102160207",
+                "Password": null,
+                "Hoten": "NVT",
+                "Gioitinh": null,
+                "Ngaysinh": null,
+                "Diachi": null,
+                "Ngaydangki": "2019-12-02",
+                "Ngayhethan": "2019-12-28",
+                "Role": "User",
+                "Sosachdamuon": 1
+            },
+            {
+                "Mathe": "102160245",
+                "Password": null,
+                "Hoten": "NVa",
+                "Gioitinh": null,
+                "Ngaysinh": null,
+                "Diachi": null,
+                "Ngaydangki": "2019-12-02",
+                "Ngayhethan": "2019-12-28",
+                "Role": "Admin",
+                "Sosachdamuon": 1
+            },
+            {
+                "Mathe": "102160246",
+                "Password": null,
+                "Hoten": "NVb",
+                "Gioitinh": null,
+                "Ngaysinh": null,
+                "Diachi": null,
+                "Ngaydangki": "2019-12-02",
+                "Ngayhethan": "2019-12-28",
+                "Role": "User",
+                "Sosachdamuon": 0
+            }
+        ]
+}

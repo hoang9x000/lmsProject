@@ -20,6 +20,7 @@ import { UsersComponent } from './Components/Adminpage/users/users.component';
 import { MuontraComponent } from './Components/Adminpage/muontra/muontra.component'
 import { AuthGuard } from './_guards';
 import { Role } from './models/role';
+import { ChomuonComponent } from './Components/Adminpage/muontra/chomuon/chomuon.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent },
@@ -38,6 +39,7 @@ const routes: Routes = [
   {path: 'sach' , component: SachComponent},
   {path: 'users' , component: UsersComponent},
   {path: 'muontra' , component: MuontraComponent},
+  {path: 'chomuon', component: ChomuonComponent},
   { path: '**', redirectTo: '' }
 ];
 
