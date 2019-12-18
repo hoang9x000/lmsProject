@@ -6,46 +6,28 @@
     <div>
         <h3 style="text-align: center;">Sách đang mượn - Gia hạn sách</h3>
     </div>
-    <br><br>
+    <br>
     <div class="widget-content">
-
-
         <table id="customers">
             <tr>
-                <th>Mã sách</th>
-                <th>Tên sách</th>
-                <th>Ngày mượn</th>
-                <th>Ngày trả</th>
-                <th>Gia hạn</th>
-                <th></th>
+                <th style="text-align: center">Mã sách</th>
+                <th style="text-align: center">Tên sách</th>
+                <th style="text-align: center">Ngày mượn</th>
+                <th style="text-align: center">Ngày trả</th>
+                <th style="text-align: center">Gia hạn</th>
+                <th style="text-align: center"></th>
             </tr>
-            <tr>
-                <td>Mã sách</td>
-                <td>Tên sách</td>
-                <td>Ngày mượn</td>
-                <td>Ngày trả</td>
-                <td style="text-align: center"><span className="label label-success">true</span></td>  
-                <td style="text-align: center"><button type="button" className="btn btn-danger">
+            <ng-container *ngFor = "let item of phieumuon">
+            <tr *ngIf="!item.Datra">
+                <td style="text-align: center">{{item.Masach}}</td>
+                <td style="text-align: center">{{item.Tensach}}</td>
+                <td style="text-align: center">{{item.Ngaymuon}}</td>
+                <td style="text-align: center">{{item.Ngayhethan}}</td>
+                <td style="text-align: center"><span className="label label-success">{{item.Giahan}}</span></td>  
+                <td style="text-align: center"><button type="button" className="btn btn-danger" (click)="onGiahan(item)" [routerLink]="['/giahan']">
                         <span className="fa fa-trash mr-5"></span> Gia hạn </button></td>
             </tr>
-            <tr>
-                <td>Mã sách</td>
-                <td>Tên sách</td>
-                <td>Ngày mượn</td>
-                <td>Ngày trả</td>
-                <td style="text-align: center"><span className="label label-success">true</span></td> 
-                <td style="text-align: center"><button type="button" className="btn btn-danger">
-                        <span className="fa fa-trash mr-5"></span> Gia hạn </button></td>
-            </tr>
-            <tr>
-                <td>Mã sách</td>
-                <td>Tên sách</td>
-                <td>Ngày mượn</td>
-                <td>Ngày trả</td>
-                <td style="text-align: center"><span className="label label-success">fals</span></td> 
-                <td style="text-align: center"><button type="button" className="btn btn-danger">
-                        <span className="fa fa-trash mr-5"></span> Gia hạn </button></td>
-            </tr>
+            </ng-container>
         </table>
     </div>
 </div>

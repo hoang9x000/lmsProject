@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 
 import { AuthenticationService } from '../../services/authentication.service';
+import { ModalService } from '../../_modal';
 
 @Component({
   selector: 'app-dangnhap',
@@ -21,7 +22,8 @@ export class DangnhapComponent implements OnInit {
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    private modalService: ModalService
   ) {
     //chuyển hướng đến trang home nếu đã đăng nhập
     if (this.authenticationService.currentUserValue) {
@@ -59,6 +61,9 @@ export class DangnhapComponent implements OnInit {
           this.error = error;
           this.loading = false;
         });
+  }
+  closeModal(id: string) {
+    this.modalService.close(id);
   }
 
 }

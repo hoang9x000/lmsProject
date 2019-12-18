@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 
 import { User } from './../models/user';
 import { Observable } from 'rxjs';
-import { Dattruoc } from './../models/dattruoc.class';
+import { PhieumuonAll } from '../models/phieumuon/phieumuonAll.class';
 
 @Injectable({
   providedIn: 'root'
@@ -11,14 +11,13 @@ import { Dattruoc } from './../models/dattruoc.class';
 export class UserService {
   public API: string = " http://localhost:5000/api";
   constructor(private http: HttpClient) { }
-  getAll() {
-    return this.http.get<User[]>(this.API + `/user`);
+  Showphieumuon(mathe: string): Observable<PhieumuonAll[]> {
+    return this.http.get<PhieumuonAll[]>(this.API +`/phieumuon`+"/" +mathe);
   }
-
-  getById(id: number) {
-    return this.http.get<User>(this.API + `/user/${id}`);
+  ShowProfile(mathe: string): Observable<User[]>{
+    return this.http.get<User[]>(this.API +`/user`+"/"+mathe);
   }
-  Adddattruoc(dattruoc: Dattruoc) {
-    return this.http.post(this.API + `/dattruoc`, dattruoc);
-  }
+  ChangePassword(user:User):Observable<User[]>{
+    return this.http.put<User[]>(this.API +`/user`+"/"+user.Mathe,user);
+  } 
 }

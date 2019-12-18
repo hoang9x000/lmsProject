@@ -2,7 +2,7 @@ export class User {
     Mathe: number;
     Hoten: string;
     Password: string;
-    Gioitinh: string;
+    Gioitinh: boolean;
     Ngaysinh: string;
     Diachi:string;
     Ngaydangki:Date;

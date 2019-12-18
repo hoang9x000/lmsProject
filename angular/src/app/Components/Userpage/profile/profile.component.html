@@ -1,10 +1,141 @@
-<div class="container-fluid">
-        <div class="col-12 align-self-cente border-dark mt-3">
-        <h3 class="text-center">
-            <span class="badge badge-primary" style="width: 500px; height: 50px;">Thông Tin</span>
-        </h3>
-    </div>
-</div>
 <div class="container">
-        
+    <div class="container-fluid">
+        <div class="col-12 align-self-cente border-dark mt-3">
+            <h3 class="text-center">
+                <span class="badge badge-primary" style="width: 500px; height: 50px;">Thông Tin</span>
+            </h3>
+        </div>
+    </div>
+    <div class="card border-primary mb-3 mt-3">
+        <form class="form m-4">
+            <div class="form-group row">
+                <label for="" class="col-sm-2 col-form-label"> Mã thẻ</label>
+                <div class="col-sm-10">
+                    <input type="text" readonly class="form-control bg-white" [(ngModel)]="user.Mathe"
+                        [ngModelOptions]="{standalone:true}">
+                </div>
+            </div>
+            <hr />
+            <div class="form-group row">
+                <label for="inputPassword" class="col-sm-2 col-form-label">Mật Khẩu</label>
+                <div class="col-sm-10">
+                    <div class="input-group mb-3">
+                        <input type="password" class="form-control mr-2" id="exampleInputPassword1"
+                            placeholder="Password" aria-label="Recipient's username" aria-describedby="button-addon2">
+                        <div class="input-group-append">
+                            <button (click)="openModal('custom-modal-3')"
+                                class="btn btn-block btn-light bg-info ml-2" type="button" id="button-addon2"> Đổi Mật
+                                Khẩu</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr />
+            <div class="form-group row">
+                <label for="" class="col-sm-2 col-form-label"> Họ Tên </label>
+                <div class="col-sm-10">
+                    <input type="text" readonly class="form-control bg-white" [(ngModel)]="user.Hoten"
+                        [ngModelOptions]="{standalone:true}" />
+                </div>
+            </div>
+            <hr />
+            <div class="form-group row">
+                <label for="" class="col-sm-2 col-form-label"> Giới Tính: </label>
+                <div *ngIf="user.Gioitinh">
+                    <div class="radio">
+                        <label><input type="radio" name="optradio" disabled class="check ml-3 mr-3"> Nữ </label>
+                    </div>
+                    <div class="radio">
+                        <label><input type="radio" name="optradio" disabled checked class="check ml-3 mr-3"> Nam
+                        </label>
+                    </div>
+                </div>
+                <div *ngIf="!user.Gioitinh">
+                    <div class="radio">
+                        <label><input type="radio" name="optradio" disabled checked class="check ml-3 mr-3"> Nữ </label>
+                    </div>
+                    <div class="radio">
+                        <label><input type="radio" name="optradio" disabled class="check ml-3 mr-3"> Nam </label>
+                    </div>
+                </div>
+
+            </div>
+            <hr />
+            <div class="form-group row">
+                <label for="" class="col-sm-2 col-form-label"> Ngày Sinh: </label>
+                <div class="col-sm-10">
+                    <input type="text" readonly class="form-control bg-white" [(ngModel)]="user.Ngaysinh"
+                        [ngModelOptions]="{standalone:true}" />
+                </div>
+            </div>
+            <hr />
+            <div class="form-group row">
+                <label for="" class="col-sm-2 col-form-label"> Địa Chỉ: </label>
+                <div class="col-sm-10">
+                    <input type="text" readonly class="form-control bg-white" [(ngModel)]="user.Diachi"
+                        [ngModelOptions]="{standalone:true}" />
+                </div>
+            </div>
+            <hr />
+            <div class="form-group row">
+                <label for="" class="col-sm-2 col-form-label"> Ngày Đang Ký: </label>
+                <div class="col-sm-10">
+                    <input type="text" readonly class="form-control bg-white" [(ngModel)]="user.Ngaydangki"
+                        [ngModelOptions]="{standalone:true}" />
+                </div>
+            </div>
+            <hr />
+            <div class="form-group row">
+                <label for="" class="col-sm-2 col-form-label"> Ngày Hết Hạn: </label>
+                <div class="col-sm-10">
+                    <input type="text" readonly class="form-control bg-white" [(ngModel)]="user.Ngayhethan"
+                        [ngModelOptions]="{standalone:true}" />
+                </div>
+            </div>
+            <hr />
+            <div class="form-group row">
+                <label for="" class="col-sm-2 col-form-label"> Loại Người Dùng: </label>
+                <div class="col-sm-10">
+                    <input type="text" readonly class="form-control bg-white" [(ngModel)]="user.Role"
+                        [ngModelOptions]="{standalone:true}" />
+                </div>
+            </div>
+            <hr />
+        </form>
+    </div>
+
 </div>
+<jw-modal id="custom-modal-3">
+    <!-- main app container -->
+    <div class="jumbotron">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 offset-md-3">
+                    <form [formGroup]="registerForm" (ngSubmit)="onSubmit(user)">
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" formControlName="password" class="form-control"
+                                [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                            <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                                <div *ngIf="f.password.errors.required">Mật khẩu là bắt buộc</div>
+                                <div *ngIf="f.password.errors.minlength">mật khẩu phải ít nhất 6 kí tự</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Confirm Password</label>
+                            <input type="password" formControlName="confirmPassword" class="form-control"
+                                [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors  }" />
+                            <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
+                                <div *ngIf="f.confirmPassword.errors.required">Xác nhận mật khẩu là bắt buộc</div>
+                                <div *ngIf="f.confirmPassword.errors.mustMatch">mật khẩu phải trùng khớp</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-primary" (click)="closeModal('custom-modal-3');">Lưu</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</jw-modal>
