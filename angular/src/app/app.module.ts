@@ -13,7 +13,6 @@ import { QuydinhComponent } from './Components/Homepage/quydinh/quydinh.componen
 import { GioithieuComponent } from './Components/Homepage/gioithieu/gioithieu.component';
 import { DangnhapComponent } from './Components/dangnhap/dangnhap.component';
 import { TailieuComponent } from './Components/Homepage/tailieu/tailieu.component';
-import { ChangepassComponent } from './Components/Userpage/profile/changepass/changepass.component';
 import { ProfileComponent } from './Components/Userpage/profile/profile.component';
 import { DetailbookComponent } from './Components/Userpage/detailbook/detailbook.component';
 import { GiahanComponent } from './Components/Userpage/giahan/giahan.component';
@@ -47,7 +46,6 @@ import { ModalModule } from './_modal';
     GioithieuComponent,
     DangnhapComponent,
     TailieuComponent,
-    ChangepassComponent,
     UsersComponent,
     ProfileComponent,
     DetailbookComponent,
@@ -72,7 +70,6 @@ import { ModalModule } from './_modal';
     FormsModule,
     ReactiveFormsModule,
     ModalModule,
-
     // import HttpClientModule after BrowserModule.
     HttpClientModule,
   ],

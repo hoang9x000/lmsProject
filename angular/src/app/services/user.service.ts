@@ -17,4 +17,7 @@ export class UserService {
   ShowProfile(mathe: string): Observable<User[]>{
     return this.http.get<User[]>(this.API +`/user`+"/"+mathe);
   }
+  ChangePassword(user:User):Observable<User[]>{
+    return this.http.put<User[]>(this.API +`/user`+"/"+user.Mathe,user);
+  } 
 }

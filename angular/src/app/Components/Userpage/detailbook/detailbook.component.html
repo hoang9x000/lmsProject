@@ -21,7 +21,7 @@
                     <div class="card-body">
                         <div class="row align-items-center">
                             <div class="col">
-                                <h5>Mã Sách :</h5>
+                                <h5>Mã Nhóm Sách :</h5>
                             </div>
                             <div class="col">
                                 <a>{{item.Manhomsach}}</a>
@@ -83,6 +83,14 @@
                                 <a>{{item.Soluong}}</a>
                             </div>
                         </div>
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <h5>Số Lượng còn :</h5>
+                            </div>
+                            <div class="col">
+                                <a>{{item.Soluongcon}}</a>
+                            </div>
+                        </div>
                         <button type="button" class="btn btn-success" (click)="onAdddattruoc(item);openModal('custom-modal-2')">Đặt Trước</button>
                     </div>
                 </div>
@@ -91,6 +99,6 @@
     </div>
 </div>
 <jw-modal id="custom-modal-2">
-    <h1>Đạt trước thành công!</h1>
+    <h1 style="color:white;" >Đạt trước thành công!</h1>
     <button (click)="closeModal('custom-modal-2');">Close</button>
 </jw-modal>

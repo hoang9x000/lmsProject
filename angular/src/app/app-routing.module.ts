@@ -12,8 +12,6 @@ import { ProfileComponent } from './Components/Userpage/profile/profile.componen
 import { DetailbookComponent } from './Components/Userpage/detailbook/detailbook.component';
 import { DattruocComponent } from './Components/Userpage/dattruoc/dattruoc.component';
 import { GiahanComponent } from './Components/Userpage/giahan/giahan.component';
-import { ChangepassComponent } from './Components/Userpage/profile/changepass/changepass.component';
-
 import { AdminComponent } from './Components/Adminpage/admin/admin.component';
 import { SachComponent } from './Components/Adminpage/sach/sach.component';
 import { UsersComponent } from './Components/Adminpage/users/users.component';
@@ -33,7 +31,6 @@ const routes: Routes = [
   {path: 'detailbook/:id' , component: DetailbookComponent},
   {path: 'dattruoc' , component: DattruocComponent},
   {path: 'giahan' , component: GiahanComponent},
-  {path: 'changepass' , component: ChangepassComponent},
   {path: 'admin',component: AdminComponent,canActivate: [AuthGuard],data: { roles: [Role.Admin] },},
   {path: 'sach' , component: SachComponent},
   {path: 'users' , component: UsersComponent},

@@ -27,9 +27,9 @@ export class GiahanComponent implements OnInit {
     var _mathe = this.currentUserSubject.value.Mathe.toString();
     //console.log(_mathe);
     this.userService.Showphieumuon(_mathe).subscribe(data => {
+      console.log(data[0].Phieumuon[0].Datra);
       this.phieumuon = data[0].Phieumuon;
-      // console.log(data[0].Phieumuon);
-    }, error => {
+        }, error => {
       console.log(error);
     }
     );
@@ -37,7 +37,7 @@ export class GiahanComponent implements OnInit {
   onGiahan(item:Phieumuon){
     // console.log(item);
     this.dattruocService.UpdatePhieumuon(item).subscribe(data=>{
-
+      this.loadData();
     }, error => {
       console.log(error);
     });

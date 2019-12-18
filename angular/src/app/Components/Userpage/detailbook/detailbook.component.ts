@@ -20,9 +20,6 @@ export class DetailbookComponent implements OnInit {
   private currentUserSubject: BehaviorSubject<User>;
   public product: Nhomsach[] = [];
   public dattruoc: DattruocAll[] = [];
-  public mathe: string;
-  public masach: string;
-  public tensach: string = ""
   constructor(
     public activatedRoute: ActivatedRoute,
     public productDetailBookService: ProductsTheloaiService,
@@ -36,7 +33,7 @@ export class DetailbookComponent implements OnInit {
     let id = (+this.activatedRoute.snapshot.params['id']);
     // console.log(id);
     this.productDetailBookService.getProductByID(id).subscribe(data => {
-      // console.log(this.product data[0]);
+      console.log(data);
       this.product = data;
       // console.log(this.tensach);
     }, error => {
