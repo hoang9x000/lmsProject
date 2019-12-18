@@ -26,7 +26,7 @@ export class UsersComponent implements OnInit, OnDestroy {
     this.Subscription = this.usersService.getAllUsers().subscribe((data: Users[]) => {
       //console.log(data);
        this.users = data;
-      console.log(data)
+      //console.log(data)
     }, error => {
       //console.log(error);
       this.usersService.handleError(error);
@@ -47,7 +47,6 @@ export class UsersComponent implements OnInit, OnDestroy {
 
   deleteuser(Mathe : string)
   {
-    console.log(Mathe);
     this.Subscription = this.usersService.deleteuser(Mathe).subscribe((data: Users) => {
       //console.log(data);
      // console.log(data.Mathe);

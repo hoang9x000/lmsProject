@@ -46,6 +46,7 @@ export class EdituserComponent implements OnInit, OnDestroy {
         //console.log(data)
         let Mathe = data['Mathe'];
         this.Subscription = this.usersService.getUser(Mathe).subscribe((user : Users) => {
+            //console.log(user);
              this.user = user;
         });
       });

@@ -45,14 +45,14 @@
             <div class="form-group row m-1 mb-0">
                 <label for="ngaysinh" class="col-sm-2 col-form-label"> Ngày Sinh: </label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control bg-white" id="ngaysinh" />
+                    <input type="text" class="form-control bg-white" id="ngaysinh" [(ngModel)]="Ngaysinh"  [ngModelOptions]="{standalone: true}" />
                 </div>
             </div>
             <hr />
             <div class="form-group row m-1 mb-0">
                 <label for="diachi" class="col-sm-2 col-form-label"> Địa Chỉ: </label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control bg-white" id="diachi" />
+                    <input type="text" class="form-control bg-white" id="diachi" [(ngModel)]="Diachi"  [ngModelOptions]="{standalone: true}" />
                 </div>
             </div>
             <hr />

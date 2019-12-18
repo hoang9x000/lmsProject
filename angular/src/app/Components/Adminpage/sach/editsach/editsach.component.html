@@ -1,0 +1,193 @@
+<div class="container-fluid">
+    <div class="col-12 align-self-cente border-dark mt-3">
+        <h3 class="text-center">
+            <span class="badge badge-primary " style="width: 500px; height: 40px; border-radius: 50px;">
+                <p class="name mt-1 mb-1"> Thông Tin </p>
+            </span>
+        </h3>
+    </div>
+</div>
+<div class="container">
+    <div class="card border-primary mb-3 mt-3">
+        <form action="" method="POST" role="form">
+            <div class="form-group row m-1 mb-0">
+                <label for="manhomsach" class="col-sm-2 col-form-label"> Mã Nhóm Sách: </label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control bg-white" [(ngModel)]="nhomsach.Manhomsach"
+                        [ngModelOptions]="{standalone: true}" disabled />
+                </div>
+            </div>
+            <hr />
+            <div class="form-group row m-1 mb-0">
+                <label for="manhomsach" class="col-sm-2 col-form-label"> Mã Thể Loại: </label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control bg-white" [(ngModel)]="nhomsach.Matheloai"
+                        [ngModelOptions]="{standalone: true}" disabled />
+                </div>
+            </div>
+            <hr />
+            <div class="form-group row m-1 mb-0">
+                <label for="magiasach" class="col-sm-2 col-form-label"> Mã Giá Sách: </label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control bg-white" [(ngModel)]="nhomsach.Magiasach"
+                        [ngModelOptions]="{standalone: true}" disabled />
+                </div>
+            </div>
+            <hr />
+            <div class="form-group row m-1 mb-0">
+                <label for="tensach" class="col-sm-2 col-form-label"> Tên Sách: </label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control bg-white" [(ngModel)]="nhomsach.Tensach"
+                        [ngModelOptions]="{standalone: true}" />
+                </div>
+            </div>
+            <hr />
+            <div class="form-group row m-1 mb-0">
+                <label for="tacgia" class="col-sm-2 col-form-label"> Tác Giả: </label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control bg-white" [(ngModel)]="nhomsach.Tacgia"
+                        [ngModelOptions]="{standalone: true}" />
+                </div>
+            </div>
+            <hr />
+            <!-- kiem tra then the loai -->
+            <div class="form-group row m-1 mb-0">
+                <label for="loaisach" class="col-sm-2 col-form-label"> Loại Sách: </label>
+                <div *ngIf="nhomsach.Tentheloai === 'Sách Chuyên Ngành'">
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="optradio" class="check ml-3 mr-3 " check value="Sách Chuyên Ngành"  [(ngModel)]="nhomsach.Tentheloai" [ngModelOptions]="{standalone: true}"> Sách Chuyên Ngành
+                        </label>
+                        <label>
+                            <input type="radio" name="optradio" class="check ml-3 mr-3 " disabled value="Sách Đại Cương"  [(ngModel)]="nhomsach.Tentheloai" [ngModelOptions]="{standalone: true}"> Sách Đại Cương
+                        </label>
+                        <label>
+                            <input type="radio" name="optradio" class="check ml-3 mr-3 " disabled value="Tạp Chí"  [(ngModel)]="nhomsach.Tentheloai" [ngModelOptions]="{standalone: true}"> Tạp Chí
+                        </label>
+                    </div>
+                </div>
+
+
+                <div *ngIf="nhomsach.Tentheloai === 'Sách Đại Cương'">
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="optradio" class="check ml-3 mr-3 " disabled value="Sách Chuyên Ngành"  [(ngModel)]="nhomsach.Tentheloai" [ngModelOptions]="{standalone: true}"> Sách Chuyên Ngành
+                        </label>
+                        <label>
+                            <input type="radio" name="optradio" class="check ml-3 mr-3 " checked value="Sách Đại Cương"  [(ngModel)]="nhomsach.Tentheloai" [ngModelOptions]="{standalone: true}"> Sách Đại Cương
+                        </label>
+                        <label>
+                            <input type="radio" name="optradio" class="check ml-3 mr-3 " disabled value="Tạp Chí"  [(ngModel)]="nhomsach.Tentheloai" [ngModelOptions]="{standalone: true}"> Tạp Chí
+                        </label>
+                    </div>
+                </div>
+
+
+                <div *ngIf="nhomsach.Tentheloai === 'Tạp Chí'">
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="optradio" class="check ml-3 mr-3 " disabled value="Sách Chuyên Ngành"  [(ngModel)]="nhomsach.Tentheloai" [ngModelOptions]="{standalone: true}"> Sách Chuyên Ngành
+                        </label>
+                        <label>
+                            <input type="radio" name="optradio" class="check ml-3 mr-3 " disabled value="Sách Đại Cương"  [(ngModel)]="nhomsach.Tentheloai" [ngModelOptions]="{standalone: true}"> Sách Đại Cương
+                        </label>
+                        <label>
+                            <input type="radio" name="optradio" class="check ml-3 mr-3 " checked value="Tạp Chí"  [(ngModel)]="nhomsach.Tentheloai" [ngModelOptions]="{standalone: true}"> Tạp Chí
+                        </label>
+                    </div>
+                </div>
+
+                <!-- <div class="radio">
+                    <label><input type="radio" name="optradio" class="check ml-3 mr-3" value="Sách Chuyên Ngành"
+                            [(ngModel)]="nhomsach.Tentheloai" [ngModelOptions]="{standalone: true}"> Sách Chuyên Ngành </label>
+                    <label><input type="radio" name="optradio" class="check ml-3 mr-3"  value="Sách Đại Cương"
+                            [(ngModel)]="nhomsach.Tentheloai" [ngModelOptions]="{standalone: true}"> Sách Đại Cương </label>
+                    <label><input type="radio" name="optradio" class="check ml-3 mr-3" value="Tập Chí"
+                            [(ngModel)]="nhomsach.Tentheloai" [ngModelOptions]="{standalone: true}"> Tập Chí </label>
+                </div> -->
+            </div>
+            <hr />
+                <!-- <div *ngIf="nhomsach.Tentheloai === '1'">
+                    <div class="radio">
+                        <label><input type="radio" name="optradio" class="check ml-3 mr-3" checked value="1"
+                                [(ngModel)]="nhomsach.Tentheloai" [ngModelOptions]="{standalone: true}"> Sách Chuyên
+                            Ngành </label>
+                        <label><input type="radio" name="optradio" class="check ml-3 mr-3"  value="2"
+                                [(ngModel)]="nhomsach.Tentheloai" [ngModelOptions]="{standalone: true}" > Sách
+                            Đại Cương </label>
+                        <label><input type="radio" name="optradio" class="check ml-3 mr-3"  value="3"
+                                [(ngModel)]="nhomsach.Tentheloai" [ngModelOptions]="{standalone: true}"> Tập Chí
+                        </label>
+                    </div>
+                </div> -->
+                <!-- <div class="radio">
+                        
+
+                             <select (change)="hand($event)">
+                                <option [value]="0">Chọn thể loại </option>
+                                 <option [value]="1">Sách Chuyên Ngành  </option>
+                                 <option [value]="2">Sách Đại Cương  </option>
+                                 <option [value]="3"> Tạp Chí </option>
+                             </select>
+                            </div>
+                
+            </div>
+            <hr /> -->
+            <!-- <label><input type="radio" name="optradio" class="check ml-3 mr-3"  value="1"
+                                [(ngModel)]="nhomsach.Tentheloai" [ngModelOptions]="{standalone: true}"> Sách Chuyên Ngành </label>
+                        <label><input type="radio" name="optradio" class="check ml-3 mr-3" value="2"
+                                [(ngModel)]="nhomsach.Tentheloai" [ngModelOptions]="{standalone: true}"> Sách Đại Cương </label>
+                        <label><input type="radio" name="optradio" class="check ml-3 mr-3"  value="3"
+                                [(ngModel)]="nhomsach.Tentheloai" [ngModelOptions]="{standalone: true}"> Tập Chí </label>
+                             -->
+            <!-- <div class="form-check ml-3">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <label class="form-check-label" for="exampleCheck1"> Sách Chuyên Ngành</label>
+                    </div>
+                    <div class="form-check ml-3">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck2">
+                        <label class="form-check-label" for="exampleCheck2"> Sách Đại Cương </label>
+                    </div>
+                    <div class="form-check ml-3">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck3">
+                        <label class="form-check-label" for="exampleCheck3"> Tập Chí </label>
+                    </div> -->
+            <!-- <div class="form-group row m-1 mb-0">
+                    <label for="songaymuon" class="col-sm-2 col-form-label"> Số Ngày Mượn: </label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control bg-white" [(ngModel)]="Manhomsach" [ngModelOptions]="{standalone: true}" />
+                    </div>
+                </div>
+                <hr /> -->
+            <div class="form-group row m-1 mb-0">
+                <label for="giatien" class="col-sm-2 col-form-label"> Giá Tiền: </label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control bg-white" [(ngModel)]="nhomsach.Giatien"
+                        [ngModelOptions]="{standalone: true}" />
+                </div>
+            </div>
+            <hr />
+            <div class="form-group row m-1 mb-0">
+                <label for="soluong" class="col-sm-2 col-form-label"> Số Lượng: </label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control bg-white" [(ngModel)]="nhomsach.Soluong"
+                        [ngModelOptions]="{standalone: true}" />
+                </div>
+            </div>
+            <hr />
+            <div class="form-group">
+                <div class="upload m-4">
+                    <app-upload (onUploadFinished)="uploadFinished($event)"></app-upload>
+                </div>
+                <div *ngIf="dbPath">
+                    <button type="button" class="btn btn-success pull-right mr-2 mb-2" (click)="oneditnhomsach1()"> Xác Nhận </button>
+                </div>
+
+                <div *ngIf="!dbPath">
+                    <button type="button" class="btn btn-success pull-right mr-2 mb-2" (click)="oneditnhomsach()"> Xác Nhận </button>
+                </div>
+              
+            </div>
+        </form>
+    </div>
+</div>

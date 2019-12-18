@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { UsersService } from './../../../../services/users.service';
 import { Subscription } from 'rxjs';
 import { Users } from './../../../../models/users.class';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
 @Component({
   selector: 'app-adduser',
@@ -24,7 +25,8 @@ export class AdduserComponent implements OnInit {
   public Role : string;
   
   constructor(
-    public usersService : UsersService
+    public usersService : UsersService,
+    public routerService : Router
   ) { }
   ngOnInit() {
   }
@@ -53,7 +55,8 @@ export class AdduserComponent implements OnInit {
     this.Subscription = this.usersService.getAdd(adduser)
     .subscribe(data =>{
        this.users.push(data);
-      console.log(data)
+      console.log(data);
+      this.routerService.navigateByUrl('/users');
     },  error => {
       //console.log(error);
       this.usersService.handleError(error);

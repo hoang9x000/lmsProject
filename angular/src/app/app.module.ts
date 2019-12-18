@@ -35,6 +35,11 @@ import { Showproducts2Component } from './Components/Homepage/tailieu/showproduc
 
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
 import { EdituserComponent } from './Components/Adminpage/users/edituser/edituser.component';
+import { UserService } from './services/user.service';
+import { NhomsachService } from './services/nhomsach.service';
+import { EditsachComponent } from './Components/Adminpage/sach/editsach/editsach.component';
+import { UploadComponent } from './Components/upload/upload.component';
+
 // import { fakeBackendProvider } from './_helpers';
 
 @NgModule({
@@ -65,6 +70,9 @@ import { EdituserComponent } from './Components/Adminpage/users/edituser/edituse
     Showproducts1Component,
     Showproducts2Component,
     EdituserComponent,
+    EditsachComponent,
+    UploadComponent,
+   
   ],
   imports: [
     BrowserModule,
@@ -80,7 +88,9 @@ import { EdituserComponent } from './Components/Adminpage/users/edituser/edituse
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     // fakeBackendProvider,
-    ProductsService
+    ProductsService,
+    UserService,
+    NhomsachService
   ],
   bootstrap: [AppComponent]
 })

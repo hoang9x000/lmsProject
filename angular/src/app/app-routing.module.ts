@@ -22,6 +22,8 @@ import { AuthGuard } from './_guards';
 import { Role } from './models/role';
 import { AdduserComponent } from './Components/Adminpage/users/adduser/adduser.component';
 import { EdituserComponent } from './Components/Adminpage/users/edituser/edituser.component';
+import { ThemsachComponent } from './Components/Adminpage/sach/themsach/themsach.component';
+import { EditsachComponent } from './Components/Adminpage/sach/editsach/editsach.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -40,8 +42,11 @@ const routes: Routes = [
   { path: 'sach', component: SachComponent },
   { path: 'users', component: UsersComponent, },
   { path: 'users/adduser', component: AdduserComponent },
+  { path: 'sach/addsach', component: ThemsachComponent },
+  {path: 'sach/:Manhomsach' , component: EditsachComponent},
    {path: 'users/:Mathe' , component: EdituserComponent},
   { path: 'muontra', component: MuontraComponent },
+  { path: 'sach', component: SachComponent },
   // { path: '**', redirectTo: '' }
 ];
 
