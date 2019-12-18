@@ -83,7 +83,7 @@
 								
 								<td>
 									<input class="btn btn-tra" type="button" *ngIf="item.Datra" value="Đã trả" style="background-color:green ;" disabled>
-									<input class="btn btn-tra" type="button" *ngIf="!item.Datra"  value="Chưa trả" style="background-color : red" (click)="chanceDatra(item)">
+									<input class="btn btn-tra" type="button" *ngIf="!item.Datra"  value="Chưa trả" style="background-color : red" (click)="onEditDatra(item)">
 								</td>
 							</tr>
 						</tbody> 

@@ -35,6 +35,7 @@ export class ChomuonComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.loadData();
+    // this.onUpdateDatra();
     // this.Quahan();
   }
 
@@ -63,18 +64,22 @@ export class ChomuonComponent implements OnInit, OnDestroy {
     else return td;
   }
 
-  chanceDatra(item : Chomuon) {
-    // this.chomuon = item;
+  onEditDatra(item : Chomuon){ 
     if(confirm("Xác nhận "+ item.Mathe +" đã trả "+ item.Tensach)){
-      this.subscription = this.chomuonService.chanceDatra(item).subscribe(data => {
-        item.Datra = true;
-      });
-      
-      console.log(item);
-    } else {
+      item.Datra =true;
+      this.chomuon = item; 
+      this.onUpdateDatra();
+     } else {
       console.log("Chiến óc chó");
-    };
-    
+    }
+  }
+
+  onUpdateDatra() {
+      this.subscription = this.chomuonService.updateDatra(this.chomuon).subscribe(data => {   
+        console.log(data);
+      }, error =>{
+        console.log(Error);
+      })   
     
   }
 

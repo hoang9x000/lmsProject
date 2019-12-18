@@ -26,7 +26,7 @@ namespace lmsProject.Models
         public int Soluongcon { get; set; }
         [Required]
         [StringLength(100)]
-        public string Tensach { get; set; }
+        public string Tensach { get; set; } 
         public double Giatien { get; set; }
         //[Column(TypeName = "image")]
         //public byte[] Anhbia { get; set; }

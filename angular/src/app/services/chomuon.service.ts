@@ -21,8 +21,10 @@ export class ChomuonService {
     // return this.http.get<Chomuon[]>(this.API2);
   }
 
-  chanceDatra(chomuon : Chomuon) {
-    return this.http.post(this.API+ "/" + chomuon.Mathe +"/"+ chomuon.Masach,chomuon);
+  updateDatra(chomuon : Chomuon) : Observable<Chomuon[]>{
+    console.log(chomuon);
+    return this.http.put<Chomuon[]>(this.API +"/"+ chomuon.Mathe +"/"+ chomuon.Masach,chomuon);
+    // this.API +"/"+ chomuon.Mathe +"/"+ chomuon.Masach
   }
   
   updateChomuon() {

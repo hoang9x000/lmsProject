@@ -1,62 +1,23 @@
-.container{
-    margin: 5% 5% 20% 5%;
-    padding-bottom: 30px;
-    
-}
-p {
-    /* display: inline-block; */
-    margin-bottom: 0px;
-    font-weight: 400;
+h4{
+    width:300px;
+    background-color :#42A2A5;
+    padding: 5px 10px 5px 10px;
     text-align: center;
-    vertical-align: middle;
-    /* cursor: pointer; */
-    font-size: 20px;
-    line-height: 1.42857;
-    /* user-select: none; */
-    border-width: 1px;
-    /* border-style: solid; */
-    /* border-color: transparent; */
-    /* border-image: initial; */
-    padding: 6px 12px;
-    border-radius: 4px;
-    margin-right: auto;
-    width: 200px;
-    
+    margin : auto;
+    border-radius: 5px;
 }
-.btn-chomuon{
-    background-color: dodgerblue;
-    color: white;
+.container{
     margin-top: 40px;
-    margin-bottom: 40px;
 }
-.btn-tra{
-    width: 90px;
-    color: #fff;
-    background-color: red;
+form{
+    margin-top: 80px;
+    width: 800px;
+    margin-bottom: 80px;
 }
-/* .table{
-    padding-top: 1px;
-    border: 1px solid blue;
-} */
-.row{
-    margin-top: 20px;
-    padding: 0 10px;
-   
-}
-table{
-    border-radius: 25px;
-}
-.clickable{
-    cursor: pointer;   
-}
-
-.panel-heading div {
+.form-footer{
     margin-top: 40px;
-    font-size: 15px;
+    margin-left: 200px;
 }
-.panel-heading div span{
-    margin-left:5px;
-}
-.panel-body{
-    display: none;
+.btn{
+    margin-left: 60px;
 }
