@@ -98,16 +98,12 @@
             </div>
             <hr />
             <div class="form-group">
-               <div class="upload m-4">
+               <div  class="upload m-4">
                 <app-upload (onUploadFinished)="uploadFinished($event)" ></app-upload>
-               </div>
+               </div>   
 
-              <div *ngIf="dbPath">
+              <div>
                 <button type="button" class="btn btn-success pull-right mr-2 mb-2" (click)="add1()"> Xác Nhận </button>
-              </div>
-              
-              <div *ngIf="!dbPath">
-                <button type="button" class="btn btn-success pull-right mr-2 mb-2" (click)="add()"> Xác Nhận </button>
               </div>
             </div>
         </form>

@@ -179,14 +179,11 @@
                 <div class="upload m-4">
                     <app-upload (onUploadFinished)="uploadFinished($event)"></app-upload>
                 </div>
-                <div *ngIf="dbPath">
+                <!-- <div *ngIf="dbPath">
                     <button type="button" class="btn btn-success pull-right mr-2 mb-2" (click)="oneditnhomsach1()"> Xác Nhận </button>
-                </div>
+                </div> -->
 
-                <div *ngIf="!dbPath">
                     <button type="button" class="btn btn-success pull-right mr-2 mb-2" (click)="oneditnhomsach()"> Xác Nhận </button>
-                </div>
-              
             </div>
         </form>
     </div>

@@ -24,6 +24,7 @@ import { ThemsachComponent } from './Components/Adminpage/sach/themsach/themsach
 import { EditsachComponent } from './Components/Adminpage/sach/editsach/editsach.component';
 
 const routes: Routes = [
+
   { path: '', component: HomeComponent },
   { path: 'home', component: HomeComponent },
   { path: 'thongtin', component: ThongtinComponent },
@@ -48,15 +49,10 @@ const routes: Routes = [
   // { path: '**', redirectTo: '' }
   
   
- 
+  
   
  
-  
- 
- 
- 
-  
- // { path: '**', redirectTo: '' }
+  //{ path: '**', redirectTo: '' }
 
 ];
 

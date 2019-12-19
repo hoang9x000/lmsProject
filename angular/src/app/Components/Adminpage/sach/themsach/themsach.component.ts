@@ -24,20 +24,19 @@ export class ThemsachComponent implements OnInit, OnDestroy {
   public Soluong: number;
   public Soluongcon: number;
   public AnhPath: string;
-  public response: {dbPath: ''};
-  
+  public response: { dbPath : '' };
+
 
   constructor(
     public nhomsachService: NhomsachService,
-    public routerService : Router
+    public routerService: Router
   ) { }
 
   ngOnInit() {
   }
 
   ngOnDestroy() {
-    if (this.Subscription) 
-    {
+    if (this.Subscription) {
       this.Subscription.unsubscribe();
     }
   }
@@ -53,59 +52,75 @@ export class ThemsachComponent implements OnInit, OnDestroy {
   // public createImgPath(link :string){
   //   return 'http://localhost:5000/'+link;
   // }
-  
-  add()
-  {
-    let addnhomsach : Nhomsach =  {
-      Manhomsach : this.Manhomsach,
-      Matheloai : this.Matheloai,
-      Magiasach : this.Magiasach,
-      Tensach : this.Tensach,
-      Tacgia : this.Tacgia,
-      Tentheloai : this.Tentheloai,
-      Giatien : this.Giatien,
-      Soluong : this.Soluong,
-      Soluongcon : this.Soluongcon,
-      AnhPath: this.AnhPath,
-     
-    };
-    console.log(addnhomsach)
-    this.Subscription = this.nhomsachService.getAdd(addnhomsach)
-    .subscribe(data =>{
-       this.nhomsachs.push(data);
-      console.log(data);
-      this.routerService.navigateByUrl('/sach');
-    },  error => {
-      //console.log(error);
-      this.nhomsachService.handleError(error);
-    });
-  }
 
-  add1()
-  {
-    let addnhomsach : Nhomsach =  {
-      Manhomsach : this.Manhomsach,
-      Matheloai : this.Matheloai,
-      Magiasach : this.Magiasach,
-      Tensach : this.Tensach,
-      Tacgia : this.Tacgia,
-      Tentheloai : this.Tentheloai,
-      Giatien : this.Giatien,
-      Soluong : this.Soluong,
-      Soluongcon : this.Soluongcon,
+  // add() {
+  //   let addnhomsach: Nhomsach = {
+  //     Manhomsach: this.Manhomsach,
+  //     Matheloai: this.Matheloai,
+  //     Magiasach: this.Magiasach,
+  //     Tensach: this.Tensach,
+  //     Tacgia: this.Tacgia,
+  //     Tentheloai: this.Tentheloai,
+  //     Giatien: this.Giatien,
+  //     Soluong: this.Soluong,
+  //     Soluongcon: this.Soluongcon,
+  //     AnhPath: this.response.dbPath
+  //   };
+  //   console.log(this.response.dbPath)
+  //   if (this.response.dbPath == undefined) {
+  //     this.AnhPath = this.response.dbPath = "";
+  //     console.log(addnhomsach)
+  //     this.Subscription = this.nhomsachService.getAdd(addnhomsach)
+  //       .subscribe(data => {
+  //         this.nhomsachs.push(data);
+  //         console.log(data);
+  //         this.routerService.navigateByUrl('/sach');
+  //       }, error => {
+  //         //console.log(error);
+  //         this.nhomsachService.handleError(error);
+  //       });
+
+  //   }
+  //   else {
+  //     this.AnhPath = this.response.dbPath;
+  //     console.log(addnhomsach)
+  //     this.Subscription = this.nhomsachService.getAdd(addnhomsach)
+  //       .subscribe(data => {
+  //         this.nhomsachs.push(data);
+  //         console.log(data);
+  //         this.routerService.navigateByUrl('/sach');
+  //       }, error => {
+  //         //console.log(error);
+  //         this.nhomsachService.handleError(error);
+  //       });
+  //   }
+
+  // }
+
+  add1() {
+    let addnhomsach: Nhomsach = {
+      Manhomsach: this.Manhomsach,
+      Matheloai: this.Matheloai,
+      Magiasach: this.Magiasach,
+      Tensach: this.Tensach,
+      Tacgia: this.Tacgia,
+      Tentheloai: this.Tentheloai,
+      Giatien: this.Giatien,
+      Soluong: this.Soluong,
+      Soluongcon: this.Soluongcon,
       AnhPath: this.response.dbPath,
-     
+
     };
     console.log(addnhomsach)
     this.Subscription = this.nhomsachService.getAdd(addnhomsach)
-    .subscribe(data =>{
-       this.nhomsachs.push(data);
-      console.log(data);
-      this.routerService.navigateByUrl('/sach');
-    },  error => {
-      //console.log(error);
-      this.nhomsachService.handleError(error);
-    });
+      .subscribe(data => {
+        this.nhomsachs.push(data);
+        console.log(data);
+        this.routerService.navigateByUrl('/sach');
+      }, error => {
+        //console.log(error);
+        this.nhomsachService.handleError(error);
+      });
   }
 
 
