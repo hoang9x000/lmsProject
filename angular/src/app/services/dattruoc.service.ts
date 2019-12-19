@@ -28,4 +28,9 @@ export class DattruocService {
     console.log(dattruoc);
     return this.http.delete(this.API + `/dattruoc` + `/` + dattruoc.Mathe + `/` + dattruoc.Masach);
   }
+  UpdateDattruoc(dattruoc: Dattruoc): Observable<Dattruoc> {
+    dattruoc.Danhan = true;
+    console.log(dattruoc);
+    return this.http.put<Dattruoc>(this.API+`/dattruoc`+ `/` + dattruoc.Mathe+`/`+dattruoc.Masach, dattruoc);
+  }
 }   

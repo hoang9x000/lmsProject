@@ -1,0 +1,33 @@
+<div class="container-fluid">
+</div>
+<!-- table -->
+<br><br>
+<div class="table">
+    <div>
+        <h3 style="text-align: center;">Sách đặt trước</h3>
+    </div>
+    <br>
+    <div class="widget-content">
+        <table id="customers">
+            <tr>
+                <th style="text-align: center">Mã Sách</th>
+                <th style="text-align: center">Tên sách</th>
+                <th style="text-align: center">Ngày Đặt</th>
+                <th style="text-align: center"></th>
+
+            </tr>
+            <ng-container *ngFor=" let item of dattruoc">
+                <tr *ngIf="!item.Danhan">
+                    <td style="text-align: center">{{item.Masach}}</td>
+                    <td style="text-align: center">{{item.Tensach}}</td>
+                    <td style="text-align: center">{{item.Ngaydattruoc}}</td>
+                    <td style="text-align: center">
+                        <button *ngIf="item.Sosachdamuon === 0" disabled class="buttonme button3" type="button" className="btn btn-danger" (click)="onUpdateDattruoc(item)">
+                        <span className="fa fa-trash mr-5"></span> Đã nhận </button></td>    
+                </tr>            
+                
+            </ng-container>
+        </table>
+    </div>
+</div>
+<br><br>

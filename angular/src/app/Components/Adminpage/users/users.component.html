@@ -33,7 +33,7 @@
                         <th> Ngày Đăng Ký </th>
                         <th> Ngày Hết Hạn </th>
                         <th> Loại Người Dùng </th>
-                        <th> Action </th>
+                        <th> </th>
 
                     </tr>
                 </thead>
@@ -51,9 +51,15 @@
                         <td>{{item.Role}}</td>
                         <td>
                             <button type="button" class="btn btn-info ml-2" [routerLink]="['/users/' , item.Mathe]"
-                                (click)="edituser(item)"> Sua </button>
-                            <button type="button" class="btn btn-danger ml-2" (click)="deleteuser(item.Mathe)"> Xoa
+                                (click)="edituser(item)"> Sửa </button>
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-danger ml-2" (click)="deleteuser(item.Mathe)"> Xóa
                             </button>
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-info ml-2" [routerLink]="['/userdattruoc',item.Mathe]"
+                                (click)="edituser(item)">Đạt trước </button>
                         </td>
                     </tr>
                 </tbody>
