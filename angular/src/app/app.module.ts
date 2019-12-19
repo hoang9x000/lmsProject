@@ -41,6 +41,7 @@ import { UploadComponent } from './Components/upload/upload.component';
 
 // import { fakeBackendProvider } from './_helpers';
 import { ModalModule } from './_modal';
+import { UserdattruocComponent } from './Components/Adminpage/users/userdattruoc/userdattruoc.component';
 
 @NgModule({
   declarations: [
@@ -71,6 +72,7 @@ import { ModalModule } from './_modal';
     EdituserComponent,
     EditsachComponent,
     UploadComponent,
+    UserdattruocComponent,
    
   ],
   imports: [

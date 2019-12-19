@@ -22,6 +22,7 @@ import { AdduserComponent } from './Components/Adminpage/users/adduser/adduser.c
 import { EdituserComponent } from './Components/Adminpage/users/edituser/edituser.component';
 import { ThemsachComponent } from './Components/Adminpage/sach/themsach/themsach.component';
 import { EditsachComponent } from './Components/Adminpage/sach/editsach/editsach.component';
+import { UserdattruocComponent } from './Components/Adminpage/users/userdattruoc/userdattruoc.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -45,18 +46,8 @@ const routes: Routes = [
    {path: 'users/:Mathe' , component: EdituserComponent},
   { path: 'muontra', component: MuontraComponent },
   { path: 'sach', component: SachComponent },
-  // { path: '**', redirectTo: '' }
-  
-  
- 
-  
- 
-  
- 
- 
- 
-  
- // { path: '**', redirectTo: '' }
+  {path: 'userdattruoc/:Mathe' , component: UserdattruocComponent },
+  { path: '**', redirectTo: '' }
 
 ];
 
