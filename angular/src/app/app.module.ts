@@ -42,6 +42,7 @@ import { UploadComponent } from './Components/upload/upload.component';
 // import { fakeBackendProvider } from './_helpers';
 import { ModalModule } from './_modal';
 import { UserdattruocComponent } from './Components/Adminpage/users/userdattruoc/userdattruoc.component';
+import { JwPaginationComponent } from 'jw-angular-pagination';
 
 @NgModule({
   declarations: [
@@ -73,7 +74,7 @@ import { UserdattruocComponent } from './Components/Adminpage/users/userdattruoc
     EditsachComponent,
     UploadComponent,
     UserdattruocComponent,
-   
+    JwPaginationComponent
   ],
   imports: [
     BrowserModule,
