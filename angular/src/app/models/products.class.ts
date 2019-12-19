@@ -4,20 +4,20 @@ export class Products{
     public Soluongcon : number;
     public Tensach : string;
     public Giatien : string;
-    public Anhbia : string;
+    public AnhPath : string;
     constructor (
         Manhomsach : string,
         Soluong : number,
         Soluongcon : number,
         Tensach : string,
         Giatien : string,
-        Anhbia : string)
+        AnhPath : string)
         {
         this.Manhomsach = Manhomsach;
         this.Soluong = Soluong;
         this.Soluongcon =Soluongcon;
         this.Tensach = Tensach;
         this.Giatien = Giatien;
-        this.Anhbia = Anhbia;
+        this.AnhPath = AnhPath;
     }
 }

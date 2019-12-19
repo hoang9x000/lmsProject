@@ -24,7 +24,6 @@ export class UsersComponent implements OnInit, OnDestroy {
 
   loadData(){
     this.Subscription = this.usersService.getAllUsers().subscribe((data: Users[]) => {
-      console.log(data);
        this.users = data;
       //console.log(data)
     }, error => {
