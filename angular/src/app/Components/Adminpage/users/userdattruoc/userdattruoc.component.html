@@ -13,7 +13,7 @@
                 <th style="text-align: center">Mã Sách</th>
                 <th style="text-align: center">Tên sách</th>
                 <th style="text-align: center">Ngày Đặt</th>
-                <th style="text-align: center"></th>
+                <th style="text-align: center">Action</th>
 
             </tr>
             <ng-container *ngFor=" let item of dattruoc">
@@ -22,8 +22,8 @@
                     <td style="text-align: center">{{item.Tensach}}</td>
                     <td style="text-align: center">{{item.Ngaydattruoc}}</td>
                     <td style="text-align: center">
-                        <button *ngIf="item.Sosachdamuon === 0" disabled class="buttonme button3" type="button" className="btn btn-danger" (click)="onUpdateDattruoc(item)">
-                        <span className="fa fa-trash mr-5"></span> Đã nhận </button></td>    
+                        <button class="buttonme button3"  (click)="onUpdateDattruoc(item)">Đã nhận </button>
+                    </td>    
                 </tr>            
                 
             </ng-container>

@@ -1,34 +1,42 @@
 <div class="container">
-        <br/>
-        <div class="search-hero">
-                <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="&#61442;  search">
-        </div>
+    <br />
+    <div class="search-hero">
+        <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off"
+            placeholder="&#61442;  search">
+    </div>
     <h3 class="text-center m-3"> Sách Mới </h3>
     <div class="row d-flex justify-content-center">
-      <div  *ngFor = "let item of producs  | filter:searchText " class="col-sm-6 col-md-4 mt-3">
-        <div class="card mb-2">
-            <div  class="product-grid9" >
-                <div class="product-image9">
-                    <a [routerLink]="['/detailbook',item.Manhomsach]">
-                        <img class="pic-1" src="http://bestjquery.com/tutorial/product-grid/demo6/images/img-1.jpg">
-                        <img class="pic-2" src="http://bestjquery.com/tutorial/product-grid/demo6/images/img-2.jpg">
-                    </a>
-                    <a href="#" class="fa fa-search product-full-view"></a>
-                </div>
-                <div class="product-content">
-                    <!-- <ul class="rating">
+        <div *ngFor="let item of pageOfItems | filter:searchText " class="col-sm-6 col-md-4 mt-3">
+            <div class="card mb-2">
+                <div class="product-grid9">
+                    <div class="product-image9">
+                        <a [routerLink]="['/detailbook',item.Nhomsach.Manhomsach]">
+                            <img class="pic-1" src="http://bestjquery.com/tutorial/product-grid/demo6/images/img-1.jpg">
+                            <img class="pic-2" src="http://bestjquery.com/tutorial/product-grid/demo6/images/img-2.jpg">
+                        </a>
+                        <a href="#" class="fa fa-search product-full-view"></a>
+                    </div>
+                    <div class="product-content">
+                        <!-- <ul class="rating">
                         <li class="fa fa-star"></li>
                         <li class="fa fa-star"></li>
                         <li class="fa fa-star"></li>
                         <li class="fa fa-star"></li>
                         <li class="fa fa-star"></li>
                     </ul> -->
-                    <h3 class="title"><a [routerLink]="['/detailbook',item.Manhomsach]">{{item.Tensach}}</a></h3>
-                    <div class="price">{{item.Giatien}}</div>
-                    <a class="add-to-cart" [routerLink]="['/detailbook',item.Manhomsach]">VIEW PRODUCTS</a>
+                        <h3 class="title"><a [routerLink]="['/detailbook',item.Nhomsach.Manhomsach]">{{item.Nhomsach.Tensach}}</a></h3>
+                        <div class="price">{{item.Nhomsach.Giatien}}</div>
+                        <a class="add-to-cart" [routerLink]="['/detailbook',item.Nhomsach.Manhomsach]">VIEW PRODUCTS</a>
+                    </div>
                 </div>
             </div>
         </div>
-      </div>
     </div>
-  </div>
+    
+    <div class="card-footer pb-0 pt-3">
+        <div class="d-flex justify-content-center">
+            <jw-pagination [items]="items" (changePage)="onChangePage($event)"></jw-pagination>
+        </div>
+        
+    </div>
+</div>

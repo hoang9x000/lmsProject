@@ -23,7 +23,7 @@ export class UserdattruocComponent implements OnInit {
     this.dattruocService.Showdattruoc(mathe).subscribe(data => {
 
       this.dattruoc = data[0].Dattruoc;
-      console.log(this.dattruoc[0].Mathe);
+      // console.log(this.dattruoc[0].Mathe);
       //  this.dattruoc = data[0].Dattruoc;
     }, error => {
       console.log(error);
