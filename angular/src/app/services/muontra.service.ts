@@ -8,7 +8,6 @@ import { HttpClient } from '@angular/common/http';
 })
 export class MuontraService {
 
-  // public API2 : string = "http://localhost:3000/User";
   public API :string = "http://localhost:5000/api/phieumuon";
 
   constructor(
@@ -17,13 +16,15 @@ export class MuontraService {
     
   }
 
-  getAllMuontra() : Observable<Muontra[]>{
-    return this.http.get<Muontra[]>(this.API);
-    // return this.http.get<Muontra[]>(this.API2);
-  }
-
   addMuontra(muontra : Muontra) : Observable<Muontra[]>{
     return this.http.post<Muontra[]>(this.API,muontra);
-    // return this.http.post<Muontra[]>(this.API2,muontra);
+  }
+
+  handleError(err) {
+    if(err.error instanceof Error) {
+      console.log("Client-side error : ${err.error.message}");
+    } else {
+      console.log("Server-error : ${err.status}");
+    }
   }
 }

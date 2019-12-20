@@ -1,15 +1,15 @@
-export class Muontra{
+export class Muontra {
     public Mathe: string;
     public Masach: string;
-    public Ngaymuon: Date;
-
-    structor(
+    // public Ngaymuon: Date;
+    
+    constructor(
         Mathe: string,
         Masach: string,
-        Ngaymuon: Date,
-    ){
-        this.Masach = Masach;
-        this.Mathe = Mathe;
-        this.Ngaymuon = Ngaymuon;
+        // Ngaymuon: Date,
+        ) {
+            this.Mathe = Mathe;
+            this.Masach = Masach;
+            // this.Ngaymuon = Ngaymuon;
     }
 }

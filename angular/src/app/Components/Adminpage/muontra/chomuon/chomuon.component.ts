@@ -14,14 +14,15 @@ export class ChomuonComponent implements OnInit, OnDestroy {
   public chomuons : Chomuon[] = [];
   public subscription : Subscription;
   public chomuon : Chomuon = null;
+  public i : Chomuon = null;
 
   public mathe : string;
-  public masach : string;
-  public ngaymuon : Date;
-  public ngayhethan : Date;
-  public giahan : boolean;
-  public datra : boolean = false;
-  public hoten : string;
+  // public masach : string;
+  // public ngaymuon : Date;
+  // public ngayhethan : Date;
+  // public giahan : boolean;
+  // public datra : boolean = false;
+  // public hoten : string;
   public tensach : string;
 
 
@@ -50,27 +51,37 @@ export class ChomuonComponent implements OnInit, OnDestroy {
     });
   }
 
-  // Quahan(){ 
-  //   this.qh = this.timeDistace();
+  // timeDistace(ngay :Date){  //tinh so ngay qua han;
+  //   let dt = new Date("2019-10-15")
+  //   this.chomuons[1].Masach;
+  //   let td = Date.now() - ngay.getTime();
+  //   td = Math.floor(td/(24*3600*1000));
+
+  //   if (td < 0) return 0;
+  //   else return td;
   // }
 
-  timeDistace(ngay :Date){  //tinh so ngay qua han;
-    let dt = new Date("2019-10-15")
-    this.chomuons[1].Masach;
-    let td = Date.now() - ngay.getTime();
-    td = Math.floor(td/(24*3600*1000));
-
-    if (td < 0) return 0;
-    else return td;
+  onClickDatra(item : Chomuon) {
+    this.i = item;
+    this.mathe = item.Mathe;
+    this.tensach = item.Tensach;
   }
 
-  onEditDatra(item : Chomuon){ 
-    if(confirm("Xác nhận "+ item.Mathe +" đã trả "+ item.Tensach)){
-      item.Datra =true;
-      this.chomuon = item; 
-      this.onUpdateDatra();
+  onXacnhanTinhtrang(){
+
+  }
+
+  onEditDatra(){ 
+
+    console.log(this.i);
+    if(confirm("Xác nhận " + '"' +this.i.Mathe+ '"' + " đã trả " + '"' +this.i.Tensach)){
+      // item.Datra =true;
+      // this.chomuon = item; 
+      // this.onUpdateDatra();
+
+      console.log("on edit da tra");
      } else {
-      console.log("Chiến óc chó");
+       
     }
   }
 
