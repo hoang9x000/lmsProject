@@ -44,6 +44,8 @@ import { ModalModule } from './_modal';
 import { UserdattruocComponent } from './Components/Adminpage/users/userdattruoc/userdattruoc.component';
 import { JwPaginationComponent } from 'jw-angular-pagination';
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -74,7 +76,9 @@ import { JwPaginationComponent } from 'jw-angular-pagination';
     EditsachComponent,
     UploadComponent,
     UserdattruocComponent,
-    JwPaginationComponent
+    JwPaginationComponent,
+   
+  
   ],
   imports: [
     BrowserModule,
