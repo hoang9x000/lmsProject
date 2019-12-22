@@ -43,6 +43,7 @@ import { UploadComponent } from './Components/upload/upload.component';
 import { ModalModule } from './_modal';
 import { UserdattruocComponent } from './Components/Adminpage/users/userdattruoc/userdattruoc.component';
 import { JwPaginationComponent } from 'jw-angular-pagination';
+import { LuotmuonComponent } from './Components/Adminpage/muontra/luotmuon/luotmuon.component';
 
 
 
@@ -77,8 +78,7 @@ import { JwPaginationComponent } from 'jw-angular-pagination';
     UploadComponent,
     UserdattruocComponent,
     JwPaginationComponent,
-   
-  
+    LuotmuonComponent
   ],
   imports: [
     BrowserModule,

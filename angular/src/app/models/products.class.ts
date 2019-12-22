@@ -1,3 +1,5 @@
+import { Sach } from './sach.class';
+
 export class Products{
     public Manhomsach : string ;
     public Soluong : number;
@@ -5,6 +7,7 @@ export class Products{
     public Tensach : string;
     public Giatien : string;
     public AnhPath : string;
+    public Sach : Sach[]
     constructor (
         Manhomsach : string,
         Soluong : number,

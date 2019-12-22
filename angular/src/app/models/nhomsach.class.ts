@@ -1,4 +1,3 @@
-import { Sach } from './sach.class';
 export class Nhomsach{
     public Manhomsach : string;
     public Matheloai: string;

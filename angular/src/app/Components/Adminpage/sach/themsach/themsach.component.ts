@@ -108,8 +108,7 @@ export class ThemsachComponent implements OnInit, OnDestroy {
       Giatien: this.Giatien,
       Soluong: this.Soluong,
       Soluongcon: this.Soluongcon,
-      AnhPath: this.response.dbPath,
-
+      AnhPath: this.response.dbPath
     };
     console.log(addnhomsach)
     this.Subscription = this.nhomsachService.getAdd(addnhomsach)

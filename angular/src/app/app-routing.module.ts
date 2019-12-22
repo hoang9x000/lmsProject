@@ -26,6 +26,8 @@ import { UserdattruocComponent } from './Components/Adminpage/users/userdattruoc
 import { ChomuonComponent } from './Components/Adminpage/muontra/chomuon/chomuon.component';
 
 
+import {LuotmuonComponent} from './Components/Adminpage/muontra/luotmuon/luotmuon.component';
+
 const routes: Routes = [
 
   { path: '', component: HomeComponent },
@@ -50,10 +52,10 @@ const routes: Routes = [
   { path: 'muontra', component: MuontraComponent },
   { path: 'sach', component: SachComponent },
   {path: 'userdattruoc/:Mathe' , component: UserdattruocComponent },
-  { path: '**', redirectTo: '' },
-  {path: 'chomuon' , component: ChomuonComponent},
 
-  
+  {path: 'luotmuon' , component: LuotmuonComponent },
+  {path: 'chomuon' , component: ChomuonComponent },
+  { path: '**', redirectTo: '' }
 
 
 ];
