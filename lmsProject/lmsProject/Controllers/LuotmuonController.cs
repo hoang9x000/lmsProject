@@ -194,7 +194,11 @@ namespace lmsProject.Controllers
             _context.Luotmuon.Add(luotmuon);
             //xoa phieu muon va dattruoc khi luot muon duoc tao ra.
             _context.Phieumuon.Remove(_phieumuon);
-            _context.Dattruoc.Remove(_dattruoc);
+            if(_dattruoc != null) 
+            {
+                _context.Dattruoc.Remove(_dattruoc);
+            }
+           
             try
             {
                 await _context.SaveChangesAsync();
