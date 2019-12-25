@@ -369,7 +369,7 @@ __pycache__/
 *.odx.cs
 *.xsd.cs
 
-/lmsProject/lmsProject/Resources
+/lmsProject/lmsProject/Resources/
 
 # OpenCover UI analysis results
 OpenCover/
