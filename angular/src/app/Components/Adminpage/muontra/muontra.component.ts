@@ -90,4 +90,9 @@ export class MuontraComponent implements OnInit {
   onClickOK(){
     this.loadData()
   }
+  ngOnDestroy() {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
+  }
 }
