@@ -44,7 +44,7 @@ export class DetailbookComponent implements OnInit {
   onAdddattruoc(product: Nhomsach) {
     // console.log(product);
     for (var i = 0; i < product.Sach.length; i++) {
-      if ((product.Sach[i].Damuon == false) && (product.Sach[1].Tinhtrangsach == true)) {
+      if ((product.Sach[i].Damuon == false) && (product.Sach[i].Tinhtrangsach == true)) {
         this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
         var _mathe = this.currentUserSubject.value.Mathe.toString();
         // let _dattruoc = new DattruocAll(_mathe, product.Sach[i].Masach);
