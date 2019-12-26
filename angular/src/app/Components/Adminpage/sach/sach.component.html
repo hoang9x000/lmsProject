@@ -12,8 +12,9 @@
         <a class="btn btn-outline-success mt-3 mb-3 ml-5" [routerLink]="['/sach/addsach']"> Thêm Sach </a>
         <form class="form-inline align-self-center mb-3 mr-5" id="searchAndFilterForm" method="Get">
             <div class="form-row align-items-center">
-                <label class="my-1 ml-2 ml-2 mr-2 d-inline" for="search_key"> Tìm Kiếm </label>
-                <input type="text" class="search_key" value placeholder="aaaaaa">
+                <div class="search-nhomsach">
+                    <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="&#61442;  Start searching for a nhomsach by id or name or country">
+                  </div>
             </div>
             <div class="col-auto">
                 <button id="search" class="btn btn-primary mb-2">Tìm Kiếm</button>
@@ -40,7 +41,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let item of nhomsach; let i = index">
+                    <tr *ngFor="let item of nhomsach | filter:searchText; let i = index">
                         <td>{{ i + 1}}</td>
                         <!-- <td><img [src]="createImgPath(item.AnhPath)" alt="profile picture" style="width:60px; height:60px;"></td> -->
                         <td>{{ item.Manhomsach }}</td>

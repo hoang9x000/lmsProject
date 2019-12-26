@@ -10,6 +10,7 @@ import { Nhomsach } from './../../../models/nhomsach.class'
 })
 export class SachComponent implements OnInit, OnDestroy {
 
+  searchText;
   public Subscription : Subscription;
   public nhomsach : Nhomsach[] = [];
 
