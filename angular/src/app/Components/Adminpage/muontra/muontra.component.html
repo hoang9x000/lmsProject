@@ -105,20 +105,10 @@
 
 											<label for="my-input">Tình trạng sách: </label>
 											<div class="card">
-												<!-- <div class="form-row">
-													<div class="col-md-6 mb-3">
-
-														<select class="mb-2 form-control" (change)="check($event)" >     
-															<option [ngValue]="null">Select</option>
-															<option  [value]="true" >Rất tốt</option>
-															<option  [value]="false" >Có hư hại (hoặc mất)</option>
-														</select>
-													</div>
-												</div> -->
 												<div class="form-check mb-4">
 													<input class="form-check-input" name="tinhtrang" type="radio" id="radio-179" 
-														[value]="true" [(ngModel)]="tinhtrangsach" [ngModelOptions]="{standalone: true}" checked="true">
-													<label class="form-check-label" for="radio-179">Rất tốt</label>
+														[value]="true" [(ngModel)]="tinhtrangsach" [ngModelOptions]="{standalone: true}">
+													<label class="form-check-label" for="radio-179">Còn nguyên vẹn</label>
 												</div>
 										
 												<div class="form-check mb-4">
@@ -141,7 +131,7 @@
 											
 											<!--Modal: modalConfirmAccect-->
 											<div class="modal fade" id="modalConfirmAccect" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-											aria-hidden="true">
+											aria-hidden="true" data-backdrop>
 												<div class="modal-dialog modal-sm modal-notify modal-danger" role="document">
 													<!--Content-->
 													<div class="modal-content text-center">
@@ -165,9 +155,9 @@
 														<a type="button" class="btn btn-outline-danger waves-effect" data-dismiss="modal">No</a>														
 
 														<!-- Modal: modalCart -->
-														<div class="modal fade" id="modalCart" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-														aria-hidden="true">
-														<div class="modal-dialog" role="document">
+														<div class="modal fade top" id="modalCart" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+																aria-hidden="true">
+														<div class="modal-dialog modal-lg" role="document">
 															<div class="modal-content">
 															<!--Header-->
 															<div class="modal-header">
@@ -183,22 +173,37 @@
 																	<thead>
 																	  <tr>
 																		<th>#</th>
-																		<th>Thuộc tính</th>
-																		<th>Giá trị</th>
+																		<th>Mã thẻ</th>																		
+																		<th>Họ tên</th>
+																		<th>Mã sách</th>
+																		<th>Tên sách</th>
+																		<th>Ngày mượn</th>
+																		<th>Ngày hết hạn</th>
+																		<th>Ngày trả</th>
+																		<th>Tình trạng sách</th>
+																		<th>Tiền phạt</th>
 																	  </tr>
 																	</thead>
-																	<tbody>
+																	<tbody *ngFor="let item of luotmuonid">
 																	  <tr>
 																		<th scope="row">1</th>
-																		<td>Mã thẻ</td>
-																		<td>100$</td>
+																		<td>{{item.Mathe}}</td>
+																		<td>{{item.Hoten}}</td>
+																		<td>{{item.Masach}}</td>
+																		<td>{{item.Tensach}}</td>
+																		<td>{{item.Ngaymuon}}</td>
+																		<td>{{item.Ngayhethan}}</td>
+																		<td>{{item.Ngaytra}}</td>
+																		<td *ngIf="item.Tinhtrangsachluctra">Còn nguyên vẹn</td>
+																		<td *ngIf="!item.Tinhtrangsachluctra">Có hư hại (hoặc mất)</td>
+																		<td>{{item.Tienphat}}</td>
 																	  </tr>
 																  </table>
 
 															</div>
 															<div class="modal-footer">
 																<button type="button" class="btn btn-outline-primary" data-dismiss="modal" (click)="onClickOK()">Close</button>
-																<button class="btn btn-primary" (click)="onClickOK()">OK</button>
+																<button class="btn btn-primary" (click)="onClickOK()" data-dismiss="modal">OK</button>
 															  </div>
 															</div>
 														</div>

@@ -13,11 +13,12 @@ export class MuontraService {
   constructor(public http : HttpClient) { }
 
   getAllMuontra() : Observable<Muontra[]>{
+    console.log("get all Muontra");
     return this.http.get<Muontra[]>(this.API);
   }
 
   updateDatra(muontra : Muontra) : Observable<Muontra[]>{
-    console.log(muontra);
+    console.log("da update");
     return this.http.put<Muontra[]>(this.API +"/"+ muontra.Mathe +"/"+ muontra.Masach,muontra);
     // this.API +"/"+ chomuon.Mathe +"/"+ chomuon.Masach
   }

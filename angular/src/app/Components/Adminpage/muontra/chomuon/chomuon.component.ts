@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs';
 import { ChomuonService } from 'src/app/services/chomuon.service';
 import { Chomuon } from 'src/app/models/chomuon.class';
 import { MuontraService } from 'src/app/services/muontra.service';
+import { Muontra } from 'src/app/models/muontra.class';
 
 @Component({
   selector: 'app-chomuon',
@@ -11,7 +12,7 @@ import { MuontraService } from 'src/app/services/muontra.service';
 })
 export class ChomuonComponent implements OnInit {  
 
-  // public chomuon : Chomuon = null;
+  public muontras : Muontra[] = [];
 
   public mathe : string;
   public masach : string;
@@ -23,23 +24,20 @@ export class ChomuonComponent implements OnInit {
     public muontraService : MuontraService
     ) { }
 
-  ngOnInit() {
-  }
-
-  onAddChomuon(chomuon : Chomuon) {
+    ngOnInit() {
+    }
+  
+    onAddChomuon(chomuon : Chomuon) {
 
     if(confirm("Xác nhận cho thành viên: '" +this.mathe+ "' mượn sách có id: '" +this.masach+ "'")){
-      console.log(this.masach,"-",this.mathe);
+      console.log(this.mathe,"-",this.masach);
       chomuon = new Chomuon(this.mathe, this.masach);
-
       this.subscription = this.chomuonService.addMuontra(chomuon).subscribe(data =>{
       console.log(data);
       });
       console.log("on edit da tra");
      } else {
-       
     }
-    
   }
 
   ngOnDestroy() {

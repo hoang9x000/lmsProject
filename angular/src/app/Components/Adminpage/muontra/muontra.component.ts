@@ -66,11 +66,11 @@ export class MuontraComponent implements OnInit {
   }
 
   onXacnhanTinhtrang(){
+    console.log("tinhtrangsach",this.tinhtrangsach);
     // update Chưa trả thành đã trả;
     this.muontra.Datra = true;
     this.subscription =  this.muontraService.updateDatra(this.muontra).subscribe(data =>{
-      console.log("Kien ga", data);
-      console.log(true)
+
     }, error => {
     });
 
@@ -78,45 +78,16 @@ export class MuontraComponent implements OnInit {
     let themluotmuon = new Luotmuonpost(this.mathe, this.masach, this.tinhtrangsach);
     console.log(themluotmuon);
     this.subscription = this.luotmuonService.addLuotmuon(themluotmuon).subscribe(data =>{
-      console.log("vai dai");
-      // this.subscription = this.luotmuonService.getLuotmuon(themluotmuon.Mathe, themluotmuon.Masach).subscribe(data =>{
-        
-      // }, error => {
+      this.subscription = this.luotmuonService.getLuotmuon(themluotmuon.Mathe, themluotmuon.Masach).subscribe(data =>{
+        this.luotmuonid = data;
+      }, error => {
 
-      // });
+      });
     }, error => {
-    });
-
-    // this.luotmuon.Mathe = themluotmuon.Mathe;
-    // this.luotmuon.Masach = themluotmuon.Masach;
-    console.log(this.tinhtrangsach);
-    
+    });    
   }
 
   onClickOK(){
-    // this.subscription = this.luotmuonService.getLuotmuon(this.luotmuon).subscribe(data => {
-
-    // });
+    this.loadData()
   }
-  // onAddMuontra() {
-  //   console.log(this.mathe,"-",this.masach);
-  //   // let chomuon = new Chomuon(this.mathe, this.masach);
-  //   // this.subscription = this.chomuonService.addMuontra(chomuon).subscribe(data =>{
-  //   //   console.log(data);
-  //   // });
-  // } 
-
-  onEditDatra(){ 
-    // console.log(this.i);
-    if(confirm("Xác nhận " + '"' +this.i.Mathe+ '"' + " đã trả " + '"' +this.i.Tensach)){
-      // item.Datra =true;
-      // this.chomuon = item; 
-      // this.onUpdateDatra();
-
-      console.log("on edit da tra");
-     } else {
-       
-    }
-  }
-
 }

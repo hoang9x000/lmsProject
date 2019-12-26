@@ -14,10 +14,12 @@ export class LuotmuonService {
   constructor(public http : HttpClient) { }
 
   getLuotmuon(Mathe : string, Masach: string) : Observable<Luotmuon[]>{
+    console.log("da get Luotmuon");
     return this.http.get<Luotmuon[]>(this.API+ "/" +Mathe+ "/" +Masach);
   }
 
   addLuotmuon(luotmuon: Luotmuonpost) : Observable<Luotmuonpost[]>{
+    console.log("da add Luotmuon");
     return this.http.post<Luotmuonpost[]>(this.API,luotmuon);
   }
 }
