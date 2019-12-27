@@ -1,13 +1,17 @@
 <div class="container">
   <h3 class="text-center m-3">{{Theloai1}}</h3>
+  <div class="search-hero">
+    <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off"
+        placeholder="&#61442;  search">
+  </div>
   <div class="row d-flex justify-content-center">
-    <div *ngFor = "let item of theloai1" class="col-sm-6 col-md-4 mt-3">
+    <div *ngFor = "let item of theloai1 | filter:searchText" class="col-sm-6 col-md-4 mt-3">
       <div class="card mb-2">
           <div  class="product-grid9" >
               <div class="product-image9">
                   <a [routerLink]="['/detailbook',item.Manhomsach]">
                       <img class="pic-1" src="http://bestjquery.com/tutorial/product-grid/demo6/images/img-1.jpg">
-                      <img class="pic-2" src="http://bestjquery.com/tutorial/product-grid/demo6/images/img-2.jpg">
+                      <img class="pic-2" src="http://localhost:5000/{{item.AnhPath}}">
                   </a>
                   <a href="#" class="fa fa-search product-full-view"></a>
               </div>

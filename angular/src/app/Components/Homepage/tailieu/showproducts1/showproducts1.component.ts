@@ -6,6 +6,7 @@ import { Nhomsach } from 'src/app/models/productsNhomsach.class';
   styleUrls: ['./showproducts1.component.css']
 })
 export class Showproducts1Component implements OnInit {
+  searchText;
   @Input ('key') theloai2 :Nhomsach[] = [];
   @Input ('key1') Theloai2 :string = "";
   constructor() {}

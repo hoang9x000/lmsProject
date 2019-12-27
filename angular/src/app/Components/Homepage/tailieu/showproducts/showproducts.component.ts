@@ -9,9 +9,11 @@ import { from } from 'rxjs';
   styleUrls: ['./showproducts.component.css']
 })
 export class ShowproductsComponent implements OnInit {
+  searchText;
   @Input ('key') theloai1 :Nhomsach[] = [];
   @Input ('key1') Theloai1 :string = "";
   constructor() {}
   ngOnInit() {
+    console.log(this.theloai1)
   }
 }

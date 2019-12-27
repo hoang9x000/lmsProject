@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Nhomsach } from '../../../models/productsNhomsach.class';
-import { ProductsTheloaiService } from '../../../services/product-detail-book.service';
+import { ProductDetailBookService } from '../../../services/product-detail-book.service';
 import { DattruocAll } from '../../../models/dattruocAll.class';
 import { User } from '../../../models/user';
 import { DattruocService } from '../../../services/dattruoc.service';
@@ -22,7 +22,7 @@ export class DetailbookComponent implements OnInit {
   public dattruoc: DattruocAll[] = [];
   constructor(
     public activatedRoute: ActivatedRoute,
-    public productDetailBookService: ProductsTheloaiService,
+    public productDetailBookService: ProductDetailBookService,
     public dattruocService :DattruocService,
     private modalService: ModalService
   ) {
