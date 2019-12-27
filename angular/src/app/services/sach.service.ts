@@ -13,7 +13,7 @@ export class SachService {
   constructor(public http: HttpClient) { }
 
   getSach(Masach : string) : Observable<Sach>{
-    console.log("get Sach");
+    console.log("get-Sach-s");
     return this.http.get<Sach>(this.API+ "/" +Masach);
   }
 }

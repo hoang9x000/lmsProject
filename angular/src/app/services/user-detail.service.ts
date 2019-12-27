@@ -13,7 +13,7 @@ export class UserDetailService {
   constructor(public http : HttpClient) { }
 
   getUserDetail(Mathe : string) : Observable<UserDetail> {
-    console.log("get user-detail");
+    console.log("get-user-detail-s");
     return this.http.get<UserDetail>(this.API+ "/" +Mathe);
   }
 }
