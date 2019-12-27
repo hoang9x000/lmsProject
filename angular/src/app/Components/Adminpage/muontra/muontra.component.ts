@@ -11,6 +11,9 @@ import { LuotmuonComponent } from './luotmuon/luotmuon.component';
 import { error } from 'util';
 import { UserDetailService } from 'src/app/services/user-detail.service';
 import { SachService } from 'src/app/services/sach.service';
+import { UserDetail } from 'src/app/models/user-detail.class';
+import { Sach } from 'src/app/models/sach.class';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-muontra',
@@ -21,6 +24,9 @@ export class MuontraComponent implements OnInit {
 
   public muontras: Muontra[] = [];
   public luotmuonid: Luotmuon[] = [];
+
+  public userdetail: UserDetail = null;
+  public sach: Sach = null;
   public subscription: Subscription;
   public muontra: Muontra = null;
   public i: Muontra = null;
@@ -41,8 +47,9 @@ export class MuontraComponent implements OnInit {
     public muontraService: MuontraService,
     public chomuonService: ChomuonService,
     public luotmuonService: LuotmuonService,
-    public userdetailService :UserDetailService,
-    public sachServvice : SachService,
+    public userdetailService: UserDetailService,
+    public sachService: SachService,
+    public routerService: Router,
   ) { }
 
   // check(e){
@@ -61,6 +68,59 @@ export class MuontraComponent implements OnInit {
     });
   }
 
+  //them phieu muon
+  onAddChomuon(chomuon: Chomuon) {
+    if (confirm("Xác nhận cho thành viên: '" + this.mathe + "' mượn sách có id: '" + this.masach + "'")) {
+      //lay dl thanhvien
+      this.subscription = this.userdetailService.getUserDetail(this.mathe).subscribe(data => {
+        this.userdetail = data;
+        console.log("<<==>>",this.userdetail);
+        
+        let ngayhethan = new Date(this.userdetail.Ngayhethan);
+        if ((ngayhethan.getTime() <= Date.now()) || (this.userdetail.Sosachdamuon > 6)) {
+          alert("tài khoản đã hết hạn hoặc hết lượt mượn sách");
+        }
+        else {
+          //lay dl sach
+          this.subscription = this.sachService.getSach(this.masach).subscribe(data => {
+            this.sach = data;
+            console.log("<<==>>",this.sach);
+            if (this.sach[0].Tinhtrangsach === false) {
+              alert("Sách đã bị mất hoặc hư hại");
+            }
+            else {
+              if (this.sach[0].Damuon === true) {
+                alert("Sách đã được mượn");
+              }
+              else {
+                chomuon = new Chomuon(this.mathe, this.masach);
+                this.subscription = this.chomuonService.addMuontra(chomuon).subscribe(data => {
+                  alert("Đã thêm phiếu mượn");
+
+                  //kiểm tra thong tin sach
+                  this.subscription = this.sachService.getSach(this.masach).subscribe(data => {
+                    console.log("==>>", data);
+                  });
+
+                  //kiểm tra thong tin the
+                  this.subscription = this.userdetailService.getUserDetail(this.mathe).subscribe(data => {
+                    console.log("==>>", data);
+                  });
+                  this.loadData();
+                });
+              }
+            }
+          }, error => {
+            alert("Nhập mã sách sai");
+          })
+        }
+      }, error => {
+        alert("Nhập sai mã thẻ");
+      });
+    } else { }
+  }
+
+  //lay gia tri row duoc nhan
   onClickDatra(item: Muontra) {
     this.i = item;
     this.mathe = item.Mathe;
@@ -69,24 +129,29 @@ export class MuontraComponent implements OnInit {
     this.muontra = item;
   }
 
+  //tra sach va view hoa don
   onXacnhanTinhtrang() {
     console.log("tinhtrangsach", this.tinhtrangsach);
+    //kiểm tra thong tin sach
+    this.subscription = this.sachService.getSach(this.masach).subscribe(data => {
+      console.log("<<==>>", data);
+    });
 
     // update Chưa trả thành đã trả;
     this.muontra.Datra = true;
     this.subscription = this.muontraService.updateDatra(this.muontra).subscribe(data => {
-      alert("đã cập nhật sách");       
+      alert("đã cập nhật sách");
       let themluotmuon = new Luotmuonpost(this.mathe, this.masach, this.tinhtrangsach);
       console.log(themluotmuon);
 
       //kiểm tra thong tin the
-      this.subscription = this.userdetailService.getUserDetail(this.mathe).subscribe(data =>{
-        console.log("Đây là thông tin thành viên",data);
+      this.subscription = this.userdetailService.getUserDetail(this.mathe).subscribe(data => {
+        console.log("Thông tin thành viên", data);
       });
 
       //kiểm tra thong tin sach
-      this.subscription = this.sachServvice.getSach(this.masach).subscribe(data => {
-        console.log("Đây là thông tin sách",data);
+      this.subscription = this.sachService.getSach(this.masach).subscribe(data => {
+        console.log("Thông tin sách", data);
       })
 
       //sinh ra phieu luot muon;
