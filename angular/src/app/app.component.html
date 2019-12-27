@@ -66,8 +66,8 @@
             <li>
                 <a class="nav-item nav-link" routerLink="/muontra" *ngIf="isAdmin">Mượn trả</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" *ngIf="!currentUser" (click)="openModal('custom-modal-1')">Đăng Nhập</a>
+            <li class="nav-item ">
+                <a class="nav-link" *ngIf="!currentUser" (click)="openModal('custom-modal-1')"><h5>Đăng Nhập</h5></a>
             </li>
         </ul>
         <ul class="navbar-nav ml-auto mr-5 " *ngIf="currentUser">
