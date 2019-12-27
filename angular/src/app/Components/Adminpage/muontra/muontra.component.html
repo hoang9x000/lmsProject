@@ -1,1 +1,232 @@
-<p>muontra works!</p>
+<!-- <head>
+	<link rel="stylesheet" href="animate.min.css">
+</head>  -->
+  
+<div class="container ">
+	<div>
+		<!-- Button modal-->
+		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalChomuon">Cho mượn</button>
+
+		 <!-- Modal: modalChomuon-->
+		 <div class="modal fade" id="modalChomuon" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+		 		aria-hidden="true" data-backdrop="false">
+		 <div class="modal-dialog modal-side modal-bottom-right modal-notify modal-info" role="document">
+		   <!--Content-->
+		   <div class="modal-content">
+				<div class="modal-header modal-add-header">
+					<p class="heading lead white-text">Thêm phiếu mượn</p>		
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true" class="white-text">×</span>
+					</button>
+				</div>
+				<!-- body -->
+				<div class="modal-body modal-add--body">
+					<app-chomuon ></app-chomuon>
+				</div>				
+		   </div>
+		   <!--/.Content-->
+		 </div>
+	   </div>
+	   <!-- Modal: modalAddChomuon-->
+	</div>
+
+	<div class="row ">
+		<div class="col ">
+			<div class="panel panel-primary border border-primary">
+				<table class="table table-hover table-striped" style="border-color: darkblue;" id="dev-table">
+					<thead class="thead-light">
+						<tr>
+							<th>#</th>
+							<th>Mã sách</th>
+							<th>Mã thẻ</th>
+							<th>Tên sách</th>
+							<th>Ngày mượn</th>
+							<th>Ngày hết hạn</th>
+							<th>Quá hạn</th>
+
+							<th>Trả
+								<span class=" clickable filter" data-toggle="tooltip" title="Toggle table filter"
+									data-container="body">
+									<i class="glyphicon glyphicon-filter"></i>
+								</span>
+							</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr *ngFor=" let item of muontras; let i = index">
+							<td>{{i + 1}}</td>
+							<td>{{item.Masach}}</td>
+							<td>{{item.Mathe}}</td>
+							<td>{{item.Tensach}}</td>
+							<td>{{item.Ngaymuon}}</td>
+							<td>{{item.Ngayhethan}}</td>
+							<td> Ngày</td>
+
+							<td>
+								<input class="btn btn-tra" type="button" *ngIf="item.Datra" value="Đã trả" style="background-color:green ;" 
+										data-toggle="modal" data-target="#modalXacNhanTinhtrang" (click)="onClickDatra(item)" disabled>
+								
+								<!-- btn modalXacNhanTinhtrang -->
+								<input class="btn btn-tra" type="button" *ngIf="!item.Datra" value="Chưa trả" style="background-color : red" 
+										data-toggle="modal" data-target="#modalXacNhanTinhtrang" (click)="onClickDatra(item)">	
+
+								<!-- Modal: modalXacNhanTinhtrang -->
+								<div class="modal fade right" id="modalXacNhanTinhtrang" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+									aria-hidden="true" data-backdrop="false">
+									<div class="modal-dialog modal-full-height modal-right modal-notify modal-info" role="document">
+									  <div class="modal-content">
+										<!--Header-->
+										<div class="modal-header">
+										  <strong class="heading lead white-text">Xác nhận tình trạng sách</strong>
+								  
+										  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+											<span class="white-text">×</span>
+										  </button>
+										</div>
+								  
+										<!--Body-->
+										<div class="modal-body">
+											<div class="text-center">
+												<i class="fa fa-file-text fa-4x mb-3 animated rotateIn" aria-hidden="true"></i>
+											</div>
+									
+											<hr>
+											
+											<!-- Radio -->
+											<div class="form-group">
+												<label for="my-input">Mã thẻ</label>
+												<input id="my-input" class="form-control" type="text" [(ngModel)]="this.mathe" [ngModelOptions]="{standalone: true}" disabled>
+											</div>
+
+											<div class="form-group">
+												<label for="my-input">Tên sách</label>
+												<input id="my-input" class="form-control" type="text" [(ngModel)]="this.tensach" [ngModelOptions]="{standalone: true}" disabled>
+											</div>
+
+											<label for="my-input">Tình trạng sách: </label>
+											<div class="card">
+												<div class="form-check mb-4">
+													<input class="form-check-input" name="tinhtrang" type="radio" id="radio-179" 
+														[value]="true" [(ngModel)]="tinhtrangsach" [ngModelOptions]="{standalone: true}">
+													<label class="form-check-label" for="radio-179">Còn nguyên vẹn</label>
+												</div>
+										
+												<div class="form-check mb-4">
+													<input class="form-check-input" name="tinhtrang" type="radio" id="radio-279" 
+														[value]="false" [(ngModel)]="tinhtrangsach" [ngModelOptions]="{standalone: true}">
+													<label class="form-check-label" for="radio-279">Có hư hại (hoặc mất)</label>
+												</div>												
+											</div>
+											<!-- Radio -->
+										</div>
+								  
+										<!--Footer-->
+										<div class="modal-footer justify-content-center">
+											<button type="button" class="btn btn-primary waves-effect waves-light" 
+													data-toggle="modal" data-target="#modalConfirmAccect">Save
+												<i class="fa fa-paper-plane ml-1"></i>
+											</button>
+
+											<button type="button" class="btn btn-outline-danger waves-effect" data-dismiss="modal">Cancel</button>
+											
+											<!--Modal: modalConfirmAccect-->
+											<div class="modal fade" id="modalConfirmAccect" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+											aria-hidden="true" data-backdrop>
+												<div class="modal-dialog modal-sm modal-notify modal-danger" role="document">
+													<!--Content-->
+													<div class="modal-content text-center">
+													<!--Header-->
+													<div class="modal-confirm-header d-flex justify-content-center">
+														<p class="heading white-text">Xác nhận trả?</p>
+													</div>
+
+													<!--Body-->
+													<div class="modal-confirm-body">
+
+														<i class="fa fa-spinner fa-4x animated rotateIn"></i>
+
+													</div>
+
+													<!--Footer-->
+													<div class="modal-confirm-footer flex-center">
+														<!-- Button trigger modal-->
+														<a class="btn btn-success" routerLink="/luotmuon" (click)="onXacnhanTinhtrang()"
+															data-toggle="modal" data-target="#modalCart">Yes</a>
+														<a type="button" class="btn btn-outline-danger waves-effect" data-dismiss="modal">No</a>														
+
+														<!-- Modal: modalCart -->
+														<div class="modal fade top" id="modalCart" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+																aria-hidden="true">
+														<div class="modal-dialog modal-lg" role="document">
+															<div class="modal-content">
+															<!--Header-->
+															<div class="modal-header">
+																<h4 class="modal-title" id="myModalLabel">Thông tin phiếu mượn</h4>
+																<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+																<span aria-hidden="true">×</span>
+																</button>
+															</div>
+															<!--Body-->
+															<div class="modal-body">
+
+																<table class="table table-hover">
+																	<thead>
+																	  <tr>
+																		<th>#</th>
+																		<th>Mã thẻ</th>																		
+																		<th>Họ tên</th>
+																		<th>Mã sách</th>
+																		<th>Tên sách</th>
+																		<th>Ngày mượn</th>
+																		<th>Ngày hết hạn</th>
+																		<th>Ngày trả</th>
+																		<th>Tình trạng sách</th>
+																		<th>Tiền phạt</th>
+																	  </tr>
+																	</thead>
+																	<tbody *ngFor="let item of luotmuonid">
+																	  <tr>
+																		<th scope="row">1</th>
+																		<td>{{item.Mathe}}</td>
+																		<td>{{item.Hoten}}</td>
+																		<td>{{item.Masach}}</td>
+																		<td>{{item.Tensach}}</td>
+																		<td>{{item.Ngaymuon}}</td>
+																		<td>{{item.Ngayhethan}}</td>
+																		<td>{{item.Ngaytra}}</td>
+																		<td *ngIf="item.Tinhtrangsachluctra">Còn nguyên vẹn</td>
+																		<td *ngIf="!item.Tinhtrangsachluctra">Có hư hại (hoặc mất)</td>
+																		<td>{{item.Tienphat}}</td>
+																	  </tr>
+																  </table>
+
+															</div>
+															<div class="modal-footer">
+																<button type="button" class="btn btn-outline-primary" data-dismiss="modal" (click)="onClickOK()">Close</button>
+																<button class="btn btn-primary" (click)="onClickOK()" data-dismiss="modal">OK</button>
+															  </div>
+															</div>
+														</div>
+														</div>
+														<!-- Modal: modalCart -->
+													</div>
+
+													</div>
+													<!--/.Content-->
+												</div>
+											</div>
+											
+										</div>
+									  </div>
+									</div>
+								  </div>
+								  <!-- Modal: modalXacNhanTinhtrang -->		
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+	</div>
+</div>

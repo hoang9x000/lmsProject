@@ -23,9 +23,11 @@ import { EdituserComponent } from './Components/Adminpage/users/edituser/edituse
 import { ThemsachComponent } from './Components/Adminpage/sach/themsach/themsach.component';
 import { EditsachComponent } from './Components/Adminpage/sach/editsach/editsach.component';
 import { UserdattruocComponent } from './Components/Adminpage/users/userdattruoc/userdattruoc.component';
+import { ChomuonComponent } from './Components/Adminpage/muontra/chomuon/chomuon.component';
+
 
 import {LuotmuonComponent} from './Components/Adminpage/muontra/luotmuon/luotmuon.component';
-import {ChomuonComponent} from './Components/Adminpage/muontra/chomuon/chomuon.component';
+
 const routes: Routes = [
 
   { path: '', component: HomeComponent },
@@ -50,6 +52,7 @@ const routes: Routes = [
   { path: 'muontra', component: MuontraComponent },
   { path: 'sach', component: SachComponent },
   {path: 'userdattruoc/:Mathe' , component: UserdattruocComponent },
+
   {path: 'luotmuon' , component: LuotmuonComponent },
   {path: 'chomuon' , component: ChomuonComponent },
   { path: '**', redirectTo: '' }

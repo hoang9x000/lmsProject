@@ -112,8 +112,16 @@ namespace lmsProject.Controllers
             var nhomsachCu = await _context.Nhomsach.FindAsync(nhomsach.Manhomsach);
             if(nhomsach.Soluong > nhomsachCu.Soluong)
             {
-                for (int i = nhomsachCu.Soluong; i < nhomsach.Soluong; i++)
+                var j = nhomsach.Soluong;
+                for (int i = nhomsachCu.Soluong; i < j; i++)
                 {
+                    if (_context.Sach.Any(e => e.Masach == (nhomsach.Manhomsach + i)))
+                    {
+                        j++;
+                        continue;
+                        
+                    }
+                        
                     Sach _sach = new Sach();
                     _sach.Masach = (string)nhomsach.Manhomsach + i;
                     _sach.Manhomsach = nhomsach.Manhomsach;

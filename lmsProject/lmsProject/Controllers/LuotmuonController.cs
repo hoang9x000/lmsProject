@@ -154,6 +154,8 @@ namespace lmsProject.Controllers
         {
             //
             luotmuon.Ngaytra = DateTime.Now;
+            var _user = await _context.User.FindAsync(luotmuon.Mathe);
+           // _user.Sosachdamuon--;
             var _phieumuon = await _context.Phieumuon.FindAsync(luotmuon.Mathe, luotmuon.Masach);
             var _dattruoc = await _context.Dattruoc.FindAsync(luotmuon.Mathe, luotmuon.Masach);
             luotmuon.Ngaymuon = _phieumuon.Ngaymuon;
@@ -194,7 +196,11 @@ namespace lmsProject.Controllers
             _context.Luotmuon.Add(luotmuon);
             //xoa phieu muon va dattruoc khi luot muon duoc tao ra.
             _context.Phieumuon.Remove(_phieumuon);
-            _context.Dattruoc.Remove(_dattruoc);
+            if(_dattruoc != null) 
+            {
+                _context.Dattruoc.Remove(_dattruoc);
+            }
+           
             try
             {
                 await _context.SaveChangesAsync();

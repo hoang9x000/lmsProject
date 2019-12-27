@@ -11,6 +11,7 @@ import { Routes, RouterModule } from '@angular/router';
 })
 export class UsersComponent implements OnInit, OnDestroy {
 
+  searchText;
   public Subscription : Subscription;
   public users : Users[] = [];
   public user : Users = null;

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Luotmuon } from 'src/app/models/luotmuon.class';
+import { LuotmuonService } from 'src/app/services/luotmuon.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-luotmuon',
@@ -7,9 +10,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LuotmuonComponent implements OnInit {
 
-  constructor() { }
+  public luotmuons : Luotmuon[] = [];
+
+  public subscription : Subscription;
+
+  constructor(public luotmuonService : LuotmuonService) { }
 
   ngOnInit() {
   }
+  // onClickOK(){
+  //   this.subscription = this.luotmuonService.getLuotmuon(themluotmuon).subscribe(data => {
+
+  //   })
+  // }
 
 }

@@ -45,6 +45,8 @@ import { UserdattruocComponent } from './Components/Adminpage/users/userdattruoc
 import { JwPaginationComponent } from 'jw-angular-pagination';
 import { LuotmuonComponent } from './Components/Adminpage/muontra/luotmuon/luotmuon.component';
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
