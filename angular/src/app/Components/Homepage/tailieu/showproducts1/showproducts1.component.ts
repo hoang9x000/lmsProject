@@ -29,7 +29,7 @@ export class Showproducts1Component implements OnInit {
       }
       this.Theloai2 = this.theloai2[0].Tentheloai;
       this.items = this.theloai2.map((x, i) => ({ Nhomsach: this.theloai2[i] }));
-      console.log(this.items);
+      //console.log(this.items);
     }, error => {
       console.log(error);
     }

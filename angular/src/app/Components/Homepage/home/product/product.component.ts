@@ -24,7 +24,7 @@ export class ProductComponent implements OnInit {
   loadData() {
     this.productsService.getAllProducts().subscribe(data => {
       this.items = data.map((x, i) => ({ Nhomsach: data[i] }));
-      console.log(this.items);
+      //console.log(this.items);
       //this.products = data;
     }, error => {
       console.log(error);

@@ -49,6 +49,10 @@ export class DetailbookComponent implements OnInit {
   }
   onAdddattruoc(product: Nhomsach) {
     this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
+    if(this.currentUserSubject.value == null){
+      alert("Vui lòng đăng nhập để có thể đặt trước sách");
+      return;
+    } 
     var mathe = this.currentUserSubject.value.Mathe.toString();
     console.log(mathe);
     this.userService.ShowProfile(mathe).subscribe(data1 => {

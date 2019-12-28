@@ -197,6 +197,10 @@ namespace lmsProject.Controllers
             {
                 return NotFound();
             }
+            foreach(Sach item in nhomsach.Sach)
+            {
+                _context.Sach.Remove(item);
+            }
 
             _context.Nhomsach.Remove(nhomsach);
             await _context.SaveChangesAsync();
