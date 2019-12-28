@@ -33,11 +33,8 @@ export class MuontraComponent implements OnInit {
 
   public mathe: string;
   public masach: string;
-  // public ngaymuon : Date;
-  // public ngayhethan : Date;
-  // public giahan : boolean;
-  // public datra : boolean = false;
-  // public hoten : string;
+  public nhh = [];
+  public quahan = [];
   public tensach: string;
   public tinhtrangsach: boolean = false;
 
@@ -52,17 +49,31 @@ export class MuontraComponent implements OnInit {
     public routerService: Router,
   ) { }
 
-  // check(e){
-  //   this.tinhtrangsach = e.target.value;
-  //   console.log(this.tinhtrangsach);
-  // }
   ngOnInit() {
     this.loadData();
+    // this.sugiruDay();
   }
 
   loadData() {
     this.subscription = this.muontraService.getAllMuontra().subscribe(data => {
       this.muontras = data;
+
+      //Tao mang moi voi gia gia tri ngayhethan
+      this.nhh.pop();
+      for (var i = 0; i < this.muontras.length; i++){
+        this.nhh.push(this.muontras[i].Ngayhethan);
+      };
+
+      //gan gia tri ngay qua han cho nhh[]
+      this.nhh = this.nhh.map((value, index, _nhh) => {
+        let val = (new Date(value)).getTime();
+        if (Date.now() < val){
+          return 0;
+        }
+        else {
+          return Math.floor((Date.now() - val)/(24*3600*1000));
+        }
+      });
     }, error => {
       console.log(error);
     });
@@ -172,6 +183,7 @@ export class MuontraComponent implements OnInit {
   onClickOK() {
     this.loadData()
   }
+
   ngOnDestroy() {
     if (this.subscription) {
       this.subscription.unsubscribe();

@@ -70,7 +70,7 @@
 							<th>Ngày mượn</th>
 							<th>Ngày hết hạn</th>
 							<th>Quá hạn</th>
-							<th>Trả</th>
+							<th>Trả sách</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -81,13 +81,13 @@
 							<td>{{item.Tensach}}</td>
 							<td>{{item.Ngaymuon}}</td>
 							<td>{{item.Ngayhethan}}</td>
-							<td> Ngày</td>
+							<td>{{this.nhh[i]}} Ngày</td>
 							<td>
 								<input class="btn btn-tra" type="button" *ngIf="item.Datra" value="Đã trả" style="background-color:green ;" 
 										data-toggle="modal" data-target="#modalXacNhanTinhtrang" (click)="onClickDatra(item)" disabled>
 								
 								<!-- btn modalXacNhanTinhtrang -->
-								<input class="btn btn-tra" type="button" *ngIf="!item.Datra" value="Chưa trả" style="background-color : red" 
+								<input class="btn btn-tra" type="button" *ngIf="!item.Datra" value="Trả" style="background-color : red" 
 										data-toggle="modal" data-target="#modalXacNhanTinhtrang" (click)="onClickDatra(item)">	
 
 								<!-- Modal: modalXacNhanTinhtrang -->
