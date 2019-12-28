@@ -23,7 +23,10 @@
                 <td style="text-align: center">{{item.Tensach}}</td>
                 <td style="text-align: center">{{item.Ngaymuon}}</td>
                 <td style="text-align: center">{{item.Ngayhethan}}</td>
-                <td style="text-align: center"><span className="label label-success" >{{item.Giahan}}</span></td>  
+                <td style="text-align: center">
+                    <span *ngIf="item.Giahan" className="label label-success" >Đã gia hạn</span>
+                    <span *ngIf="!item.Giahan" className="label label-success" >Chưa gia hạn</span>
+                </td>  
                 <td style="text-align: center"><button type="button" className="btn btn-danger" (click)="onGiahan(item)" [routerLink]="['/giahan']">
                         <span className="fa fa-trash mr-5"></span> Gia hạn </button></td>
             </tr>

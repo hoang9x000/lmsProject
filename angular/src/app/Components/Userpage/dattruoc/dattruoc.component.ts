@@ -38,6 +38,7 @@ export class DattruocComponent implements OnInit {
     // console.log(item);
     this.dattruocService.DeleteDattruoc(item).subscribe(data => {
       // console.log(data)
+      alert("Xoá sách đặt trước thành công!");
       this.loadData();
     }, error => {
       console.log(error);
