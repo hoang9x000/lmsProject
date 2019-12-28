@@ -81,7 +81,7 @@
 							<td>{{item.Tensach}}</td>
 							<td>{{item.Ngaymuon}}</td>
 							<td>{{item.Ngayhethan}}</td>
-							<td>{{this.nhh[i]}} Ngày</td>
+							<td>{{this.quahan[i]}} Ngày</td>
 							<td>
 								<input class="btn btn-tra" type="button" *ngIf="item.Datra" value="Đã trả" style="background-color:green ;" 
 										data-toggle="modal" data-target="#modalXacNhanTinhtrang" (click)="onClickDatra(item)" disabled>
@@ -124,7 +124,7 @@
 											</div>
 
 											<label for="my-input">Tình trạng sách: </label>
-											<div class="card">
+											<div class="card form">
 												<div class="form-check mb-4">
 													<input class="form-check-input" name="tinhtrang" type="radio" id="radio-179" 
 														[value]="true" [(ngModel)]="tinhtrangsach" [ngModelOptions]="{standalone: true}">

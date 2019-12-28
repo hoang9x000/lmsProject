@@ -51,7 +51,6 @@ export class MuontraComponent implements OnInit {
 
   ngOnInit() {
     this.loadData();
-    // this.sugiruDay();
   }
 
   loadData() {
@@ -59,19 +58,19 @@ export class MuontraComponent implements OnInit {
       this.muontras = data;
 
       //Tao mang moi voi gia gia tri ngayhethan
-      this.nhh.pop();
-      for (var i = 0; i < this.muontras.length; i++){
+      // this.nhh.pop();
+      for (var i = 0; i < this.muontras.length; i++) {
         this.nhh.push(this.muontras[i].Ngayhethan);
       };
 
-      //gan gia tri ngay qua han cho nhh[]
-      this.nhh = this.nhh.map((value, index, _nhh) => {
+      //gan gia tri ngay qua han cho qh[]
+      this.quahan = this.nhh.map((value, index, nhh) => {
         let val = (new Date(value)).getTime();
-        if (Date.now() < val){
+        if (Date.now() < val) {
           return 0;
         }
         else {
-          return Math.floor((Date.now() - val)/(24*3600*1000));
+          return Math.floor((Date.now() - val) / (24 * 3600 * 1000));
         }
       });
     }, error => {
@@ -85,8 +84,8 @@ export class MuontraComponent implements OnInit {
       //lay dl thanhvien
       this.subscription = this.userdetailService.getUserDetail(this.mathe).subscribe(data => {
         this.userdetail = data;
-        console.log("<<==>>",this.userdetail);
-        
+        console.log("<<==>>", this.userdetail);
+
         let ngayhethan = new Date(this.userdetail.Ngayhethan);
         if ((ngayhethan.getTime() <= Date.now()) || (this.userdetail.Sosachdamuon > 6)) {
           alert("tài khoản đã hết hạn hoặc hết lượt mượn sách");
@@ -95,7 +94,7 @@ export class MuontraComponent implements OnInit {
           //lay dl sach
           this.subscription = this.sachService.getSach(this.masach).subscribe(data => {
             this.sach = data;
-            console.log("<<==>>",this.sach);
+            console.log("<<==>>", this.sach);
             if (this.sach[0].Tinhtrangsach === false) {
               alert("Sách đã bị mất hoặc hư hại");
             }
@@ -117,7 +116,7 @@ export class MuontraComponent implements OnInit {
                   this.subscription = this.userdetailService.getUserDetail(this.mathe).subscribe(data => {
                     console.log("==>>", data);
                   });
-                  this.loadData();
+                  this.onClickOK();
                 });
               }
             }
@@ -181,6 +180,8 @@ export class MuontraComponent implements OnInit {
   }
 
   onClickOK() {
+    //lam rong mang va load lai data
+    this.nhh = [];
     this.loadData()
   }
 
