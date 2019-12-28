@@ -1,23 +1,17 @@
 <div class="container-fluid">
 
-    <div class="container">
+    <div *ngFor="let item of product " class="container">
         <div class="row m-5">
-            <div class="col-sm-12 col-md-4">
-                <div class="card mb-2">
+            <div class="col-sm-12 col-md-4 product-image9">
+                <div class="card mb-2" >
                     <a>
-                        <img class="card-img-top img-thumbnail" src="assets/anh/book1.jpg" alt="">
+                        <img class="card-img-top img-thumbnail" src="http://localhost:5000/{{item.AnhPath}}" alt="">
                     </a>
-                    <div class="card-body">
-                        <div class="row align-self-center">
-                            <div class="col">
-                                <h4 class="card-title mb-2 name"> </h4>
-                            </div>
-                        </div>
-                    </div>
+                   
                 </div>
             </div>
             <div class="col-sm-12 col-md-8">
-                <div *ngFor="let item of product " class="card border-info">
+                <div  class="card border-info">
                     <div class="card-body">
                         <div class="row align-items-center">
                             <div class="col">
@@ -91,14 +85,10 @@
                                 <a>{{item.Soluongcon}}</a>
                             </div>
                         </div>
-                        <button type="button" class="btn btn-success" (click)="onAdddattruoc(item);openModal('custom-modal-2')">Đặt Trước</button>
+                        <button type="button" class="btn btn-success" (click)="onAdddattruoc(item)">Đặt Trước</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<jw-modal id="custom-modal-2">
-    <h1 style="color:white;" >Đạt trước thành công!</h1>
-    <button (click)="closeModal('custom-modal-2');">Close</button>
-</jw-modal>

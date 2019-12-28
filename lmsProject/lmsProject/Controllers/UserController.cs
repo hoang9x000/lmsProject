@@ -64,6 +64,7 @@ namespace lmsProject.Controllers
                 Diachi = user.Diachi,
                 Ngaydangki = user.Ngaydangki,
                 Ngayhethan = user.Ngayhethan,
+                Sosachdamuon = user.Sosachdamuon,
                 //IsAdmin = user.IsAdmin,
                 Role = user.Role,
                 Token = tokenString

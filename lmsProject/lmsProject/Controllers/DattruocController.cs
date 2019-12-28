@@ -216,13 +216,15 @@ namespace lmsProject.Controllers
             if (dattruoc.Mathe != currentUserID && !User.IsInRole(Role.Admin))
                 return Forbid();
 
-            var _user = await _context.User.FindAsync(dattruoc.Mathe);
-            var _sach = await _context.Sach.FindAsync(dattruoc.Masach);
-            var _nhomsach = await _context.Nhomsach.FindAsync(_sach.Manhomsach);
-
-            _user.Sosachdamuon--;
-            _sach.Damuon = false;
-            _nhomsach.Soluongcon++;
+            //var _user = await _context.User.FindAsync(dattruoc.Mathe);
+            //var _sach = await _context.Sach.FindAsync(dattruoc.Masach);
+            //var _nhomsach = await _context.Nhomsach.FindAsync(_sach.Manhomsach);
+            dattruoc.MatheNavigation.Sosachdamuon--;
+            dattruoc.MasachNavigation.Damuon = false;
+            dattruoc.MasachNavigation.ManhomsachNavigation.Soluongcon++;
+            //_user.Sosachdamuon--;
+            //_sach.Damuon = false;
+            //_nhomsach.Soluongcon++;
 
             _context.Dattruoc.Remove(dattruoc);
             await _context.SaveChangesAsync();
