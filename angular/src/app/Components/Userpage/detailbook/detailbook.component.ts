@@ -34,14 +34,6 @@ export class DetailbookComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
-    var mathe = this.currentUserSubject.value.Mathe.toString();
-    console.log(mathe);
-    this.userService.ShowProfile(mathe).subscribe(data1 => {
-      console.log(data1.Sosachdamuon);
-      // this.user = data;
-      this.sosachdamuon = data1.Sosachdamuon;
-    });
     let id = (+this.activatedRoute.snapshot.params['id']);
     // console.log(id);
     this.productDetailBookService.getProductByID(id).subscribe(data => {
@@ -54,6 +46,14 @@ export class DetailbookComponent implements OnInit {
     );
   }
   onAdddattruoc(product: Nhomsach) {
+    this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
+    var mathe = this.currentUserSubject.value.Mathe.toString();
+    console.log(mathe);
+    this.userService.ShowProfile(mathe).subscribe(data1 => {
+      console.log(data1.Sosachdamuon);
+      // this.user = data;
+      this.sosachdamuon = data1.Sosachdamuon;
+    });
     if(this.sosachdamuon == 7){
       alert("Bạn chị được mượn tối đa 7 sách!");
     }else

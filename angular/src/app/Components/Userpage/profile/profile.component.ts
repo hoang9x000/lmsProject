@@ -73,7 +73,7 @@ export class ProfileComponent implements OnInit {
         console.log(error);
       });
       // display form values on success
-      alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value, null, 4));
+      alert("Đỗi mật khẩu thành công!");
   }
 
   onReset() {

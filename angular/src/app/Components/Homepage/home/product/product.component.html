@@ -3,7 +3,7 @@
     <div class="search-hero">
         <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="&#61442;  Search">
     </div>
-    <h3 class="text-center m-3"> Sách Mới </h3>
+    <h3 class="text-center m-3"> Thư Viện Sách </h3>
     <div class="row d-flex justify-content-center">
         <div *ngFor="let item of pageOfItems | filter:searchText " class="col-sm-6 col-md-4 mt-3">
             <div class="card mb-2">

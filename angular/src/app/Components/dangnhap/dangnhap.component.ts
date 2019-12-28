@@ -27,7 +27,7 @@ export class DangnhapComponent implements OnInit {
   ) {
     //chuyển hướng đến trang home nếu đã đăng nhập
     if (this.authenticationService.currentUserValue) {
-      this.router.navigate(['/']);
+      // this.router.navigate(['/']);
     }
   }
 
