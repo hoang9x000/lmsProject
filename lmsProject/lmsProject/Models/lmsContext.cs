@@ -23,15 +23,6 @@ namespace lmsProject.Models
         public virtual DbSet<Theloai> Theloai { get; set; }
         public virtual DbSet<User> User { get; set; }
 
-//        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-//        {
-//            if (!optionsBuilder.IsConfigured)
-//            {
-//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-//                optionsBuilder.UseSqlServer("Server=.\\;Database=lmsDB;Trusted_Connection=True;");
-//            }
-//        }
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasAnnotation("ProductVersion", "2.2.6-servicing-10079");
@@ -113,7 +104,6 @@ namespace lmsProject.Models
                     .IsUnicode(false)
                     .ValueGeneratedNever();
 
-                //entity.Property(e => e.Magiasach).IsUnicode(false);
 
                 entity.Property(e => e.Manhomsach).IsUnicode(false);
 
@@ -137,7 +127,6 @@ namespace lmsProject.Models
                     .IsUnicode(false)
                     .ValueGeneratedNever();
 
-                //entity.Property(e => e.Matkhau).IsUnicode(false);
             });
         }
     }

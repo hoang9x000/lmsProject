@@ -45,8 +45,6 @@ namespace lmsProject.Controllers
                            }
             });
             return Ok(result);
-            //
-            //return await _context.Theloai.ToListAsync();
         }
 
         // GET: api/Theloai/5
@@ -60,7 +58,6 @@ namespace lmsProject.Controllers
             {
                 return NotFound();
             }
-            //test thu
             var result = _context.Theloai.Select(s => new
             {
                 s.Matheloai,
@@ -80,29 +77,6 @@ namespace lmsProject.Controllers
             })
                 .Where(w => w.Matheloai == theloai.Matheloai);
             return Ok(result);
-
-            //var result = from a in _context.Nhomsach
-            //             join b in _context.Theloai on a.Matheloai equals b.Matheloai
-            //             where b.Matheloai == theloai.Matheloai
-            //             select new
-            //             {
-            //                 b.Matheloai,
-            //                 b.Tentheloai,
-            //                 b.Songaymuontoida,
-            //                 Nhomsach = new
-            //                 {
-            //                     a.Manhomsach,
-            //                     a.Magiasach,
-            //                     a.Tensach,
-            //                     a.Matheloai,
-            //                     a.Soluong,
-            //                     a.Soluongcon
-            //                 }
-            //             };
-            //return Ok(result);
-            //
-
-            //return theloai;
         }
 
         // PUT: api/Theloai/5

@@ -39,7 +39,6 @@ namespace lmsProject.Controllers
             });
             return Ok(result);
 
-            //return await _context.Sach.ToListAsync();
         }
 
         // GET: api/Sach/5
@@ -65,8 +64,6 @@ namespace lmsProject.Controllers
             })
                 .Where(w => w.Masach == sach.Masach);
             return Ok(result);
-
-            //return sach;
         }
 
         // PUT: api/Sach/5
@@ -126,7 +123,6 @@ namespace lmsProject.Controllers
                 }
             }
 
-            //return CreatedAtAction("GetSach", new { id = sach.Masach }, sach);
             return Ok();
         }
 

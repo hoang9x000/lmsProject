@@ -12,7 +12,7 @@
                             <img class="pic-1" src="assets/anh/nen.jpg">
                             <img class="pic-2" src="http://localhost:5000/{{item.Nhomsach.AnhPath}}">
                         </a>
-                        <a href="#" class="fa fa-search product-full-view"></a>
+                        <a [routerLink]="['/detailbook',item.Nhomsach.Manhomsach]" class="fa fa-search product-full-view"></a>
                     </div>
                     <div class="product-content">
                         <!-- <ul class="rating">
