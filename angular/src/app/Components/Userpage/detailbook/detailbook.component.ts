@@ -23,6 +23,8 @@ export class DetailbookComponent implements OnInit {
   public dattruoc: DattruocAll[] = [];
   public user: User[] = [];
   public sosachdamuon : number ;
+  public ngayhethan : number;
+  public _now : number;
   constructor(
     public activatedRoute: ActivatedRoute,
     public productDetailBookService: ProductDetailBookService,
@@ -53,7 +55,13 @@ export class DetailbookComponent implements OnInit {
       console.log(data1.Sosachdamuon);
       // this.user = data;
       this.sosachdamuon = data1.Sosachdamuon;
+      this.ngayhethan = new Date(data1.Ngayhethan).getTime();
+      this._now = Date.now();
     });
+    if(this.ngayhethan < this._now){
+      alert("Thẻ đã hết hạn mượn sách! Vui lòng đến thư viện để gia hạn!");
+    }
+    else
     if(this.sosachdamuon == 7){
       alert("Bạn chị được mượn tối đa 7 sách!");
     }else
