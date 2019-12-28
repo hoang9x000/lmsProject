@@ -2,19 +2,18 @@
     <div class="col-12 align-self-cente border-dark mt-3">
         <h3 class="text-center">
             <span class="badge badge-primary " style="width: 500px; height: 50px; border-radius: 50px;">
-                <p class="name mt-2 mb-2"> Sach </p>
+                <p class="name mt-2 mb-2"> Sách </p>
             </span>
         </h3>
     </div>
 </div>
 <div class="container-fluid">
     <div class="row d-flex justify-content-between">
-        <a class="btn btn-outline-success mt-3 mb-3 ml-5" [routerLink]="['/sach/addsach']"> Thêm Sach </a>
+        <a class="btn btn-outline-success mt-3 mb-3 ml-5" [routerLink]="['/sach/addsach']"> Thêm Sách </a>
         <form class="form-inline align-self-center mb-3 mr-5" id="searchAndFilterForm" method="Get">
             <div class="form-row align-items-center">
                 <div class="search-nhomsach ml-5">
-                    <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off"
-                        placeholder="&#61442;  Start searching for a nhomsach by id or name or country">
+                    <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="&#61442;  Search">
                 </div>
             </div>
             <div class="col-auto">
@@ -62,9 +61,8 @@
                                 <td>{{item.Soluongcon }}</td>
                                 <!-- <img src= "http://localhost:5000/{{item.AnhPath}}" /> -->
                                 <td>
-                                    <button type="button" class="btn btn-info ml-2"
-                                        [routerLink]="['/sach/' , item.Manhomsach]">
-                                        Sua </button>
+                                    <button type="button" class="btn btn-info ml-2" [routerLink]="['/sach/' , item.Manhomsach]">
+                                        Sửa </button>
                                     <!-- <button type="button" class="btn btn-danger ml-2"
                             (click)="ondeletenhomsach(item.Manhomsach)"> Xoa
                         </button> -->

@@ -51,6 +51,7 @@ export class UsersComponent implements OnInit, OnDestroy {
       //console.log(data);
      // console.log(data.Mathe);
       this.updateDataAfterDelete(Mathe);
+      alert("Xóa thành công!!!");
     });
   }
 

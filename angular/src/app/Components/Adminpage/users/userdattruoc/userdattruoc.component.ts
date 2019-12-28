@@ -33,6 +33,7 @@ export class UserdattruocComponent implements OnInit {
   onUpdateDattruoc(item: Dattruoc) {
     // console.log(item);
     this.dattruocService.UpdateDattruoc(item).subscribe(data => {
+      alert("Thành Công!")
       // console.log(data)
       this.loadData();
     }, error => {
