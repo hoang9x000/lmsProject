@@ -39,12 +39,20 @@
             <hr />
             <div class="form-group row m-1 mb-0">
                 <label for="gioitinh" class="col-sm-2 col-form-label"> Giới Tính: </label>
-                <div class="radio">
-                    <label><input type="radio" name="optradio" class="check ml-3 mr-3" value="false"
-                            [(ngModel)]="user.Gioitinh" [ngModelOptions]="{standalone: true}"> Nữ </label>
-                    <label><input type="radio" name="optradio" class="check ml-3 mr-3" checked value="true"
-                            [(ngModel)]="user.Gioitinh" [ngModelOptions]="{standalone: true}"> Nam </label>
+                <div *ngIf="user.Gioitinh">
+                    <div class="radio">
+                        <label><input type="radio" name="optradio" disabled class="check ml-3 mr-3"> Nữ </label>
+                        <label><input type="radio" name="optradio" disabled checked class="check ml-3 mr-3"> Nam
+                        </label>
+                    </div>
                 </div>
+                <div *ngIf="!user.Gioitinh">
+                    <div class="radio">
+                        <label><input type="radio" name="optradio" disabled checked class="check ml-3 mr-3"> Nữ </label>
+                        <label><input type="radio" name="optradio" disabled class="check ml-3 mr-3"> Nam </label>
+                    </div>
+                </div>
+
             </div>
             <hr />
             <div class="form-group row m-1 mb-0">

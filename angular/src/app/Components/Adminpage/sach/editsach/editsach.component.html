@@ -48,34 +48,34 @@
             <!-- kiem tra then the loai -->
             <div class="form-group row m-1 mb-0">
                 <label for="loaisach" class="col-sm-2 col-form-label"> Loại Sách: </label>
-                <div *ngIf="nhomsach.Tentheloai === 'Sách Chuyên Ngành'">
+                <div *ngIf="nhomsach.Tentheloai === 'Sách chuyên ngành'">
                     <div class="radio">
                         <label>
-                            <input type="radio" name="optradio" class="check ml-3 mr-3 " check value="Sách Chuyên Ngành"
+                            <input type="radio" name="optradio" class="check ml-3 mr-3 " check value="Sách chuyên ngành"
                                 [(ngModel)]="nhomsach.Tentheloai" [ngModelOptions]="{standalone: true}"> Sách Chuyên
                             Ngành
                         </label>
                         <label>
-                            <input type="radio" name="optradio" class="check ml-3 mr-3 " disabled value="Sách Đại Cương"
+                            <input type="radio" name="optradio" class="check ml-3 mr-3 " disabled value="Sách đại cương"
                                 [(ngModel)]="nhomsach.Tentheloai" [ngModelOptions]="{standalone: true}"> Sách Đại Cương
                         </label>
                         <label>
-                            <input type="radio" name="optradio" class="check ml-3 mr-3 " disabled value="Tạp Chí"
+                            <input type="radio" name="optradio" class="check ml-3 mr-3 " disabled value="Tạp chí"
                                 [(ngModel)]="nhomsach.Tentheloai" [ngModelOptions]="{standalone: true}"> Tạp Chí
                         </label>
                     </div>
                 </div>
 
 
-                <div *ngIf="nhomsach.Tentheloai === 'Sách Đại Cương'">
+                <div *ngIf="nhomsach.Tentheloai === 'Sách đại cương'">
                     <div class="radio">
                         <label>
                             <input type="radio" name="optradio" class="check ml-3 mr-3 " disabled
-                                value="Sách Chuyên Ngành" [(ngModel)]="nhomsach.Tentheloai"
+                                value="Sách chuyên ngành" [(ngModel)]="nhomsach.Tentheloai"
                                 [ngModelOptions]="{standalone: true}"> Sách Chuyên Ngành
                         </label>
                         <label>
-                            <input type="radio" name="optradio" class="check ml-3 mr-3 " checked value="Sách Đại Cương"
+                            <input type="radio" name="optradio" class="check ml-3 mr-3 " checked value="Sách đại cương"
                                 [(ngModel)]="nhomsach.Tentheloai" [ngModelOptions]="{standalone: true}"> Sách Đại Cương
                         </label>
                         <label>
@@ -90,11 +90,11 @@
                     <div class="radio">
                         <label>
                             <input type="radio" name="optradio" class="check ml-3 mr-3 " disabled
-                                value="Sách Chuyên Ngành" [(ngModel)]="nhomsach.Tentheloai"
+                                value="Sách chuyên ngành" [(ngModel)]="nhomsach.Tentheloai"
                                 [ngModelOptions]="{standalone: true}"> Sách Chuyên Ngành
                         </label>
                         <label>
-                            <input type="radio" name="optradio" class="check ml-3 mr-3 " disabled value="Sách Đại Cương"
+                            <input type="radio" name="optradio" class="check ml-3 mr-3 " disabled value="Sách đại cương"
                                 [(ngModel)]="nhomsach.Tentheloai" [ngModelOptions]="{standalone: true}"> Sách Đại Cương
                         </label>
                         <label>
@@ -103,15 +103,6 @@
                         </label>
                     </div>
                 </div>
-
-                <!-- <div class="radio">
-                    <label><input type="radio" name="optradio" class="check ml-3 mr-3" value="Sách Chuyên Ngành"
-                            [(ngModel)]="nhomsach.Tentheloai" [ngModelOptions]="{standalone: true}"> Sách Chuyên Ngành </label>
-                    <label><input type="radio" name="optradio" class="check ml-3 mr-3"  value="Sách Đại Cương"
-                            [(ngModel)]="nhomsach.Tentheloai" [ngModelOptions]="{standalone: true}"> Sách Đại Cương </label>
-                    <label><input type="radio" name="optradio" class="check ml-3 mr-3" value="Tập Chí"
-                            [(ngModel)]="nhomsach.Tentheloai" [ngModelOptions]="{standalone: true}"> Tập Chí </label>
-                </div> -->
             </div>
             <hr />
             <!-- <div *ngIf="nhomsach.Tentheloai === '1'">
