@@ -63,7 +63,9 @@ export class DangnhapComponent implements OnInit {
         });
   }
   closeModal(id: string) {
-    this.modalService.close(id);
+    if (this.loading == false && this.error !="") {
+      this.modalService.close(id);
+    }
   }
 
 }

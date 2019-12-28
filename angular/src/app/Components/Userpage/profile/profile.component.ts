@@ -14,11 +14,10 @@ import { MustMatch } from './../../../_helpers/checkPassword';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
+  public user: User ;
   registerForm: FormGroup;
   submitted = false;
   private currentUserSubject: BehaviorSubject<User>;
-
-  public user: User[] = [];
   constructor(
     public userService: UserService,
     private modalService: ModalService,
@@ -26,6 +25,7 @@ export class ProfileComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.user = new User();
     this.loadData();
 
     this.registerForm = this.formBuilder.group({

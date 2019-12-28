@@ -27,7 +27,7 @@ export class GiahanComponent implements OnInit {
     var _mathe = this.currentUserSubject.value.Mathe.toString();
     //console.log(_mathe);
     this.userService.Showphieumuon(_mathe).subscribe(data => {
-      console.log(data[0].Phieumuon[0].Datra);
+      // console.log(data[0].Phieumuon[0].Datra);
       this.phieumuon = data[0].Phieumuon;
         }, error => {
       console.log(error);
@@ -36,7 +36,11 @@ export class GiahanComponent implements OnInit {
   }
   onGiahan(item:Phieumuon){
     // console.log(item);
+    if(item.Giahan == true){
+      alert("Sách này đã gia hạn!");
+    }else
     this.dattruocService.UpdatePhieumuon(item).subscribe(data=>{
+      alert("Gia hạn thành công!");
       this.loadData();
     }, error => {
       console.log(error);

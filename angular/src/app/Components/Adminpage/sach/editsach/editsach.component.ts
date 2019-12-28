@@ -64,19 +64,7 @@ export class EditsachComponent implements OnInit {
 
   oneditnhomsach()
   {
-    // let nhomsach: Nhomsach = {
-    //   Manhomsach: this.Manhomsach,
-    //   Matheloai: this.Matheloai,
-    //   Magiasach: this.Magiasach,
-    //   Tensach: this.Tensach,
-    //   Tacgia: this.Tacgia,
-    //   Tentheloai: this.Tentheloai,
-    //   Giatien: this.Giatien,
-    //   Soluong: this.Soluong,
-    //   Soluongcon: this.Soluongcon,
-    //   AnhPath: this.response.dbPath,
-
-    // };
+   
     this.nhomsach.AnhPath = this.response.dbPath;
     this.Subscription = this.nhomsachService.updateNhomsach(this.nhomsach).subscribe( (data : Nhomsach) => {
         //console.log(data)

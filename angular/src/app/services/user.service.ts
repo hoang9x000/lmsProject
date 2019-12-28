@@ -14,8 +14,8 @@ export class UserService {
   Showphieumuon(mathe: string): Observable<PhieumuonAll[]> {
     return this.http.get<PhieumuonAll[]>(this.API +`/phieumuon`+"/" +mathe);
   }
-  ShowProfile(mathe: string): Observable<User[]>{
-    return this.http.get<User[]>(this.API +`/user`+"/"+mathe);
+  ShowProfile(mathe: string): Observable<User>{
+    return this.http.get<User>(this.API +`/user`+"/"+mathe);
   }
   ChangePassword(user:User):Observable<User[]>{
     return this.http.put<User[]>(this.API +`/user`+"/"+user.Mathe,user);
