@@ -15,12 +15,25 @@ export class NhomsachService {
     return this.http.get<Nhomsach[]>(this.API);
   }
 
-  getAdd(nhomsach : Nhomsach): Observable<Nhomsach>{
+  Add(nhomsach : Nhomsach): Observable<Nhomsach>{
+    if(nhomsach.Tentheloai == "Sách Chuyên Ngành")
+    {
+      nhomsach.Matheloai = "1";
+    }
+    else if(nhomsach.Tentheloai == "Sách Đại Cương")
+    {
+      nhomsach.Matheloai = "2";
+    }
+    else 
+    {
+      nhomsach.Matheloai = "3";
+    }
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json'
       })
     }
+    console.log(nhomsach);
     return this.http.post<Nhomsach>(this.API, nhomsach, httpOptions)
  
   }

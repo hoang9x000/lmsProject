@@ -37,7 +37,7 @@ export class GiahanComponent implements OnInit {
   onGiahan(item:Phieumuon){
     // console.log(item);
     if(item.Giahan == true){
-      alert("Sách này đã gia hạn!");
+      alert("Chỉ được phép gia hạn một lần !");
     }else
     this.dattruocService.UpdatePhieumuon(item).subscribe(data=>{
       alert("Gia hạn thành công!");

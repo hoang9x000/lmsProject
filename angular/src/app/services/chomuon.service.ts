@@ -13,6 +13,7 @@ export class ChomuonService {
   constructor(public http : HttpClient) { }
 
   addMuontra(chomuon : Chomuon) : Observable<Chomuon[]>{
+    console.log("add-Muontra-s");
     return this.http.post<Chomuon[]>(this.API,chomuon);
   }
 }

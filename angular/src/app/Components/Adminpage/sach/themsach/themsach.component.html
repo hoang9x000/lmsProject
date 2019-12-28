@@ -18,14 +18,14 @@
                 </div>
             </div>
             <hr />
-            <div class="form-group row m-1 mb-0">
+            <!-- <div class="form-group row m-1 mb-0">
                 <label for="manhomsach" class="col-sm-2 col-form-label"> Mã Thể Loại: </label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control bg-white" [(ngModel)]="Matheloai"
                         [ngModelOptions]="{standalone: true}" />
                 </div>
             </div>
-            <hr />
+            <hr /> -->
             <div class="form-group row m-1 mb-0">
                 <label for="magiasach" class="col-sm-2 col-form-label"> Mã Giá Sách: </label>
                 <div class="col-sm-10">
@@ -55,13 +55,14 @@
                 <div class="radio">
                     <label><input type="radio" name="optradio" class="check ml-3 mr-3" value="Sách Chuyên Ngành"
                             [(ngModel)]="Tentheloai" [ngModelOptions]="{standalone: true}"> Sách Chuyên Ngành </label>
-                    <label><input type="radio" name="optradio" class="check ml-3 mr-3"  value="Sách Đại Cương"
+                    <label><input type="radio" name="optradio" class="check ml-3 mr-3" value="Sách Đại Cương"
                             [(ngModel)]="Tentheloai" [ngModelOptions]="{standalone: true}"> Sách Đại Cương </label>
                     <label><input type="radio" name="optradio" class="check ml-3 mr-3" value="Tập Chí"
                             [(ngModel)]="Tentheloai" [ngModelOptions]="{standalone: true}"> Tập Chí </label>
                 </div>
             </div>
             <hr />
+
             <!-- <div class="form-check ml-3">
                     <input type="checkbox" class="form-check-input" id="exampleCheck1">
                     <label class="form-check-label" for="exampleCheck1"> Sách Chuyên Ngành</label>
@@ -98,13 +99,42 @@
             </div>
             <hr />
             <div class="form-group">
-               <div  class="upload m-4">
-                <app-upload (onUploadFinished)="uploadFinished($event)" ></app-upload>
-               </div>   
+                <div class="upload m-4">
+                    <app-upload (onUploadFinished)="uploadFinished($event)"></app-upload>
+                </div>
 
-              <div>
+                <!-- Button to Open the Modal -->
+                <button type="button" class="btn btn-success pull-right mr-2 mb-2" data-toggle="modal"
+                    data-target="#myModal">
+                    Xác Nhận
+                </button>
+
+                <!-- <div>
                 <button type="button" class="btn btn-success pull-right mr-2 mb-2" (click)="add1()"> Xác Nhận </button>
-              </div>
+              </div> -->
+            </div>
+
+            <!-- The Modal -->
+            <div class="modal" id="myModal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <!-- Modal Header -->
+                        <div class="modal-header" style="background: deepskyblue;">
+                            <h4 class="modal-title">Thêm Nhóm Sách</h4>
+                            <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+                        </div>
+                        <!-- Modal body -->
+                        <!-- <div class="modal-body">
+                            Modal body..
+                        </div> -->
+                        <!-- Modal footer -->
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-success pull-right mr-2 mb-2" data-dismiss="modal"
+                                (click)="add1()">OK</button>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Hủy</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </form>
     </div>

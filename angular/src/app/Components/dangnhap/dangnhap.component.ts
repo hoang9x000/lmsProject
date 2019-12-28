@@ -42,7 +42,7 @@ export class DangnhapComponent implements OnInit {
   }
   // convenience getter for easy access to form fields
   get f() { return this.loginForm.controls; }
-  onSubmit() {
+  onSubmit(id: string) {
     this.submitted = true;
 
     // stop here if form is invalid
@@ -56,16 +56,11 @@ export class DangnhapComponent implements OnInit {
       .subscribe(
         data => {
           this.router.navigate([this.returnUrl]);
+          this.modalService.close(id);
         },
         error => {
           this.error = error;
           this.loading = false;
         });
   }
-  closeModal(id: string) {
-    if (this.loading == false && this.error !="") {
-      this.modalService.close(id);
-    }
-  }
-
 }

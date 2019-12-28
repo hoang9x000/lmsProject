@@ -16,14 +16,14 @@
                         <a [routerLink]="['/detailbook',item.Nhomsach.Manhomsach]" class="fa fa-search product-full-view"></a>
                     </div>
                     <div class="product-content">
-                        <ul class="rating">
+                        <!-- <ul class="rating">
                             <li class="fa fa-star"></li>
                             <li class="fa fa-star"></li>
                             <li class="fa fa-star"></li>
                             <li class="fa fa-star"></li>
                             <li class="fa fa-star"></li>
-                        </ul>
-                        <h3 class="title"><a [routerLink]="['/detailbook',item.Nhomsach.Manhomsach]">{{item.Tensach}}</a></h3>
+                        </ul> -->
+                        <h3 class="title"><a [routerLink]="['/detailbook',item.Nhomsach.Manhomsach]">{{item.Nhomsach.Tensach}}</a></h3>
                         <div class="price">{{item.Nhomsach.Giatien}}</div>
                         <a class="add-to-cart" [routerLink]="['/detailbook',item.Nhomsach.Manhomsach]">VIEW PRODUCTS</a>
                     </div>

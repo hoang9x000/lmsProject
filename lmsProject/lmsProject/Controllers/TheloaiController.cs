@@ -27,25 +27,6 @@ namespace lmsProject.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Theloai>>> GetTheloai()
         {
-            //chac cach nay ok
-            //de nghi xem thu moi bang khi get can nhung gi
-            //var result = from _theloai in _context.Theloai
-            //             join _nhomsach in _context.Nhomsach on _theloai.Matheloai equals _nhomsach.Matheloai
-            //             select new
-            //             {
-            //                 _theloai.Matheloai,
-            //                 _theloai.Tentheloai,
-            //                 _theloai.Songaymuontoida,
-            //                 Nhomsach = new
-            //                 {
-            //                     _nhomsach.Manhomsach,
-            //                     _nhomsach.Magiasach,
-            //                     _nhomsach.Tensach,
-            //                     _nhomsach.Matheloai,
-            //                     _nhomsach.Soluong,
-            //                     _nhomsach.Soluongcon
-            //                 }
-            //             };
             var result = _context.Theloai.Select(s => new
             {
                 s.Matheloai,
