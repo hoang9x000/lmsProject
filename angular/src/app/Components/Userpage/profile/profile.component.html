@@ -94,6 +94,14 @@
             </div>
             <hr />
             <div class="form-group row">
+                <label for="" class="col-sm-2 col-form-label"> Số sách đã mượn: </label>
+                <div class="col-sm-10">
+                    <input type="text" readonly class="form-control bg-white" [(ngModel)]="user.Sosachdamuon"
+                        [ngModelOptions]="{standalone:true}" />
+                </div>
+            </div>
+            <hr />
+            <div class="form-group row">
                 <label for="" class="col-sm-2 col-form-label"> Loại Người Dùng: </label>
                 <div class="col-sm-10">
                     <input type="text" readonly class="form-control bg-white" [(ngModel)]="user.Role"

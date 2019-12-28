@@ -1,6 +1,6 @@
 <style>
     .row {
-        background-color: rgba(43, 74, 87, 0.568);
+        background-color: rgba(51, 153, 153, 0.5);
         height: 60px;
     }
 </style>
@@ -29,8 +29,7 @@
                 </a>
             </li>
             <li class="nav-item dropdown" *ngIf="currentUser && !isAdmin ">
-                <a style="font-weight: bold;" class="nav-link " href="#" id="navbarDropdown" role="button"
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a style="font-weight: bold;" class="nav-link " href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <h5>Dịch Vụ</h5>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -44,8 +43,7 @@
                 </div>
             </li>
             <li *ngIf="!isAdmin" class="nav-item dropdown">
-                <a class="nav-link " href="thongtin" id="navbarDropdown" role="button" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link " href="thongtin" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <h5>Thông Tin</h5>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -66,16 +64,21 @@
             <li>
                 <a class="nav-item nav-link" routerLink="/muontra" *ngIf="isAdmin">Mượn trả</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" *ngIf="!currentUser" (click)="openModal('custom-modal-1')">Đăng Nhập</a>
+        </ul>
+        <ul class="navbar-nav ml-auto mr-5">
+            <li>
+                <a class="nav-item nav-link" *ngIf="!currentUser" (click)="openModal('custom-modal-1')">
+                    <i class="fa fa-user-circle-o" aria-hidden="true">
+                        <span style="font-size: 1.25rem;font-weight: 500;"> Đăng Nhập</span>
+                    </i>
+                </a>
             </li>
         </ul>
         <ul class="navbar-nav ml-auto mr-5 " *ngIf="currentUser">
             <li class="nav-item dropdown">
-                <a class="nav-link " href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link " href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="fa fa-user-circle-o" aria-hidden="true">
-                        <h5>{{currentUser.Hoten}}</h5>
+                        <span style="font-size: 1.25rem;font-weight: 500;">  {{currentUser.Hoten}}</span>
                     </i>
 
                 </a>
@@ -83,13 +86,13 @@
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" routerLink="/profile">
                         <i class="fa fa-id-card-o" aria-hidden="true">
-                            <h5>profile</h5>
+                            <span style="font-size: 1.25rem;font-weight: 500;">  Hồ Sơ</span>
                         </i>
                     </a>
                     <div class="dropdown-divider"></div>
                     <a *ngIf="currentUser" (click)="logout()" class="dropdown-item" href="#">
                         <i class="fa fa-sign-out" aria-hidden="true">
-                            <h5>Đăng Xuất</h5>
+                            <span style="font-size: 1.25rem;font-weight: 500;">  Đăng Xuất</span>
                         </i>
                     </a>
                 </div>

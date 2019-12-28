@@ -7,6 +7,7 @@ export class User {
     Diachi:string;
     Ngaydangki:Date;
     Ngayhethan:Date;
+    Sosachdamuon : number;
     Role: string;
     Token?: string;
 }

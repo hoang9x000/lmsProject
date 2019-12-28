@@ -110,11 +110,12 @@ export class ThemsachComponent implements OnInit, OnDestroy {
       Soluongcon: this.Soluongcon,
       AnhPath: this.response.dbPath
     };
-    console.log(addnhomsach)
-    this.Subscription = this.nhomsachService.getAdd(addnhomsach)
+    console.log(addnhomsach);
+    
+    this.Subscription = this.nhomsachService.Add(addnhomsach)
       .subscribe(data => {
         this.nhomsachs.push(data);
-        console.log(data);
+        //console.log(data);
         this.routerService.navigateByUrl('/sach');
       }, error => {
         //console.log(error);

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Products } from 'src/app/models/productsTheloai.class';
 import { Nhomsach } from 'src/app/models/Nhomsach.class'
 import { NhomsachService } from '../../../services/nhomsach.service'
 @Component({

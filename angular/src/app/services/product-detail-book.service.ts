@@ -6,7 +6,7 @@ import { Nhomsach } from './../models/productsNhomsach.class';
 @Injectable({
   providedIn: 'root'
 })
-export class ProductsTheloaiService {
+export class ProductDetailBookService {
   public API: string = " http://localhost:5000/api/nhomsach/";
 
   constructor(

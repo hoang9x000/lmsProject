@@ -115,10 +115,11 @@ namespace lmsProject.Controllers
                 var j = nhomsach.Soluong;
                 for (int i = nhomsachCu.Soluong; i < j; i++)
                 {
-                    if (_context.Sach.FindAsync((string)nhomsach.Manhomsach + i) != null)
+                    if (_context.Sach.Any(e => e.Masach == (nhomsach.Manhomsach + i)))
                     {
-                        continue;
                         j++;
+                        continue;
+                        
                     }
                         
                     Sach _sach = new Sach();

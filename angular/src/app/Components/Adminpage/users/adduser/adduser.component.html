@@ -11,9 +11,10 @@
     <div class="card border-primary mb-3 mt-3">
         <form action="" method="POST" role="form">
             <div class="form-group row m-1 mb-0">
-                    <label for="Mathe" class="col-sm-2 col-form-label"> Mã Thẻ: </label>
+                <label for="Mathe" class="col-sm-2 col-form-label"> Mã Thẻ: </label>
                 <div class="col-sm-10">
-                    <input type="text"  class="form-control bg-white" [(ngModel)]="Mathe" [ngModelOptions]="{standalone: true}"  />
+                    <input type="text" class="form-control bg-white" [(ngModel)]="Mathe"
+                        [ngModelOptions]="{standalone: true}" />
                 </div>
             </div>
             <hr />
@@ -21,8 +22,9 @@
                 <label for="inputPassword" class="col-sm-2 col-form-label">Mật Khẩu</label>
                 <div class="col-sm-10">
                     <div class="input-group mb-1">
-                        <input type="password" class="form-control mr-2" id="exampleInputPassword1" [(ngModel)]="Password" [ngModelOptions]="{standalone: true}" 
-                            placeholder="Password" aria-label="Recipient's username" aria-describedby="button-addon2" />
+                        <input type="password" class="form-control mr-2" id="exampleInputPassword1"
+                            [(ngModel)]="Password" [ngModelOptions]="{standalone: true}" placeholder="Password"
+                            aria-label="Recipient's username" aria-describedby="button-addon2" />
                     </div>
                 </div>
             </div>
@@ -30,57 +32,92 @@
             <div class="form-group row m-1">
                 <label for="hoten" class="col-sm-2 col-form-label"> Họ Tên: </label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control bg-white" id="hoten" [(ngModel)]="Hoten"  [ngModelOptions]="{standalone: true}" />
+                    <input type="text" class="form-control bg-white" id="hoten" [(ngModel)]="Hoten"
+                        [ngModelOptions]="{standalone: true}" />
                 </div>
             </div>
             <hr />
             <div class="form-group row m-1 mb-0">
                 <label for="gioitinh" class="col-sm-2 col-form-label"> Giới Tính: </label>
                 <div class="radio">
-                    <label><input type="radio" name="optradio" class="check ml-3 mr-3" value="false" [(ngModel)]="Gioitinh" [ngModelOptions]="{standalone: true}" > Nữ </label>
-                    <label><input type="radio" name="optradio" class="check ml-3 mr-3" checked value="true"[(ngModel)]="Gioitinh" [ngModelOptions]="{standalone: true}" > Nam </label>
+                    <label><input type="radio" name="optradio" class="check ml-3 mr-3" value="false"
+                            [(ngModel)]="Gioitinh" [ngModelOptions]="{standalone: true}"> Nữ </label>
+                    <label><input type="radio" name="optradio" class="check ml-3 mr-3" checked value="true"
+                            [(ngModel)]="Gioitinh" [ngModelOptions]="{standalone: true}"> Nam </label>
                 </div>
             </div>
             <hr />
             <div class="form-group row m-1 mb-0">
                 <label for="ngaysinh" class="col-sm-2 col-form-label"> Ngày Sinh: </label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control bg-white" id="ngaysinh" [(ngModel)]="Ngaysinh"  [ngModelOptions]="{standalone: true}" />
+                    <input type="text" class="form-control bg-white" id="ngaysinh" [(ngModel)]="Ngaysinh"
+                        [ngModelOptions]="{standalone: true}" />
                 </div>
             </div>
             <hr />
             <div class="form-group row m-1 mb-0">
                 <label for="diachi" class="col-sm-2 col-form-label"> Địa Chỉ: </label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control bg-white" id="diachi" [(ngModel)]="Diachi"  [ngModelOptions]="{standalone: true}" />
+                    <input type="text" class="form-control bg-white" id="diachi" [(ngModel)]="Diachi"
+                        [ngModelOptions]="{standalone: true}" />
                 </div>
             </div>
             <hr />
             <div class="form-group row m-1 mb-0">
                 <label for="ngaydangky" class="col-sm-2 col-form-label"> Ngày Đang Ký: </label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control bg-white" id="ngaydangky" [(ngModel)]="Ngaydangki"  [ngModelOptions]="{standalone: true}"/>
+                    <input type="text" class="form-control bg-white" id="ngaydangky" [(ngModel)]="Ngaydangki"
+                        [ngModelOptions]="{standalone: true}" />
                 </div>
             </div>
             <hr />
             <div class="form-group row m-1 mb-0">
                 <label for="ngayhethan" class="col-sm-2 col-form-label"> Ngày Hết Hạn: </label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control bg-white" id="ngayhethan"  [(ngModel)]="Ngayhethan" [ngModelOptions]="{standalone: true}"/>
+                    <input type="text" class="form-control bg-white" id="ngayhethan" [(ngModel)]="Ngayhethan"
+                        [ngModelOptions]="{standalone: true}" />
                 </div>
             </div>
             <hr />
             <div class="form-group row m-1 mb-0">
                 <label for="nguoidung" class="col-sm-2 col-form-label"> Loại Người Dùng: </label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control bg-white" id="nguoidung"  [(ngModel)]="Role" [ngModelOptions]="{standalone: true}" />
-               </div>
+                    <input type="text" class="form-control bg-white" id="nguoidung" [(ngModel)]="Role"
+                        [ngModelOptions]="{standalone: true}" />
+                </div>
             </div>
             <hr />
             <div class="form-group">
-                    <button type="button" class="btn btn-success pull-right mr-2 mb-2" (click)="add()" > Lưu </button>
+
+                <!-- Button to Open the Modal -->
+                <button type="button" class="btn btn-success pull-right mr-2 mb-2" data-toggle="modal"
+                    data-target="#myModal">
+                   Lưu
+                </button>
+
+                <!-- <button type="button" class="btn btn-success pull-right mr-2 mb-2" (click)="add()"> Lưu </button> -->
+            </div>
+
+             <!-- The Modal -->
+             <div class="modal" id="myModal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <!-- Modal Header -->
+                        <div class="modal-header" style="background: deepskyblue;">
+                            <h4 class="modal-title">Thêm Thành Viên</h4>
+                            <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+                        </div>
+                      
+                        <!-- Modal footer -->
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-success pull-right mr-2 mb-2" data-dismiss="modal"
+                                (click)="add()">OK</button>
+                            <button type="button" class="btn btn-danger pull-right mr-2 mb-2" data-dismiss="modal">Hủy</button>
+                        </div>
+                    </div>
                 </div>
-            
+            </div>
+
         </form>
     </div>
 </div>

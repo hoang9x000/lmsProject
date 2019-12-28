@@ -155,7 +155,7 @@ namespace lmsProject.Controllers
             //
             luotmuon.Ngaytra = DateTime.Now;
             var _user = await _context.User.FindAsync(luotmuon.Mathe);
-            _user.Sosachdamuon--;
+           // _user.Sosachdamuon--;
             var _phieumuon = await _context.Phieumuon.FindAsync(luotmuon.Mathe, luotmuon.Masach);
             var _dattruoc = await _context.Dattruoc.FindAsync(luotmuon.Mathe, luotmuon.Masach);
             luotmuon.Ngaymuon = _phieumuon.Ngaymuon;
