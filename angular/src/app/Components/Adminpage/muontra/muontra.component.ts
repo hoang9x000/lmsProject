@@ -17,6 +17,7 @@ import { error } from 'util';
 })
 export class MuontraComponent implements OnInit {
 
+  searchText;
   public muontras : Muontra[] = [];
   public luotmuonid : Luotmuon[] = [];
   public subscription : Subscription;
