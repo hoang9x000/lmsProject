@@ -40,7 +40,7 @@ namespace lmsProject.Controllers
         {
             var user = _userService.Authenticate(userDto.Mathe, userDto.Password);
             if(user == null)
-                return BadRequest(new { message = "Username or password is incorrect" });
+                return BadRequest(new { message = "Mã thể hoặc mật khãu không chính xác!" });
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
             var tokenDescriptor = new SecurityTokenDescriptor

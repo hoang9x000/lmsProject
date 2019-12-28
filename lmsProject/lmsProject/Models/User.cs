@@ -19,7 +19,6 @@ namespace lmsProject.Models
         public string Mathe { get; set; }
         public byte[] PasswordHash { get; set; }
         public byte[] PasswordSalt { get; set; }
-        //public string Matkhau { get; set; }
         [Required]
         [StringLength(100)]
         public string Hoten { get; set; }

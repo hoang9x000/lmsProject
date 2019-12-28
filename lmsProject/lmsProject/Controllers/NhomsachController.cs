@@ -39,7 +39,6 @@ namespace lmsProject.Controllers
                 n.Soluong,
                 n.Soluongcon,
                 n.AnhPath,
-                //co can theloainavigation ko???
                 Sach = from s in _context.Sach
                        where s.Manhomsach == n.Manhomsach
                        select new
@@ -51,8 +50,6 @@ namespace lmsProject.Controllers
                        }
             });
             return Ok(result);
-
-            //return await _context.Nhomsach.ToListAsync();
         }
 
         // GET: api/Nhomsach/5
@@ -79,7 +76,6 @@ namespace lmsProject.Controllers
                 n.Soluong,
                 n.Soluongcon,
                 n.AnhPath,
-                //co can theloainavigation ko???
                 Sach = from s in _context.Sach
                        where s.Manhomsach == n.Manhomsach
                        select new

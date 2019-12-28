@@ -13,8 +13,7 @@
         <form class="form-inline align-self-center mb-3" id="searchAndFilterForm" method="Get">
             <div class="form-row align-items-center ">
                 <div class="search-user">
-                    <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off"
-                        placeholder="&#61442;  Start searching for a user by id or name or country">
+                    <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="&#61442;  Search">
                 </div>
             </div>
             <div class="col-auto mt-1 mr-3">
@@ -57,15 +56,13 @@
                                 <td>{{item.Ngayhethan}}</td>
                                 <td>{{item.Role}}</td>
                                 <td>
-                                    <button type="button" class="btn btn-info ml-2 mt-1"
-                                        [routerLink]="['/users/' , item.Mathe]" (click)="edituser(item)"> Sửa </button>
+                                    <button type="button" class="btn btn-info ml-2 mt-1" [routerLink]="['/users/' , item.Mathe]" (click)="edituser(item)"> Sửa </button>
 
-                                    <button type="button" class="btn btn-danger ml-2 mt-1" (click)="deleteuser(item.Mathe)">
+                                    <button type="button" class="btn btn-danger ml-2 mt-1" (click)="deleteuser(item.Mathe, item.Sosachdamuon)">
                                         Xóa
                                     </button>
 
-                                    <button type="button" class="btn btn-info ml-2 mt-1" style="width: 100px;"
-                                        [routerLink]="['/userdattruoc',item.Mathe]" (click)="edituser(item)">Đạt
+                                    <button type="button" class="btn btn-info ml-2 mt-1" style="width: 100px;" [routerLink]="['/userdattruoc',item.Mathe]" (click)="edituser(item)">Đặt
                                         trước</button>
                                 </td>
                             </tr>

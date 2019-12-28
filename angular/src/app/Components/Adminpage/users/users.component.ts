@@ -45,12 +45,18 @@ export class UsersComponent implements OnInit, OnDestroy {
       this.user = item;
   }
 
-  deleteuser(Mathe : string)
+  deleteuser(Mathe : string, Sosachdamuon : number)
   {
+    console.log(Sosachdamuon);
+    if(Sosachdamuon > 0){
+      alert("Người dùng chưa trả hết sách đã mượn. Không thể xóa!");
+      return;
+    }
     this.Subscription = this.usersService.deleteuser(Mathe).subscribe((data: Users) => {
       //console.log(data);
      // console.log(data.Mathe);
       this.updateDataAfterDelete(Mathe);
+      alert("Xóa thành công!!!");
     });
   }
 

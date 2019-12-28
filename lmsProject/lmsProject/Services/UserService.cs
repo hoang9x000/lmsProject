@@ -40,9 +40,9 @@ namespace lmsProject.Services
         {
             //validation
             if (string.IsNullOrWhiteSpace(password))
-                throw new AppException("Password is required");
+                throw new AppException("Password không được để trống");
             if (_context.User.Any(x => x.Mathe == user.Mathe))
-                throw new AppException("Username \"" + user.Mathe + "\" is already taken");
+                throw new AppException("Mathe \"" + user.Mathe + "\" đã tồn tại");
             //
             byte[] passwordHash, passwordSalt;
             CreatePasswordHash(password, out passwordHash, out passwordSalt);
@@ -90,7 +90,7 @@ namespace lmsProject.Services
             var user = _context.User.Find(userParam.Mathe);
 
             if (user == null)
-                throw new AppException("User not found");
+                throw new AppException("Không tìm thấy User");
 
             if(userParam.Mathe != user.Mathe)
             {
@@ -134,7 +134,7 @@ namespace lmsProject.Services
         private static void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)
         {
             if (password == null) throw new ArgumentNullException("password");
-            if (string.IsNullOrWhiteSpace(password)) throw new ArgumentException("Value cannot be empty or whitespace only string.", "password");
+            if (string.IsNullOrWhiteSpace(password)) throw new ArgumentException("Password không được rỗng hoặc khoảng trắng.", "password");
 
             using (var hmac = new System.Security.Cryptography.HMACSHA512())
             {
@@ -145,7 +145,7 @@ namespace lmsProject.Services
         private static bool VerifyPasswordHash(string password, byte[] storedHash, byte[] storedSalt)
         {
             if (password == null) throw new ArgumentNullException("password");
-            if (string.IsNullOrWhiteSpace(password)) throw new ArgumentException("Value cannot be empty or whitespace only string.", "password");
+            if (string.IsNullOrWhiteSpace(password)) throw new ArgumentException("Password không được rỗng hoặc khoảng trắng.", "password");
             if (storedHash.Length != 64) throw new ArgumentException("Invalid length of password hash (64 bytes expected).", "passwordHash");
             if (storedSalt.Length != 128) throw new ArgumentException("Invalid length of password salt (128 bytes expected).", "passwordHash");
 

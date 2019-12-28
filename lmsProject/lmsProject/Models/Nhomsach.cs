@@ -28,8 +28,6 @@ namespace lmsProject.Models
         [StringLength(100)]
         public string Tensach { get; set; }
         public double Giatien { get; set; }
-        //[Column(TypeName = "image")]
-        //public byte[] Anhbia { get; set; }
         public string AnhPath { get; set; }
 
         [ForeignKey("Matheloai")]

@@ -144,7 +144,6 @@ export class MuontraComponent implements OnInit {
 
   //tra sach va view hoa don
   onXacnhanTinhtrang() {
-    console.log("tinhtrangsach", this.tinhtrangsach);
     //kiểm tra thong tin sach
     this.subscription = this.sachService.getSach(this.masach).subscribe(data => {
       console.log("<<==>>", data);
@@ -152,30 +151,31 @@ export class MuontraComponent implements OnInit {
 
     // update Chưa trả thành đã trả;
     this.muontra.Datra = true;
+    let tt = Boolean(this.tinhtrangsach);
     this.subscription = this.muontraService.updateDatra(this.muontra).subscribe(data => {
-      alert("đã cập nhật sách");
-      let themluotmuon = new Luotmuonpost(this.mathe, this.masach, this.tinhtrangsach);
+      let themluotmuon = new Luotmuonpost(this.mathe, this.masach, tt);
       console.log(themluotmuon);
-
-      //kiểm tra thong tin the
-      this.subscription = this.userdetailService.getUserDetail(this.mathe).subscribe(data => {
-        console.log("Thông tin thành viên", data);
-      });
-
-      //kiểm tra thong tin sach
-      this.subscription = this.sachService.getSach(this.masach).subscribe(data => {
-        console.log("Thông tin sách", data);
-      })
 
       //sinh ra phieu luot muon;
       this.subscription = this.luotmuonService.addLuotmuon(themluotmuon).subscribe(data => {
         this.subscription = this.luotmuonService.getLuotmuon(themluotmuon.Mathe, themluotmuon.Masach).subscribe(data => {
           this.luotmuonid = data;
+
+          console.log("tinh trang sach", tt);
+          //kiểm tra thong tin the
+          this.subscription = this.userdetailService.getUserDetail(this.mathe).subscribe(data => {
+            console.log("Thông tin thành viên", data);
+          });
+
+          //kiểm tra thong tin sach
+          this.subscription = this.sachService.getSach(this.masach).subscribe(data => {
+            console.log("Thông tin sách", data);
+          })
         }, error => {
-          alert("không thể lấy dl phiếu mươn");
+          alert("không thể lấy dữ liệu phiếu mươn");
         });
       }, error => {
-        alert("Không thể sinh phiểu luotmuon");
+        // alert("Không thể sinh phiểu luotmuon");
       });
     }, error => {
       alert("Cập nhật thuộc tính sách bị lỗi");
