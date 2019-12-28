@@ -22,14 +22,17 @@ import { Router } from '@angular/router';
 })
 export class MuontraComponent implements OnInit {
 
-  public muontras: Muontra[] = [];
-  public luotmuonid: Luotmuon[] = [];
+  searchText;
+  public muontras : Muontra[] = [];
+  public luotmuonid : Luotmuon[] = [];
+  public subscription : Subscription;
+  public muontra : Muontra = null;
+  public i : Muontra = null;
+
+
 
   public userdetail: UserDetail = null;
   public sach: Sach = null;
-  public subscription: Subscription;
-  public muontra: Muontra = null;
-  public i: Muontra = null;
 
   public mathe: string;
   public masach: string;

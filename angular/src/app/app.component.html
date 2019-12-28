@@ -56,20 +56,26 @@
                 </div>
             </li>
             <li>
-                <a class="nav-item nav-link" routerLink="/sach" *ngIf="isAdmin">Sách</a>
+                <a class="nav-item nav-link" routerLink="/sach" *ngIf="isAdmin">
+                    <h5>Sách</h5>
+                </a>
             </li>
             <li>
-                <a class="nav-item nav-link" routerLink="/users" *ngIf="isAdmin">Thành viên</a>
+                <a class="nav-item nav-link" routerLink="/users" *ngIf="isAdmin">
+                    <h5>Thành viên</h5>
+                </a>
             </li>
             <li>
-                <a class="nav-item nav-link" routerLink="/muontra" *ngIf="isAdmin">Mượn trả</a>
+                <a class="nav-item nav-link" routerLink="/muontra" *ngIf="isAdmin">
+                    <h5>Mượn trả</h5>
+                </a>
             </li>
         </ul>
         <ul class="navbar-nav ml-auto mr-5">
             <li>
                 <a class="nav-item nav-link" *ngIf="!currentUser" (click)="openModal('custom-modal-1')">
                     <i class="fa fa-user-circle-o" aria-hidden="true">
-                        <span style="font-size: 1.25rem;font-weight: 500;"> Đăng Nhập</span>
+                        <span style="font-size: 1.25rem;font-weight: 500;"><span style="font-size: 1.25rem; font-weight: 500;">  Đăng Nhập</span> </span>
                     </i>
                 </a>
             </li>

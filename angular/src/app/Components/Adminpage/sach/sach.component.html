@@ -1,69 +1,77 @@
 <div class="container-fluid">
     <div class="col-12 align-self-cente border-dark mt-3">
         <h3 class="text-center">
-            <span class="badge badge-primary " style="width: 500px; height: 40px; border-radius: 50px;">
-                <p class="name mt-1 mb-1"> Sach </p>
+            <span class="badge badge-primary " style="width: 500px; height: 50px; border-radius: 50px;">
+                <p class="name mt-2 mb-2"> Sách </p>
             </span>
         </h3>
     </div>
 </div>
 <div class="container-fluid">
     <div class="row d-flex justify-content-between">
-        <a class="btn btn-outline-success mt-3 mb-3 ml-5" [routerLink]="['/sach/addsach']"> Thêm Sach </a>
+        <a class="btn btn-outline-success mt-3 mb-3 ml-5" [routerLink]="['/sach/addsach']"> Thêm Sách </a>
         <form class="form-inline align-self-center mb-3 mr-5" id="searchAndFilterForm" method="Get">
             <div class="form-row align-items-center">
-                <div class="search-nhomsach">
-                    <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="&#61442;  Start searching for a nhomsach by id or name or country">
-                  </div>
+                <div class="search-nhomsach ml-5">
+                    <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="&#61442;  Search">
+                </div>
             </div>
             <div class="col-auto">
                 <button id="search" class="btn btn-primary mb-2">Tìm Kiếm</button>
             </div>
         </form>
-        <div class="table-responsive">
-            <table class="table">
-                <thead>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-primary border border-primary mb-5 ml-4 mr-5    ">
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered">
+                        <thead>
 
-                    <tr>
-                        <th>#</th>
-                        <!-- <th>IMG</th> -->
-                        <th> Mã Nhóm Sách </th>
-                        <th> Mã Thẻ Loại </th>
-                        <th> Mã Giá Sách </th>
-                        <th> Tên Thể Loại </th>
-                        <th> Tên Sách </th>
-                        <th> Tác Giả </th>
-                        <th> Giá Tiền </th>
-                        <th> Số Lượng </th>
-                        <th> Số Lượng Còn </th>
-                        <th> Action </th>
+                            <tr>
+                                <th>#</th>
+                                <!-- <th>IMG</th> -->
+                                <th> Mã Nhóm Sách </th>
+                                <th> Mã Thẻ Loại </th>
+                                <th> Mã Giá Sách </th>
+                                <th> Tên Thể Loại </th>
+                                <th> Tên Sách </th>
+                                <th> Tác Giả </th>
+                                <th> Giá Tiền </th>
+                                <th> Số Lượng </th>
+                                <th> Số Lượng Còn </th>
+                                <th> Action </th>
 
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let item of nhomsach | filter:searchText; let i = index">
-                        <td>{{ i + 1}}</td>
-                        <!-- <td><img [src]="createImgPath(item.AnhPath)" alt="profile picture" style="width:60px; height:60px;"></td> -->
-                        <td>{{ item.Manhomsach }}</td>
-                        <td>{{ item.Matheloai }}</td>
-                        <td>{{ item.Magiasach }}</td>
-                        <td>{{ item.Tentheloai }}</td>
-                        <td>{{ item.Tensach }}</td>
-                        <td>{{ item.Tacgia }}</td>
-                        <td>{{ item.Giatien }}</td>
-                        <td>{{ item.Soluong }}</td>
-                        <td>{{item.Soluongcon }}</td>
-                        <!-- <img src= "http://localhost:5000/{{item.AnhPath}}" /> -->
-                        <td>
-                            <button type="button" class="btn btn-info ml-2" [routerLink]="['/sach/' , item.Manhomsach]">
-                                Sua </button>
-                            <!-- <button type="button" class="btn btn-danger ml-2"
-                                (click)="ondeletenhomsach(item.Manhomsach)"> Xoa
-                            </button> -->
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of nhomsach | filter:searchText; let i = index">
+                                <td>{{ i + 1}}</td>
+                                <!-- <td><img [src]="createImgPath(item.AnhPath)" alt="profile picture" style="width:60px; height:60px;"></td> -->
+                                <td>{{ item.Manhomsach }}</td>
+                                <td>{{ item.Matheloai }}</td>
+                                <td>{{ item.Magiasach }}</td>
+                                <td>{{ item.Tentheloai }}</td>
+                                <td>{{ item.Tensach }}</td>
+                                <td>{{ item.Tacgia }}</td>
+                                <td>{{ item.Giatien }}</td>
+                                <td>{{ item.Soluong }}</td>
+                                <td>{{item.Soluongcon }}</td>
+                                <!-- <img src= "http://localhost:5000/{{item.AnhPath}}" /> -->
+                                <td>
+                                    <button type="button" class="btn btn-info ml-2" [routerLink]="['/sach/' , item.Manhomsach]">
+                                        Sửa </button>
+                                    <!-- <button type="button" class="btn btn-danger ml-2"
+                            (click)="ondeletenhomsach(item.Manhomsach)"> Xoa
+                        </button> -->
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 </div>
